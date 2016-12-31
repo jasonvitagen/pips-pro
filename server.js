@@ -1,7 +1,10 @@
 const
     express = require('express')
     , app = express()
-    , path = require('path');
+    , path = require('path')
+    , morgan = require('morgan');
+
+app.use(morgan('dev'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
