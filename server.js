@@ -2,9 +2,23 @@ const
     express = require('express')
     , app = express()
     , path = require('path')
-    , morgan = require('morgan');
+    , morgan = require('morgan')
+    , passport = require('passport')
+    , cors = require('cors')
+    , bodyParser = require('body-parser')
+    , authRoute = require('./routes/auth');
+
+require('./setup/passport');
+
+app.use(cors());
 
 app.use(morgan('dev'));
+
+app.use(bodyParser.json());
+
+app.use(passport.initialize());
+
+app.use('/auth', authRoute);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
