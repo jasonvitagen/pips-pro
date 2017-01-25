@@ -6,8 +6,10 @@ const
     , passport = require('passport')
     , cors = require('cors')
     , bodyParser = require('body-parser')
-    , authRoute = require('./routes/auth');
+    , authRoute = require('./routes/auth')
+    , dotenv = require('dotenv');
 
+require('dotenv').config({path: './process.env'});
 require('./setup/passport');
 
 app.use(cors());
