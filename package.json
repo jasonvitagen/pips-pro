@@ -1,5 +1,9 @@
 {
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack"
+  },
   "dependencies": {
+    "axios": "^0.15.3",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "cors": "^2.8.1",
@@ -9,8 +13,10 @@
     "jsonwebtoken": "^7.2.1",
     "mongojs": "^2.4.0",
     "morgan": "^1.7.0",
+    "ms": "^0.7.2",
     "passport": "^0.3.2",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "querystring": "^0.2.0"
   },
   "devDependencies": {
     "axios": "^0.15.3",
@@ -23,8 +29,11 @@
     "babel-preset-react-hmre": "^1.1.1",
     "jwt-decode": "^2.1.0",
     "react": "^15.4.1",
+    "react-cookie": "^1.0.4",
     "react-dom": "^15.4.1",
+    "react-google-recaptcha": "^0.5.4",
     "react-notify-toast": "^0.1.4",
+    "react-recaptcha": "^2.2.6",
     "react-redux": "^5.0.1",
     "redux": "^3.6.0",
     "redux-logger": "^2.7.4",

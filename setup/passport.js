@@ -12,7 +12,7 @@ passport.use('local-create-account', new LocalStrategy({
 }, (req, email, password, done) => {
     process.nextTick(() => {
 
-        const {name} = req.body;
+        const {name, mobile} = req.body;
 
         db.User.findOne({ 'email' : email }, { 'password' : 0 }, (err, user) => {
             if (err) {
@@ -24,6 +24,7 @@ passport.use('local-create-account', new LocalStrategy({
 
             const newUser = {
                 name,
+                mobile,
                 email,
                 password: bcrypt.hashSync(password)
             };
@@ -32,7 +33,7 @@ passport.use('local-create-account', new LocalStrategy({
                 if (err) {
                     return done(err);
                 }
-                jwt.sign({name, email}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRY}, (err, token) => {
+                jwt.sign({name, mobile, email}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRY}, (err, token) => {
                     if (err) {
                         return done(err);
                     }

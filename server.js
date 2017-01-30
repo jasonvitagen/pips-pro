@@ -12,6 +12,8 @@ const
 require('dotenv').config({path: './process.env'});
 require('./setup/passport');
 
+app.set('trust proxy', 'loopback');
+
 app.use(cors());
 
 app.use(morgan('dev'));

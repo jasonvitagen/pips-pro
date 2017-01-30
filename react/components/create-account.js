@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import * as actions from '../redux/action';
 import {connect} from 'react-redux';
+import Recaptcha from 'react-google-recaptcha';
 
 @connect(store => ({
     registration: store.registration
@@ -17,11 +18,18 @@ export default class CreateAccount extends Component {
     createAccount() {
         this.actions.createAccount(this.props.registration);
     }
+    recaptchaChanged(value) {
+        this.actions.typeInRegistration({field: 'recaptcha', value});
+    }
+    reset() {
+        grecaptcha.reset();
+        this.actions.typeInRegistration({field: 'recaptcha', value: ''});
+    }
     render() {
 
         const 
-            {name, mobile, email, password, confirmPassword} = this.props.registration
-            , {name: nameError, mobile: mobileError, email: emailError, password: passwordError, confirmPassword: confirmPasswordError} = this.props.registration.errors;
+            {name, mobile, email, password, confirmPassword, submitting} = this.props.registration
+            , {name: nameError, mobile: mobileError, email: emailError, password: passwordError, confirmPassword: confirmPasswordError, recaptcha: recaptchaError} = this.props.registration.errors;
 
         return (
             <div>
@@ -72,8 +80,22 @@ export default class CreateAccount extends Component {
                 </div>
 
 
+                <Recaptcha 
+                    sitekey="6LftPxMUAAAAAOGex_vLYJ7DagFQyQqr2xXyc_uU"
+                    onChange={this.recaptchaChanged.bind(this)}
+                    />
+                    {recaptchaError &&
+                        <p className="alert alert-danger"><small>{recaptchaError}</small></p>
+                    }
+
+                <button className="btn btn-link-orange btn-xs" onClick={this.reset.bind(this)}>Reset reCAPTCHA</button>
+
+                <br/>
+                <br/>
+
+
                 <div className="form-group">
-                    <button type="button" className="btn btn-default" onClick={this.createAccount.bind(this)}>Create</button>
+                    <button type="button" className="btn btn-default" onClick={this.createAccount.bind(this)} disabled={submitting}>Create<div className={'ball-clip-rotate ' + (submitting ? '' : 'hidden')}><div></div></div></button>
                 </div>
 
 

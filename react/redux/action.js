@@ -17,6 +17,13 @@ export function typeInRegistration(payload) {
 export function createAccount(registration) {
     return {
         type: 'CREATE_ACCOUNT',
-        payload: axios.post('http://localhost:3000/auth/local/create-account', registration)
+        payload: axios.post('http://pips-pro.com:3000/auth/local/create-account', registration)
+    }
+}
+
+
+export function checkCookie() {
+    return {
+        type: 'CHECK_COOKIE'
     }
 }

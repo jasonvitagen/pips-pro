@@ -1,11 +1,24 @@
 import jwtDecode from 'jwt-decode';
 import {notify} from 'react-notify-toast';
+import cookie from 'react-cookie';
 
 const
     jwtDecodeMiddleware = store => next => action => {
         switch (action.type) {
             case 'CREATE_ACCOUNT_FULFILLED':
+                cookie.save('Authorization', action.payload.data, {maxAge: 604800});
                 action.payload = jwtDecode(action.payload.data);
+                $('#sign-up-link').click();
+            case 'CHECK_COOKIE':
+                const cookieVal = cookie.load('Authorization');
+                if (cookieVal) {
+                    const user = jwtDecode(cookieVal);
+                    if (Date.now() > user.exp * 1000) {
+                        cookie.remove('Authorization');
+                    } else {
+                        action.payload = user;
+                    }
+                }
         }
         next(action);
     }

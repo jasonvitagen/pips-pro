@@ -6,7 +6,7 @@ import {user, registration} from './reducer';
 import {jwtDecodeMiddleware, notificationMiddleware} from './middleware';
 
 const
-    middlewares = [logger(), thunk, promise(), jwtDecodeMiddleware, notificationMiddleware]
+    middlewares = [thunk, promise(), jwtDecodeMiddleware, notificationMiddleware, logger()]
     , composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default createStore(combineReducers({user, registration}), composeEnhancers(applyMiddleware(...middlewares)));
