@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import StepSignIn from './step-sign-in';
-import StepConfirmUser from './step-confirm-user';
-import StepMakePayment from './step-make-payment';
+import StepSignIn from './payment-container/step-sign-in';
+import StepConfirmUser from './payment-container/step-confirm-user';
+import StepMakePayment from './payment-container/step-make-payment';
 import * as actions from '../redux/action';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';

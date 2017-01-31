@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
-import * as actions from '../redux/action';
+import * as actions from '../../../redux/action';
 import {connect} from 'react-redux';
 import Recaptcha from 'react-google-recaptcha';
 
@@ -37,7 +37,7 @@ export default class CreateAccount extends Component {
 
                 <div className={"form-group " + (nameError ? 'has-error' : '')}>
                     <label className="sr-only control-label" htmlFor="name">name<span className=" "> </span></label>
-                    <input id="name" name="name" type="text" value={name} onChange={this.type.bind(this, 'name')} placeholder="Name" className="form-control input-md" required=""/>
+                    <input id="name" name="name" type="text" value={name} onChange={this.type.bind(this, 'name')} placeholder="Name" className="form-control input-md" required="" ref={ref=>this.firstInput = ref}/>
                     {nameError &&
                         <p className="alert alert-danger"><small>{nameError}</small></p>
                     }
@@ -95,11 +95,17 @@ export default class CreateAccount extends Component {
 
 
                 <div className="form-group">
-                    <button type="button" className="btn btn-default" onClick={this.createAccount.bind(this)} disabled={submitting}>Create<div className={'ball-clip-rotate ' + (submitting ? '' : 'hidden')}><div></div></div></button>
+                    <button type="button" className="btn btn-default" onClick={this.createAccount.bind(this)} disabled={submitting}>Create Account<div className={'ball-clip-rotate ' + (submitting ? '' : 'hidden')}><div></div></div></button>
                 </div>
 
 
             </div>
         );
+    }
+    componentDidMount() {
+        this.firstInput.focus();
+    }
+    componentWillUnmount() {
+        this.actions.clearRegistration();
     }
 }

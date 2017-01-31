@@ -5,6 +5,7 @@ const
     , bcrypt = require('bcrypt-nodejs')
     , jwt = require('jsonwebtoken');
 
+
 passport.use('local-create-account', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
@@ -41,5 +42,34 @@ passport.use('local-create-account', new LocalStrategy({
                 });
             })
         });
+    });
+}));
+
+
+passport.use('local-sign-in', new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+}, (req, email, password, done) => {
+    process.nextTick(() => {
+
+        db.User.findOne({ 'email' : email }, (err, user) => {
+            if (err) {
+                return done(err);
+            }
+            if (user) {
+                const {name, mobile, password: userPassword} = user;
+                if (bcrypt.compareSync(password, userPassword)) {
+                    return jwt.sign({name, mobile, email}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRY}, (err, token) => {
+                        if (err) {
+                            return done(err);
+                        }
+                        return done(null, token);
+                    });
+                }
+            }
+            return done('Invalid username or password');
+        });
+
     });
 }));

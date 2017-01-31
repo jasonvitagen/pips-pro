@@ -9,4 +9,8 @@ router.post('/local/create-account', validateRegistration, validateRecaptcha, pa
     res.json(req.user);
 });
 
+router.post('/local/sign-in', passport.authenticate('local-sign-in', {session: false}), (req, res, next) => {
+    res.json(req.user);
+});
+
 module.exports = router;

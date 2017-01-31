@@ -6,9 +6,11 @@ const
     jwtDecodeMiddleware = store => next => action => {
         switch (action.type) {
             case 'CREATE_ACCOUNT_FULFILLED':
+            case 'SIGN_IN_USER_FULFILLED':
                 cookie.save('Authorization', action.payload.data, {maxAge: 604800});
                 action.payload = jwtDecode(action.payload.data);
                 $('#sign-up-link').click();
+                break;
             case 'CHECK_COOKIE':
                 const cookieVal = cookie.load('Authorization');
                 if (cookieVal) {
@@ -19,6 +21,9 @@ const
                         action.payload = user;
                     }
                 }
+                break;
+            case 'SIGN_OUT':
+                cookie.remove('Authorization');
         }
         next(action);
     }
@@ -31,8 +36,18 @@ const
                     notify.show('Registration is unsuccessful, please check', 'error');
                 }
                 break;
+            case 'SIGN_IN_USER_REJECTED':
+                notify.show('Invalid username or password', 'error');
+                break;
+            case 'SIGN_IN_USER_FULFILLED':
+                notify.show('Signed in successfully', 'success');
+                break;
             case 'CREATE_ACCOUNT_FULFILLED':
-                notify.show('Registration is successful', 'success');
+                notify.show('Registered successfully', 'success');
+                break;
+            case 'SIGN_OUT':
+                notify.show('Signed out successfully', 'success');
+                break;
         }
         next(action);
     }
