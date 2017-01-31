@@ -17,9 +17,10 @@ export function typeInSignIn(payload) {
  
 
 export function createAccount(registration) {
+    console.log(process.env.HOST);
     return {
         type: 'CREATE_ACCOUNT',
-        payload: axios.post('http://pips-pro.com:3000/auth/local/create-account', registration)
+        payload: axios.post(`${process.env.HOST}auth/local/create-account`, registration)
     }
 }
 
@@ -69,7 +70,7 @@ export function clearSignIn() {
 export function signInUser(signInCredentials) {
     return {
         type: 'SIGN_IN_USER',
-        payload: axios.post('http://pips-pro.com:3000/auth/local/sign-in', signInCredentials)
+        payload: axios.post(`${process.env.HOST}auth/local/sign-in`, signInCredentials)
     }
 }
 
@@ -92,7 +93,7 @@ export function cancelEditAccount() {
 export function editUserAccount(registration, user) {
     return {
         type: 'EDIT_USER_ACCOUNT',
-        payload: axios.post('http://pips-pro.com:3000/auth/local/edit-account', registration, {
+        payload: axios.post(`${process.env.HOST}auth/local/edit-account`, registration, {
             headers: {
                 'Authorization': user.token
             }

@@ -1,3 +1,10 @@
+const
+    webpack = require('webpack');
+
+
+require('dotenv').config({path: './process.env'});
+
+
 module.exports = {
     entry   : './client.js',
     output  : {
@@ -16,5 +23,12 @@ module.exports = {
     },
     devServer : {
         contentBase : './public'
-    }
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                'HOST': `"${process.env.HOST}"`
+            }
+        })
+    ]
 };
