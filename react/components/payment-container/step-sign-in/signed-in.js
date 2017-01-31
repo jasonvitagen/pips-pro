@@ -14,14 +14,18 @@ export default class SignedIn extends Component {
     signOut() {
         this.actions.signOut();
     }
+    editAccount() {
+        this.actions.editAccount(this.props.user);
+    }
     render() {
         const {user} = this.props;
         return (
             <div>
-                <p>Welcome <b>{user.name}</b></p>
-                <p>Email: <b>{user.email}</b></p>
-                <p>Mobile: <b>{user.mobile}</b></p>
+                <p>Welcome <b>{user.name}.</b></p>
+                <div className="alert alert-info">Email: {user.email}</div>
+                <div className="alert alert-info">Mobile: {user.mobile}</div>
                 <br/>
+                <p><button className="btn btn-xs btn-ouline" onClick={this.editAccount.bind(this)}>Edit account</button></p>
                 <p><button className="btn btn-xs btn-ouline" onClick={this.signOut.bind(this)}>Sign out</button></p>
             </div>
         );

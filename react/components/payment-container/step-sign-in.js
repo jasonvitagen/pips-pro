@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import CreateAccount from './step-sign-in/create-account';
+import EditAccount from './step-sign-in/edit-account';
 import SignedIn from './step-sign-in/signed-in';
 import SignIn from './step-sign-in/sign-in';
 import * as actions from '../../redux/action';
@@ -31,7 +32,17 @@ export default class StepSignUp extends Component {
                     <div className="circle"><span className="number">1</span></div>
                     {user.name ?
                         (
-                            <SignedIn/>
+                            <div>
+                                {user.editAccount ?
+                                    (
+                                        <EditAccount/>
+                                    ) :
+                                    (
+                                        <SignedIn/>
+                                    )
+                                }
+                                
+                            </div>
                         ) :
                         (
                             <div>

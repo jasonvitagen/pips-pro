@@ -7,8 +7,9 @@ const
         switch (action.type) {
             case 'CREATE_ACCOUNT_FULFILLED':
             case 'SIGN_IN_USER_FULFILLED':
+            case 'EDIT_USER_ACCOUNT_FULFILLED':
                 cookie.save('Authorization', action.payload.data, {maxAge: 604800});
-                action.payload = jwtDecode(action.payload.data);
+                action.payload = {...jwtDecode(action.payload.data), token: action.payload.data};
                 $('#sign-up-link').click();
                 break;
             case 'CHECK_COOKIE':
@@ -18,7 +19,7 @@ const
                     if (Date.now() > user.exp * 1000) {
                         cookie.remove('Authorization');
                     } else {
-                        action.payload = user;
+                        action.payload = {...user, token: cookieVal};
                     }
                 }
                 break;
@@ -39,11 +40,17 @@ const
             case 'SIGN_IN_USER_REJECTED':
                 notify.show('Invalid username or password', 'error');
                 break;
+            case 'EDIT_USER_ACCOUNT_REJECTED':
+                notify.show('Edit is unsuccessful, please check', 'error');
+                break;
             case 'SIGN_IN_USER_FULFILLED':
                 notify.show('Signed in successfully', 'success');
                 break;
             case 'CREATE_ACCOUNT_FULFILLED':
                 notify.show('Registered successfully', 'success');
+                break;
+            case 'EDIT_USER_ACCOUNT_FULFILLED':
+                notify.show('Edited successfully', 'success');
                 break;
             case 'SIGN_OUT':
                 notify.show('Signed out successfully', 'success');

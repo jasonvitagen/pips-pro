@@ -72,3 +72,30 @@ export function signInUser(signInCredentials) {
         payload: axios.post('http://pips-pro.com:3000/auth/local/sign-in', signInCredentials)
     }
 }
+
+
+export function editAccount(user) {
+    return {
+        type: 'EDIT_ACCOUNT',
+        payload: user
+    }
+}
+
+
+export function cancelEditAccount() {
+    return {
+        type: 'CANCEL_EDIT_ACCOUNT'
+    }
+}
+
+
+export function editUserAccount(registration, user) {
+    return {
+        type: 'EDIT_USER_ACCOUNT',
+        payload: axios.post('http://pips-pro.com:3000/auth/local/edit-account', registration, {
+            headers: {
+                'Authorization': user.token
+            }
+        })
+    }
+}

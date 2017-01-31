@@ -7,7 +7,9 @@ const
         confirmPassword: '',
         recaptcha: '',
         errors: {},
-        submitting: false
+        error: '',
+        submitting: false,
+        editAccount: false
     }
     , signInInitialState = {
         email: '',
@@ -41,6 +43,12 @@ export function user(state = {}, action) {
             return {};
         case 'SIGN_IN_USER_FULFILLED':
             return {...state, ...action.payload};
+        case 'EDIT_ACCOUNT':
+            return {...state, editAccount: true};
+        case 'CANCEL_EDIT_ACCOUNT':
+            return {...state, editAccount: false};
+        case 'EDIT_USER_ACCOUNT_FULFILLED':
+            return {...state, ...action.payload};
     }
     return state;
 };
@@ -50,14 +58,24 @@ export function registration(state = registrationInitialState, action) {
     switch (action.type) {
         case 'CREATE_ACCOUNT_PENDING':
             return {...state, submitting: true};
+        case 'EDIT_USER_ACCOUNT_PENDING':
+            return {...state, submitting: true};
         case 'TYPE_IN_REGISTRATION':
             return {...state, [action.payload.field]: action.payload.value};
         case 'CREATE_ACCOUNT_REJECTED':
             return {...state, errors: action.payload.response.data, error: action.payload.response.data, submitting: false};
+        case 'EDIT_USER_ACCOUNT_REJECTED':
+            return {...state, errors: action.payload.response.data, error: action.payload.response.data, submitting: false};
         case 'CREATE_ACCOUNT_FULFILLED':
             return registrationInitialState;
+        case 'EDIT_USER_ACCOUNT_FULFILLED':
+            return {...state, errors: {}, error: '', password: '', confirmPassword: '', submitting: false};
         case 'CLEAR_REGISTRATION':
             return registrationInitialState;
+        case 'EDIT_ACCOUNT':
+            return {...state, ...action.payload, editAccount: true};
+        case 'CANCEL_EDIT_ACCOUNT':
+            return {...state, editAccount: false};
     }
     return state;
 }

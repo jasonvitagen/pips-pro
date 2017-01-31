@@ -1,6 +1,6 @@
 module.exports = (req, res, next) => {
     const
-        {name, mobile, email, password, confirmPassword, recaptcha} = req.body
+        {name, mobile, email, password, confirmPassword, recaptcha, editAccount} = req.body
         , validationErrors = {};
 
     if (!name) validationErrors.name = 'Name is required';
@@ -11,7 +11,9 @@ module.exports = (req, res, next) => {
     if (!password) validationErrors.password = 'Password is required';
     if (password !== confirmPassword) validationErrors.confirmPassword = 'Confirmation password does not match';
     if (!confirmPassword) validationErrors.confirmPassword = 'Confirmation password is required';
-    if (!recaptcha) validationErrors.recaptcha = 'Recaptcha is required';
+    if (!editAccount) {
+        if (!recaptcha) validationErrors.recaptcha = 'Recaptcha is required';
+    }
 
     if (Object.keys(validationErrors).length > 0) {
         return res.status(400).json(validationErrors);

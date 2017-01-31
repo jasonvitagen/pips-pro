@@ -14,13 +14,14 @@ export default class SignIn extends Component {
     type(field, event) {
         this.actions.typeInSignIn({field, value: event.target.value});
     }
-    signInUser() {
+    signInUser(event) {
         this.actions.signInUser(this.props.signIn);
+        event.preventDefault();
     }
     render() {
         const {email, password, submitting} = this.props.signIn;
         return (
-            <div>
+            <form onSubmit={this.signInUser.bind(this)}>
 
 
                 <div className="form-group">
@@ -36,11 +37,11 @@ export default class SignIn extends Component {
 
 
                 <div className="form-group">
-                    <button type="button" className="btn btn-default" onClick={this.signInUser.bind(this)} disabled={submitting}>Sign In<div className={'ball-clip-rotate ' + (submitting ? '' : 'hidden')}><div></div></div></button>
+                    <button className="btn btn-default" onClick={this.signInUser.bind(this)} disabled={submitting}>Sign In<div className={'ball-clip-rotate ' + (submitting ? '' : 'hidden')}><div></div></div></button>
                 </div>
 
 
-            </div>
+            </form>
         );
     }
     componentDidMount() {

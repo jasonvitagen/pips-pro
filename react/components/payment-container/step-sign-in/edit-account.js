@@ -5,9 +5,10 @@ import {connect} from 'react-redux';
 import Recaptcha from 'react-google-recaptcha';
 
 @connect(store => ({
-    registration: store.registration
+    registration: store.registration,
+    user: store.user
 }))
-export default class CreateAccount extends Component {
+export default class EditAccount extends Component {
     constructor(props) {
         super(props);
         this.actions = bindActionCreators(actions, this.props.dispatch);
@@ -15,25 +16,21 @@ export default class CreateAccount extends Component {
     type(field, event) {
         this.actions.typeInRegistration({field, value: event.target.value});
     }
-    createAccount(event) {
-        this.actions.createAccount(this.props.registration);
+    editUserAccount(event) {
+        event.preventDefault();
+        this.actions.editUserAccount(this.props.registration, this.props.user);
+    }
+    cancelEditAccount(event) {
+        this.actions.cancelEditAccount(this.props.registration);
         event.preventDefault();
     }
-    recaptchaChanged(value) {
-        this.actions.typeInRegistration({field: 'recaptcha', value});
-    }
-    reset() {
-        grecaptcha.reset();
-        this.actions.typeInRegistration({field: 'recaptcha', value: ''});
-    }
     render() {
-
         const 
             {name, mobile, email, password, confirmPassword, submitting} = this.props.registration
             , {name: nameError, mobile: mobileError, email: emailError, password: passwordError, confirmPassword: confirmPasswordError, recaptcha: recaptchaError} = this.props.registration.errors;
 
         return (
-            <form onSubmit={this.createAccount.bind(this)}>
+            <form onSubmit={this.editUserAccount.bind(this)}>
 
 
                 <div className={"form-group " + (nameError ? 'has-error' : '')}>
@@ -54,13 +51,7 @@ export default class CreateAccount extends Component {
                 </div>
 
 
-                <div className={"form-group " + (emailError ? 'has-error' : '')}>
-                    <label className="sr-only control-label" htmlFor="email">email<span className=" "> </span></label>
-                    <input id="email" name="email" type="email" value={email} onChange={this.type.bind(this, 'email')} placeholder="Email" className="form-control input-md" required=""/>
-                    {emailError &&
-                        <p className="alert alert-danger"><small>{emailError}</small></p>
-                    }
-                </div>
+                <div className="alert alert-info">{email}</div>
 
 
                 <div className={"form-group " + (passwordError ? 'has-error' : '')}>
@@ -81,23 +72,12 @@ export default class CreateAccount extends Component {
                 </div>
 
 
-                <Recaptcha 
-                    sitekey="6LftPxMUAAAAAOGex_vLYJ7DagFQyQqr2xXyc_uU"
-                    onChange={this.recaptchaChanged.bind(this)}
-                    />
-                    {recaptchaError &&
-                        <p className="alert alert-danger"><small>{recaptchaError}</small></p>
-                    }
-
-                <button type="button" className="btn btn-link-orange btn-xs" onClick={this.reset.bind(this)}>Reset reCAPTCHA</button>
-
-                <br/>
-                <br/>
-
-
                 <div className="form-group">
-                    <button className="btn btn-default" onClick={this.createAccount.bind(this)} disabled={submitting}>Create Account<div className={'ball-clip-rotate ' + (submitting ? '' : 'hidden')}><div></div></div></button>
+                    <button className="btn btn-default" onClick={this.editUserAccount.bind(this)} disabled={submitting}>Edit Account<div className={'ball-clip-rotate ' + (submitting ? '' : 'hidden')}><div></div></div></button>
                 </div>
+
+
+                <p><button type="button" className="btn btn-xs btn-ouline" onClick={this.cancelEditAccount.bind(this)}>Go back</button></p>
 
 
             </form>
