@@ -82,7 +82,7 @@ export default class CreateAccount extends Component {
 
 
                 <Recaptcha 
-                    sitekey="6LftPxMUAAAAAOGex_vLYJ7DagFQyQqr2xXyc_uU"
+                    sitekey={process.env.RECAPTCHA_KEY}
                     onChange={this.recaptchaChanged.bind(this)}
                     />
                     {recaptchaError &&

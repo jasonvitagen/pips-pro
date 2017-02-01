@@ -831,3 +831,5 @@ Landing Page Template
   .widget-share { background-color: #fff; padding: 14px; position: absolute; top: 0px; right: 0px; }
   .search-nav { display: none; }
 }
+
+.toast-notification {width: auto!important;}

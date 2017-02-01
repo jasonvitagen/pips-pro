@@ -27,7 +27,8 @@ module.exports = {
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {
-                'HOST': `"${process.env.HOST}"`
+                'HOST': `"${process.env.HOST}"`,
+                'RECAPTCHA_KEY': `"${process.env.RECAPTCHA_KEY}"`
             }
         })
     ]
