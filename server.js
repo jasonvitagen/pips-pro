@@ -30,6 +30,12 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
+app.use((err, req, res, next) => {
+    res
+        .status(err.status || 500)
+        .send(err.message);
+});
+
 app.listen(3000, () => {
     console.log('Express listening on port 3000');
 });
