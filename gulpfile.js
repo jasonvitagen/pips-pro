@@ -66,7 +66,7 @@ gulp.task('html-inject', ['build-external-css', 'build-external-js', 'version-we
         .pipe(inject(gulp.src([
             'public/versioned/**/*'
         ], {read: false}), {
-            addRootSlash: false,
+            addRootSlash: true,
             ignorePath: ['public']
         }))
         .pipe(gulp.dest('public'))
