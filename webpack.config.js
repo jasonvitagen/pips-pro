@@ -1,5 +1,7 @@
 const
-    webpack = require('webpack');
+    webpack = require('webpack')
+    , webpackUglifyJsPlugin = require('webpack-uglify-js-plugin')
+    , path = require('path');
 
 
 require('dotenv').config({path: './process.env'});
@@ -27,8 +29,21 @@ module.exports = {
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {
-                'HOST': `"${process.env.HOST}"`,
-                'RECAPTCHA_KEY': `"${process.env.RECAPTCHA_KEY}"`
+                'HOST': JSON.stringify(process.env.HOST),
+                'RECAPTCHA_KEY': JSON.stringify(process.env.RECAPTCHA_KEY),
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+        new webpackUglifyJsPlugin({
+            cacheFolder: path.resolve(__dirname, './public/webpack-cached/'),
+            debug: true,
+            minimize: true,
+            sourceMap: false,
+            output: {
+                comments: false
+            },
+            compressor: {
+                warnings: false
             }
         })
     ]
