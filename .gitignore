@@ -51,5 +51,3 @@ public/js/bundle.js
 public/webpack-cached/
 
 public/versioned/
-
-process.env
