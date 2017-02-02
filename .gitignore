@@ -49,3 +49,5 @@ jspm_packages
 public/js/bundle.js
 
 public/webpack-cached/
+
+public/versioned/
