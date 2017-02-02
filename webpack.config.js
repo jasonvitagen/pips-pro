@@ -7,7 +7,7 @@ const
 require('dotenv').config({path: './process.env'});
 
 
-module.exports = {
+const config = {
     entry   : './client.js',
     output  : {
         path     : __dirname + '/public/js',
@@ -31,9 +31,14 @@ module.exports = {
             'process.env': {
                 'HOST': JSON.stringify(process.env.HOST),
                 'RECAPTCHA_KEY': JSON.stringify(process.env.RECAPTCHA_KEY),
-                'NODE_ENV': JSON.stringify('production')
+                'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
             }
-        }),
+        })
+    ]
+};
+
+if (process.env.NODE_ENV === 'production') {
+    config.plugins.push(
         new webpackUglifyJsPlugin({
             cacheFolder: path.resolve(__dirname, './public/webpack-cached/'),
             debug: true,
@@ -46,5 +51,7 @@ module.exports = {
                 warnings: false
             }
         })
-    ]
-};
+    )
+}
+
+module.exports = config;

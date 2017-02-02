@@ -6,7 +6,11 @@ import * as reducers from './reducer';
 import {jwtDecodeMiddleware, notificationMiddleware} from './middleware';
 
 const
-    middlewares = [thunk, promise(), logger(), jwtDecodeMiddleware, notificationMiddleware]
+    middlewares = [thunk, promise(), jwtDecodeMiddleware, notificationMiddleware]
     , composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+if (process.env.NODE_ENV !== 'production') {
+    middlewares.push(logger());
+}
 
 export default createStore(combineReducers({...reducers}), composeEnhancers(applyMiddleware(...middlewares)));
