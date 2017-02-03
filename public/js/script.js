@@ -1,3 +1,3 @@
 $(function () {
-    $('a').smoothScroll({offset: -100});
+    $('.smooth-scroll').smoothScroll({offset: -100});
 });

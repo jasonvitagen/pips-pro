@@ -833,3 +833,10 @@ Landing Page Template
 }
 
 .toast-notification {width: auto!important;}
+
+.anchor {
+  display: block;
+  position: relative;
+  top: -120px;
+  visibility: hidden;
+}
