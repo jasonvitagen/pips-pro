@@ -38,7 +38,8 @@ passport.use('local-create-account', new LocalStrategy({
                     if (err) {
                         return done(err);
                     }
-                    done(null, token);
+                    newUser.token = token;
+                    done(null, newUser);
                 });
             })
         });
@@ -79,7 +80,8 @@ passport.use('local-edit-account', new LocalStrategy({
                 if (err) {
                     return done(err);
                 }
-                return done(null, token);
+                user.token = token;
+                return done(null, user);
             });
         });
 
@@ -106,7 +108,8 @@ passport.use('local-sign-in', new LocalStrategy({
                         if (err) {
                             return done(err);
                         }
-                        return done(null, token);
+                        user.token = token;
+                        return done(null, user);
                     });
                 }
             }

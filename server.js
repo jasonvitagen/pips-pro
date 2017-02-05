@@ -10,6 +10,7 @@ const
     , dotenv = require('dotenv');
 
 require('dotenv').config({path: './process.env'});
+require('./setup/nodemailer');
 require('./setup/passport');
 
 app.set('trust proxy', 'loopback');
