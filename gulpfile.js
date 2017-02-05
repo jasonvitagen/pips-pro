@@ -21,8 +21,6 @@ gulp.task('build-index-external-css', () => {
         './public/css/style.css',
         './public/css/font-awesome.min.css',
         './public/css/fontello.css',
-        './public/css/owl.carousel.css',
-        './public/css/owl.theme.css',
         './public/css/loaders.min.css',
         ])
         .pipe(concat('index-external-bundle.css'))
@@ -58,9 +56,6 @@ gulp.task('build-index-external-js', () => {
         './public/js/menumaker.js',
         './public/js/jquery.sticky.js',
         './public/js/sticky-header.js',
-        './public/js/owl.carousel.min.js',
-        './public/js/slider-carousel.js',
-        './public/js/service-carousel.js',
         './public/js/back-to-top.js',
         './public/js/jquery.smooth-scroll.min.js',
         './public/js/script.js'])
@@ -102,7 +97,7 @@ gulp.task('html-inject', ['build-index-external-css', 'build-index-external-js',
     return gulp.src('./public/index.html')
         .pipe(inject(gulp.src([
             'public/versioned/index-*.css',
-            'public/versioned/index-*.js',
+            'public/versioned/about-*.js',
             'public/versioned/bundle-*.js',
         ], {read: false}), {
             addRootSlash: true,
@@ -118,8 +113,8 @@ gulp.task('about-inject', ['build-about-external-css', 'build-about-external-js'
             './public/terms-of-use.html',
         ])
         .pipe(inject(gulp.src([
-            'public/versioned/about-external-*.css',
-            'public/versioned/about-external-*.js'
+            'public/versioned/index-*.css',
+            'public/versioned/about-*.js'
         ], {read: false}), {
             addRootSlash: true,
             ignorePath: ['public']
