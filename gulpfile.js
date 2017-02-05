@@ -93,7 +93,7 @@ gulp.task('version-webpack-bundle', () => {
         .pipe(gulp.dest('./public/versioned'));
 });
 
-gulp.task('html-inject', ['build-index-external-css', 'build-index-external-js', 'version-webpack-bundle'], () => {
+gulp.task('html-inject', ['build-index-external-css', 'build-about-external-js', 'version-webpack-bundle'], () => {
     return gulp.src('./public/index.html')
         .pipe(inject(gulp.src([
             'public/versioned/index-*.css',
@@ -122,5 +122,5 @@ gulp.task('about-inject', ['build-about-external-css', 'build-about-external-js'
         .pipe(gulp.dest('public'));
 });
 
-gulp.task('build', ['html-inject', 'about-inject']);
+gulp.task('build', ['about-inject', 'html-inject']);
 
