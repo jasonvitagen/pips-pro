@@ -83,7 +83,8 @@ gulp.task('build-about-external-js', () => {
         './public/js/accordion.js',
         './public/js/jquery-ui.js',
         './public/js/back-to-top.js',
-        './public/js/jquery.smooth-scroll.min.js'])
+        './public/js/jquery.smooth-scroll.min.js',
+        './public/js/script.js'])
         .pipe(concat('about-external-bundle.js'))
         .pipe(uglify())
         .pipe(rev())
