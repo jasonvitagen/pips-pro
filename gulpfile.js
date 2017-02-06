@@ -79,7 +79,9 @@ gulp.task('build-about-external-js', () => {
         './public/js/jquery-ui.js',
         './public/js/back-to-top.js',
         './public/js/jquery.smooth-scroll.min.js',
-        './public/js/modernizr-custom.js',
+        './public/js/modernizr.js',
+        './public/js/jquery.isotope.min.js',
+        './public/js/filter-script.js',
         './public/js/script.js'])
         .pipe(concat('about-external-bundle.js'))
         .pipe(uglify())

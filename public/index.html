@@ -43,7 +43,7 @@
                         <!-- navigation start-->
                         <ul>
                             <li class="active"><a href="/#home" title="Home" class="smooth-scroll">Home</a></li>
-                            <li><a href="/#performance" title="Performance" class="smooth-scroll">Performance</a></li>
+                            <li><a href="/#performance" id="performance-link" title="Performance" class="smooth-scroll">Performance</a></li>
                             <li><a href="/#sign-up" id="sign-up-link" title="Sign Up" class="smooth-scroll">Sign Up</a></li>
                             <li><a href="/#features" title="Features" class="smooth-scroll">Features</a></li>
                             <li><a href="/account" title="My Account" class="smooth-scroll">My Account</a></li>
@@ -168,6 +168,10 @@
                     <div class="row">
                         <div class="col-md-12 ">
                             <div class="bg-light pinside30 outline">
+                                2017
+                                <h2 id='emi' class="pull-right">262.5 Total Profit</h2>
+                            </div>
+                            <div class="bg-light pinside30 outline">
                                 2016
                                 <h2 id='emi' class="pull-right">2906 Total Profit</h2>
                             </div>
@@ -176,8 +180,40 @@
                 </div>
             </div>
             <br><br>
-            <div class="row">
-                <div class="col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 text-center"> <a href="#" class="btn btn-default">View Full Performance Data</a> </div>
+            <div class="row mb30">
+                <div class="col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 text-center">
+                    <button id="view-full-performance" class="btn btn-default view-full-performance">View Full Performance Data<div id="view-full-performance-loader"><div></div></div></button>
+                </div>
+            </div>
+            <div class="row mb30">
+                <div class="col-sm-12">
+                    <div class="row hidden" id="portfolio-filter">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="portfolioFilter"> <a href="#" data-filter="*" class="current">All</a> <a href="#" data-filter=".performance-2017" class="">2017</a> <a href="#" data-filter=".performance-2016" class="">2016</a> </div>
+                        </div>
+                    </div>
+                    <div class="row hidden" id="portfolio-results">
+                        <div id="effect-6" class="effects clearfix">
+                            <div class="portfolioContainer">
+                                <div class="col-xs-12 performance-2017 mb30" id="performance-2017">
+                                    
+                                </div>
+                                <div class="col-xs-12 performance-2016 bm30" id="performance-2016">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="performance-chart" class="mb-30">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row mb30">
+                <div class="col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8 text-center">
+                    <button id="view-full-performance-2" class="btn btn-default hidden view-full-performance">Hide Full Performance Data<div id="view-full-performance-loader"><div></div></div></button>
+                </div>
             </div>
         </div>
     </div>

@@ -4,5 +4,39 @@ $(function () {
     if (!Modernizr.svg) {
         $('#logo-img').attr('src', '/images/logo.png');
     }
+
+    var addScript = function(src, id) {
+        var scriptTag = document.createElement('script');
+        scriptTag.src = src;
+        scriptTag.id = id;
+        document.body.append(scriptTag);
+        document.getElementById(id).remove();
+    }
+
+    var loaded = false;
+
+    $('.view-full-performance').click(function() {
+        if ($('#view-full-performance').text() === 'View Full Performance Data') {
+            $('#view-full-performance').text('Hide Full Performance Data');
+            $('#portfolio-filter').removeClass('hidden');
+            $('#portfolio-results').removeClass('hidden');
+            $('#view-full-performance-2').removeClass('hidden');
+            if (loaded) {
+                return $('#performance-chart').show();
+            }
+            loaded = true;
+            addScript('/js/highcharts.js', 'highcharts');
+            addScript('/js/view-performance-data.js', 'view-performance-data');
+            $('#view-full-performance-loader').addClass('ball-clip-rotate');
+            $('#view-full-performance').attr('disabled', true);
+        } else {
+            $('#view-full-performance-2').addClass('hidden');
+            $('#performance-chart').hide();
+            $('#view-full-performance').text('View Full Performance Data');
+            $('#portfolio-filter').addClass('hidden');
+            $('#portfolio-results').addClass('hidden');
+            $('#performance-link').click();
+        }
+    });
 });
 
