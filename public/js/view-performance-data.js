@@ -2,7 +2,7 @@ $.getJSON('/json/graph.json', function (data) {
 
     $.getJSON('/json/performance.json', function (performanceData) {
 
-        $('.view-full-performance-loader').removeClass('ball-clip-rotate');
+        $('#view-full-performance-loader').removeClass('ball-clip-rotate');
         $('#view-full-performance').attr('disabled', false);
 
         var intervalId = setInterval(function() {
