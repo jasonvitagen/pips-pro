@@ -9,7 +9,7 @@ $(function () {
         var scriptTag = document.createElement('script');
         scriptTag.src = src;
         scriptTag.id = id;
-        document.body.append(scriptTag);
+        document.body.appendChild(scriptTag);
         document.getElementById(id).remove();
     }
 
