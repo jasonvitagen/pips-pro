@@ -15,7 +15,8 @@ $.getJSON('/json/graph.json', function (data) {
         var render = () => {
             Highcharts.chart('performance-chart', {
                 chart: {
-                    zoomType: 'x'
+                    zoomType: 'x',
+                    backgroundColor: '#f4f6f8'
                 },
                 title: {
                     text: 'Our performance June 2016 - Jan 2017'
