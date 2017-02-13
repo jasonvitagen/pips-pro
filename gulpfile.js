@@ -101,8 +101,7 @@ gulp.task('html-inject', ['build-index-external-css', 'build-about-external-js',
             'public/versioned/about-*.js',
             'public/versioned/bundle-*.js',
         ], {read: false}), {
-            addRootSlash: false,
-            addPrefix: 'https://static.pips-pro.com',
+            addRootSlash: true,
             ignorePath: ['public']
         }))
         .pipe(gulp.dest('public'))
