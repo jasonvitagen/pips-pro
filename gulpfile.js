@@ -19,7 +19,6 @@ gulp.task('build-index-external-css', () => {
     return gulp.src([
         './public/css/bootstrap.min.css',
         './public/css/style.css',
-        './public/css/font-awesome.min.css',
         './public/css/fontello.css',
         './public/css/loaders.min.css',
         ])
@@ -36,7 +35,6 @@ gulp.task('build-about-external-css', () => {
     return gulp.src([
         './public/css/bootstrap.min.css',
         './public/css/style.css',
-        './public/css/font-awesome.min.css',
         './public/css/fontello.css',
         './public/css/loaders.min.css',
         ])
