@@ -6,10 +6,9 @@ const
     , passport = require('passport')
     , cors = require('cors')
     , bodyParser = require('body-parser')
-    , authRoute = require('./routes/auth')
-    , dotenv = require('dotenv');
+    , authRoute = require('./routes/auth');
 
-require('dotenv').config({path: './process.env'});
+require('dotenv').config({path: require('path').join(__dirname, './process.env')});
 require('./setup/nodemailer');
 require('./setup/passport');
 

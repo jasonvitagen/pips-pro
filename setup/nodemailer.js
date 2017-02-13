@@ -1,3 +1,5 @@
+require('dotenv').config({path: require('path').join(__dirname, '../process.env')});
+
 const
     nodemailer = require('nodemailer')
     , sesTransport = require('nodemailer-ses-transport')
