@@ -118,7 +118,8 @@ gulp.task('about-inject', ['build-about-external-css', 'build-about-external-js'
             'public/versioned/index-*.css',
             'public/versioned/about-*.js'
         ], {read: false}), {
-            addRootSlash: true,
+            addRootSlash: false,
+            addPrefix: 'https://malaysia-6d6d.kxcdn.com',
             ignorePath: ['public']
         }))
         .pipe(gulp.dest('public'));
