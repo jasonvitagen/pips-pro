@@ -40,5 +40,9 @@ $(function () {
             $('#performance-link').click();
         }
     });
+
+    if (window.devicePixelRatio >= 2) {
+        $('#ios-forex-sms-iphone').attr('src', 'https://malaysia-6d6d.kxcdn.com/images/ios-forex-sms-signal_iphone6splusgold_portrait_retina.png');
+    }
 });
 
