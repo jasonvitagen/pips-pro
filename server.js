@@ -9,8 +9,8 @@ const
     , authRoute = require('./routes/auth');
 
 require('dotenv').config({path: require('path').join(__dirname, './process.env')});
-require('./setup/nodemailer');
 require('./setup/passport');
+require('./setup/sync-sign-in-cache');
 
 app.set('trust proxy', 'loopback');
 
