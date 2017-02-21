@@ -83,6 +83,12 @@ export function registration(state = registrationInitialState, action) {
 
 export function signIn(state = signInInitialState, action) {
     switch (action.type) {
+        case 'SIGN_IN_USER_PENDING':
+            return {...state, submitting: true};
+        case 'SIGN_IN_USER_FULFILLED':
+            return {...state, submitting: false};
+        case 'SIGN_IN_USER_REJECTED':
+            return {...state, submitting: false};
         case 'TYPE_IN_SIGN_IN':
             return {...state, [action.payload.field]: action.payload.value};
         case 'CLEAR_SIGN_IN':
