@@ -17,7 +17,7 @@ router.post('/local/sign-in', checkSignInCache, passport.authenticate('local-sig
     res.json(req.user.token);
 });
 
-router.post('/local/edit-account', validateRegistration, validateToken, passport.authenticate('local-edit-account', {session: false}), (req, res, next) => {
+router.post('/local/edit-account', validateRegistration, validateToken, passport.authenticate('local-edit-account', {session: false}), cacheSignIn, (req, res, next) => {
     res.json(req.user.token);
 });
 
