@@ -851,3 +851,7 @@ Landing Page Template
 .feature-box {
   min-height: 457px;
 }
+
+.btn-default[disabled]:hover {
+  background-color: #ff389c;
+}
