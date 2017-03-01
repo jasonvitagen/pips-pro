@@ -96,3 +96,12 @@ export function signIn(state = signInInitialState, action) {
     }
     return state;
 }
+
+
+export function selectedPackage(state = '1', action) {
+    switch (action.type) {
+        case 'SELECT_PACKAGE':
+            return action.payload;
+    }
+    return state;
+}

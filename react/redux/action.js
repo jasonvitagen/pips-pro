@@ -100,3 +100,11 @@ export function editUserAccount(registration, user) {
         })
     }
 }
+
+
+export function selectPackage(value) {
+    return {
+        type: 'SELECT_PACKAGE',
+        payload: value
+    }
+}

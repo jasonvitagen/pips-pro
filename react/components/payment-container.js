@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import StepSignIn from './payment-container/step-sign-in';
-import StepConfirmUser from './payment-container/step-confirm-user';
+import StepChoosePackage from './payment-container/step-choose-package';
 import StepMakePayment from './payment-container/step-make-payment';
 import * as actions from '../redux/action';
 import {connect} from 'react-redux';
@@ -19,7 +19,7 @@ export default class PaymentContainer extends Component {
         return (
             <div>
                 <StepSignIn/>
-                <StepConfirmUser/>
+                <StepChoosePackage/>
                 <StepMakePayment/>
             </div>
         );
