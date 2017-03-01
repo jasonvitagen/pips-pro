@@ -15,6 +15,22 @@ const
         email: '',
         password: '',
         submitting: false
+    }
+    , paymentInitialState = {
+        PaymentPostUrl: '',
+        MerchantCode: '',
+        PaymentId: '',
+        RefNo: '',
+        Amount: '',
+        Currency: '',
+        ProdDesc: '',
+        UserName: '',
+        UserEmail: '',
+        UserContact: '',
+        Remark: '',
+        Signature: '',
+        ResponseUrl: '',
+        BackendUrl: ''
     };
 
 
@@ -102,6 +118,15 @@ export function selectedPackage(state = '1', action) {
     switch (action.type) {
         case 'SELECT_PACKAGE':
             return action.payload;
+    }
+    return state;
+}
+
+
+export function payment(state = paymentInitialState, action) {
+    switch (action.type) {
+        case 'GET_PAYMENT_SIGNATURE_FULFILLED':
+            return action.payload.data;
     }
     return state;
 }
