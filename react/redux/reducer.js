@@ -30,7 +30,9 @@ const
         Remark: '',
         Signature: '',
         ResponseUrl: '',
-        BackendUrl: ''
+        BackendUrl: '',
+        verifying: false,
+
     };
 
 
@@ -125,8 +127,17 @@ export function selectedPackage(state = '1', action) {
 
 export function payment(state = paymentInitialState, action) {
     switch (action.type) {
+        case 'SET_PAYMENT_ID':
+            return {...state, PaymentId: action.payload};
         case 'GET_PAYMENT_SIGNATURE_FULFILLED':
-            return action.payload.data;
+            console.log(action.payload);
+            return {...action.payload.data, verifying: false};
+        case 'GET_PAYMENT_SIGNATURE_PENDING':
+            return {...state, verifying: true};
+        case 'GET_PAYMENT_SIGNATURE_REJECTED':
+            console.log(action.payload);
+            return {...state, verifying: false};
+
     }
     return state;
 }

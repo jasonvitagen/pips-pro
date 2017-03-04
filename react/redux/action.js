@@ -113,10 +113,18 @@ export function selectPackage(value) {
 export function getPaymentSignature(paymentId, selectedPackage, user) {
     return {
         type: 'GET_PAYMENT_SIGNATURE',
-        payload: axios.post(`${process.env.HOST}payment/signature`, {paymentId, selectedPackage}, {
-            headers: {
-                'Authorization': user.token
-            }
-        })
+        payload: axios.post(`${process.env.HOST}payment/signature`, {paymentId: paymentId, selectedPackage: selectedPackage}, {
+                    headers: {
+                        'Authorization': user.token
+                    }
+                })
+    }
+}
+
+
+export function setPaymentId(paymentId) {
+    return {
+        type: 'SET_PAYMENT_ID',
+        payload: paymentId
     }
 }
