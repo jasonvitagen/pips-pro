@@ -137,6 +137,10 @@ export function payment(state = paymentInitialState, action) {
         case 'GET_PAYMENT_SIGNATURE_REJECTED':
             console.log(action.payload);
             return {...state, verifying: false};
+        case 'CREATE_ACCOUNT_FULFILLED':
+            return {...state, UserName: action.payload.name, UserEmail: action.payload.email, UserContact: action.payload.mobile};
+        case 'SIGN_IN_USER_FULFILLED':
+            return {...state, UserName: action.payload.name, UserEmail: action.payload.email, UserContact: action.payload.mobile};
 
     }
     return state;
