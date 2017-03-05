@@ -13,7 +13,6 @@ module.exports = (req, res, next) => {
     };
     const refNo = shortid.generate();
     const amount = (packages[selectedPackage] * PACKAGE_1_MONTH_RATE).toFixed(2);
-    console.log(IPAY_MERCHANT_KEY + IPAY_MERCHANT_CODE + refNo + amount + '00' + IPAY_CURRENCY);
     req.signature = {
         PaymentPostUrl: IPAY_PAYMENT_POST_URL,
         MerchantCode: IPAY_MERCHANT_CODE,
