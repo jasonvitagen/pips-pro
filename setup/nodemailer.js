@@ -2,15 +2,12 @@ require('dotenv').config({path: require('path').join(__dirname, '../process.env'
 
 const
     nodemailer = require('nodemailer')
-    , sesTransport = require('nodemailer-ses-transport')
-    , transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: '465',
-        secure: true,
+    , mg = require('nodemailer-mailgun-transport')
+    , transporter = nodemailer.createTransport(mg({
         auth: {
-            user: process.env.SMTP_USER,
-            pass: process.env.SMTP_PASS
+            api_key: process.env.MAILGUN_PRIVATE,
+            domain: process.env.MAILGUN_DOMAIN
         }
-    });
+    }));
 
 module.exports = transporter;
