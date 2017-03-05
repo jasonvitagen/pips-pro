@@ -874,49 +874,97 @@ Landing Page Template
 }
 
 .payment-cimb {
-  background: url(http://i.imgur.com/tG5TYJE.png) no-repeat -19px -25px;
-  width: 114px;
-  height: 20px;
+  background: url(https://i.imgur.com/HAnutlo.png) no-repeat -24px -18px;
+  width: 142px;
+  height: 24px;
 }
 
 .payment-maybank {
-  background: url(http://i.imgur.com/tG5TYJE.png) no-repeat -182px -26px;
-  width: 118px;
-  height: 18px;
+  background: url(https://i.imgur.com/HAnutlo.png) no-repeat -229px -18px;
+  width: 145px;
+  height: 23px;
 }
 
 .payment-hongleong {
-  background: url(http://i.imgur.com/tG5TYJE.png) no-repeat -343px -27px;
-  width: 112px;
-  height: 12px;
+  background: url(https://i.imgur.com/HAnutlo.png) no-repeat -428px -20px;
+  width: 141px;
+  height: 15px;
 }
 
 .payment-ambank {
-  background: url(http://i.imgur.com/tG5TYJE.png) no-repeat -512px -12px;
-  width: 98px;
-  height: 40px;
+  background: url(https://i.imgur.com/HAnutlo.png) no-repeat -641px -1px;
+  width: 120px;
+  height: 48px;
 }
 
 .payment-alliance {
-  background: url(http://i.imgur.com/tG5TYJE.png) no-repeat -662px -19px;
-  width: 118px;
-  height: 25px;
+  background: url(https://i.imgur.com/HAnutlo.png) no-repeat -828px -10px;
+  width: 146px;
+  height: 31px;
 }
 
 .payment-rhb {
-  background: url(http://i.imgur.com/tG5TYJE.png) no-repeat -26px -75px;
-  width: 101px;
-  height: 26px;
+  background: url(https://i.imgur.com/HAnutlo.png) no-repeat -33px -80px;
+  width: 125px;
+  height: 31px;
+}
+
+.payment-islam {
+  background: url(https://i.imgur.com/HAnutlo.png) no-repeat -232px -81px;;
+  width: 134px;
+  height: 28px;
+}
+
+.payment-publicbank {
+  background: url(https://i.imgur.com/HAnutlo.png) no-repeat  -428px -75px;
+  width: 138px;
+  height: 46px;
 }
 
 .payment-fpx {
-  background: url(http://i.imgur.com/tG5TYJE.png) no-repeat -522px -71px;
-  width: 78px;
-  height: 35px;
+  background: url(https://i.imgur.com/HAnutlo.png) no-repeat -653px -76px;;
+  width: 97px;
+  height: 42px;
 }
 
 .payment-webcash {
-  background: url(http://i.imgur.com/tG5TYJE.png) no-repeat -701px -69px;
-  width: 37px;
-  height: 36px;
+  background: url(https://i.imgur.com/HAnutlo.png) no-repeat -876px -73px;
+  width: 45px;
+  height: 45px;
+}
+
+.payment-affinbank {
+  background: url(https://i.imgur.com/HAnutlo.png) no-repeat -24px -147px;
+  width: 142px;
+  height: 41px;
+}
+
+.payment-uob {
+  background: url(https://i.imgur.com/HAnutlo.png) no-repeat -232px -142px;
+  width: 126px;
+  height: 47px;
+}
+
+.payment-standardchartered {
+  background: url(https://i.imgur.com/HAnutlo.png) no-repeat -429px -140px;
+  width: 142px;
+  height: 54px;
+}
+
+.payment-ocbc {
+  background: url(https://i.imgur.com/HAnutlo.png) no-repeat -634px -152px;
+  width: 142px;
+  height: 31px;
+}
+
+.payment-muamalat {
+  background: url(https://i.imgur.com/HAnutlo.png) no-repeat -828px -153px;
+  width: 142px;
+  height: 31px;
+}
+
+.payment-bsn {
+  background: url(https://i.imgur.com/HAnutlo.png) no-repeat -36px -216px;
+  width: 92px;
+  height: 45px;
 }
