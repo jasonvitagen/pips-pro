@@ -1,8 +1,6 @@
 const
     redis = require('redis')
-    , client = redis.createClient({
-        password: process.env.REDIS_PASS
-    });
+    , client = redis.createClient();
 
 client.on('ready', () => {
     console.log('Redis is ready');
