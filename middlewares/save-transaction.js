@@ -7,6 +7,7 @@ module.exports = (req, res, next) => {
 
     db.Transaction.insert({
         UserEmail,
+        SignalPackage,
         MerchantCode,
         PaymentId,
         RefNo,
@@ -30,10 +31,8 @@ module.exports = (req, res, next) => {
             return next(err);
         }
         if (new Date(user.packageExpireAt) > new Date()) {
-            console.log('a');
             user.packageExpireAt = new Date(new Date(user.packageExpireAt).setMonth(new Date(user.packageExpireAt).getMonth() + Number(SignalPackage))).toISOString();
         } else {
-            console.log('b');
             user.packageExpireAt = new Date(new Date().setMonth(new Date().getMonth() + Number(SignalPackage))).toISOString();
         }
         db.User.findAndModify({

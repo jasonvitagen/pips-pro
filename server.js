@@ -12,6 +12,7 @@ const
 require('dotenv').config({path: require('path').join(__dirname, './process.env')});
 require('./setup/passport');
 require('./setup/sync-sign-in-cache');
+require('./setup/process-payments');
 
 app.set('trust proxy', 'loopback');
 

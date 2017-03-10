@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
         const
             message = {
                 from: 'admin@pips-pro.com',
-                to: req.user.email,
+                to: req.body.email,
                 subject: 'Registration at Pips-Pro.com',
                 text: `Thank you ${req.user.name} ${req.user.mobile} for registering.`
             };

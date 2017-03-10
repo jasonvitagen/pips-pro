@@ -7,7 +7,8 @@ const
     , sendOrderSuccessEmail = require('../middlewares/send-order-success-email')
     , saveReference = require('../middlewares/save-reference')
     , checkReference = require('../middlewares/check-reference')
-    , saveTransaction = require('../middlewares/save-transaction');
+    , saveTransaction = require('../middlewares/save-transaction')
+    , savePaymentsToQueue = require('../middlewares/save-payments-to-queue');
 
 router.post('/signature', validateToken, getPaymentSignature, saveReference, (req, res, next) => {
     res.json(req.signature);
@@ -18,9 +19,13 @@ router.post('/response', checkPaymentResponseSignature, checkReference, (req, re
     res.send('payment ok');
 });
 
-router.post('/backend', checkPaymentResponseSignature, checkReference, saveTransaction, /*sendOrderSuccessEmail,*/ (req, res, next) => {
+router.post('/process-queued-payments', checkReference, saveTransaction, /*sendOrderSuccessEmail,*/ (req, res, next) => {
     console.log('backend payment ok');
     res.send('payment ok');
+});
+
+router.post('/backend', checkPaymentResponseSignature, savePaymentsToQueue, (req, res, next) => {
+    res.send('RECEIVEOK');
 });
 
 module.exports = router;
