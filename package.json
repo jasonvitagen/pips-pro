@@ -4,6 +4,7 @@
     "start": "cross-env NODE_ENV=production node server.js"
   },
   "dependencies": {
+    "amqplib": "^0.5.1",
     "async": "^2.1.5",
     "axios": "^0.15.3",
     "bcrypt-nodejs": "0.0.3",
