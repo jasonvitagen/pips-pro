@@ -24,7 +24,7 @@ router.post('/response', checkPaymentResponseSignature, checkReference, (req, re
     }
 });
 
-router.post('/process-queued-payments', checkReference, saveTransaction, /*sendOrderSuccessEmail,*/ (req, res, next) => {
+router.post('/process-queued-payments', checkReference, saveTransaction, sendOrderSuccessEmail, (req, res, next) => {
     console.log('backend payment ok');
     res.send('payment ok');
 });

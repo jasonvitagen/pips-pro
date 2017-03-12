@@ -8,7 +8,8 @@ module.exports = (req, res, next) => {
             return next(err);
         }
         req.body.UserEmail = reply.UserEmail;
-        req.body.SignalPackage = reply.SignalPackage; 
+        req.body.SignalPackage = reply.SignalPackage;
+        req.body.Name = reply.Name;
         next();
     });
 }

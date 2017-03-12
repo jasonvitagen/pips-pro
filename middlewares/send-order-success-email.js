@@ -4,14 +4,22 @@ const
 module.exports = (req, res, next) => {
 
     process.nextTick(() => {
-        const {UserEmail, MerchantCode, PaymentId, RefNo, Amount, Currency, Remark, TransId, AuthCode, Status, ErrDesc, Signature} = req.body;
-        console.log(UserEmail);
+        const {Name, UserEmail, MerchantCode, PaymentId, RefNo, Amount, Currency, Remark, TransId, AuthCode, Status, ErrDesc, Signature} = req.body;
         const
             message = {
-                from: 'admin@pips-pro.com',
+                from: 'Pips-Pro <admin@pips-pro.com>',
                 to: UserEmail,
-                subject: 'Order is successful',
-                text: `Thank you for your order. MerchantCode: ${MerchantCode}, PaymentId: ${PaymentId}, RefNo: ${RefNo}, Amount: ${Amount}, Currency: ${Currency}, TransactionId: ${TransId}, AuthCode: ${AuthCode}, Status: ${Status}, Signature: ${Signature}`
+                subject: 'Order at Pips-Pro.com',
+                html: `
+                    <p>Hi ${Name},</p>
+                    <p>Your payment is successful.</p>
+                    <p>Please find below your order info:</p>
+                    <p>Reference Number: ${RefNo}</p>
+                    <p>Amount: ${Currency}${Number(Amount)/100}</p>
+                    <p>Package expire at: ${req.packageExpireAt}</p>
+                    <p>Your forex signal package is now active and we'll start sending forex signals to your mobile number.</p>
+                    <p>Thank you for choosing us.</p>
+                `
             };
 
         transporter.sendMail(message, (err, info) => {

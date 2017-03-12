@@ -9,7 +9,7 @@ const
     , cacheSignIn = require('../middlewares/cache-sign-in')
     , checkSignInCache = require('../middlewares/check-sign-in-cache');
 
-router.post('/local/create-account', validateRegistration, validateRecaptcha, passport.authenticate('local-create-account', {session: false}), cacheSignIn, /*sendConfirmationEmail,*/ (req, res, next) => {
+router.post('/local/create-account', validateRegistration, validateRecaptcha, passport.authenticate('local-create-account', {session: false}), cacheSignIn, sendConfirmationEmail, (req, res, next) => {
     res.json(req.user.token);
 });
 
