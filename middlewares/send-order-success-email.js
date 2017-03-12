@@ -15,7 +15,7 @@ module.exports = (req, res, next) => {
                     <p>Your payment is successful.</p>
                     <p>Please find below your order info:</p>
                     <p>Reference Number: ${RefNo}</p>
-                    <p>Amount: ${Currency}${Number(Amount)/100}</p>
+                    <p>Amount: ${Currency}${Amount}</p>
                     <p>Package expire at: ${req.packageExpireAt}</p>
                     <p>Your forex signal package is now active and we'll start sending forex signals to your mobile number.</p>
                     <p>Thank you for choosing us.</p>
