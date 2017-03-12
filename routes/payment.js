@@ -4,6 +4,7 @@ const
     , validateToken = require('../middlewares/validate-token')
     , getPaymentSignature = require('../middlewares/get-payment-signature')
     , checkPaymentResponseSignature = require('../middlewares/check-payment-response-signature')
+    , checkPaymentBackendSignature = require('../middlewares/check-payment-backend-signature')
     , sendOrderSuccessEmail = require('../middlewares/send-order-success-email')
     , saveReference = require('../middlewares/save-reference')
     , checkReference = require('../middlewares/check-reference')
@@ -15,8 +16,12 @@ router.post('/signature', validateToken, getPaymentSignature, saveReference, (re
 });
 
 router.post('/response', checkPaymentResponseSignature, checkReference, (req, res, next) => {
-    console.log('response payment ok');
-    res.send('payment ok');
+    const {RefNo} = req.body;
+    if (req.failedStatus || req.failedSignature) {
+        res.redirect(301, `${process.env.HOST}payment-status-nok.html`);
+    } else {
+        res.redirect(301, `${process.env.HOST}payment-status-ok.html?RefNo=${RefNo}`);
+    }
 });
 
 router.post('/process-queued-payments', checkReference, saveTransaction, /*sendOrderSuccessEmail,*/ (req, res, next) => {
@@ -24,7 +29,7 @@ router.post('/process-queued-payments', checkReference, saveTransaction, /*sendO
     res.send('payment ok');
 });
 
-router.post('/backend', checkPaymentResponseSignature, savePaymentsToQueue, (req, res, next) => {
+router.post('/backend', checkPaymentBackendSignature, savePaymentsToQueue, (req, res, next) => {
     res.send('RECEIVEOK');
 });
 

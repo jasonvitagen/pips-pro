@@ -11,11 +11,11 @@ module.exports = (req, res, next) => {
         const ourSignature = sha1(IPAY_MERCHANT_KEY + IPAY_MERCHANT_CODE + PaymentId + RefNo + Amount.split('.').join('') + Currency + Status);
         console.log(ourSignature);
         if (!Status || Status === '0') {
-            req.failedStatus = true;
+            return next('Payment failed ' + ErrDesc);
         }
 
         if (ourSignature !== Signature) {
-            req.failedSignature = true;
+            return next('Signature not matched');
         }
 
         next();

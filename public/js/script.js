@@ -44,5 +44,15 @@ $(function () {
     if (window.devicePixelRatio >= 2) {
         $('#ios-forex-sms-iphone').attr('src', 'http://i.imgur.com/mMYT37U.png');
     }
+
+    var getParameterByName = function (name) {
+        var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+        return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+    }
+
+    if ($('#reference-number').length > 0) {
+        var refNo = getParameterByName('RefNo');
+        $('#reference-number').text(refNo);
+    }
 });
 

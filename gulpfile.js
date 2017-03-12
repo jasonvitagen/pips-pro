@@ -115,6 +115,8 @@ gulp.task('about-inject', ['build-about-external-css', 'build-about-external-js'
             './public/about.html',
             './public/privacy-policy.html',
             './public/terms-of-use.html',
+            './public/payment-status-ok.html',
+            './public/payment-status-nok.html',
         ])
         .pipe(inject(gulp.src([
             'public/versioned/index-*.css',
