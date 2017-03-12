@@ -14,13 +14,11 @@ export default class StepConfirmUser extends Component {
         this.actions = bindActionCreators(actions, this.props.dispatch);
     }
     packageChanged(event) {
-        console.log(event.target.value);
         this.actions.selectPackage(event.target.value);
         this.actions.getPaymentSignature(this.props.payment.PaymentId, event.target.value, this.props.user);
     }
     render() {
         const {verifying} = this.props.payment;
-        console.log(verifying);
         return (
             <div className="col-md-4 col-sm-4 col-xs-12">
                 <div className="bg-white pinside40 number-block outline mb60 bg-boxshadow">

@@ -130,12 +130,10 @@ export function payment(state = paymentInitialState, action) {
         case 'SET_PAYMENT_ID':
             return {...state, PaymentId: action.payload};
         case 'GET_PAYMENT_SIGNATURE_FULFILLED':
-            console.log(action.payload);
             return {...action.payload.data, verifying: false};
         case 'GET_PAYMENT_SIGNATURE_PENDING':
             return {...state, verifying: true};
         case 'GET_PAYMENT_SIGNATURE_REJECTED':
-            console.log(action.payload);
             return {...state, verifying: false};
         case 'CREATE_ACCOUNT_FULFILLED':
             return {...state, UserName: action.payload.name, UserEmail: action.payload.email, UserContact: action.payload.mobile};

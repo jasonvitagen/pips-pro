@@ -17,7 +17,6 @@ export function typeInSignIn(payload) {
  
 
 export function createAccount(registration) {
-    console.log(process.env.HOST);
     return {
         type: 'CREATE_ACCOUNT',
         payload: axios.post(`${process.env.HOST}auth/local/create-account`, registration)
