@@ -42,7 +42,7 @@ $(function () {
     });
 
     if (window.devicePixelRatio >= 2) {
-        $('#ios-forex-sms-iphone').attr('src', 'http://i.imgur.com/mMYT37U.png');
+        $('#ios-forex-sms-iphone').attr('src', 'https://i.imgur.com/mMYT37U.png');
     }
 
     var getParameterByName = function (name) {
