@@ -3,6 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import CreateAccount from './step-sign-in/create-account';
 import EditAccount from './step-sign-in/edit-account';
+import ChangePassword from './step-sign-in/change-password';
 import SignedIn from './step-sign-in/signed-in';
 import SignIn from './step-sign-in/sign-in';
 import * as actions from '../../redux/action';
@@ -26,6 +27,10 @@ export default class StepSignUp extends Component {
     }
     render() {
         const {user, signInIntent} = this.props;
+        let nextStep = <SignedIn/>;
+        if (user.editAccount) nextStep = <EditAccount/>;
+        if (user.changePassword) nextStep = <ChangePassword/>;
+
         return (
             <div className="col-md-4 col-sm-4 col-xs-12">
                 <div className="bg-white pinside40 number-block outline mb60 bg-boxshadow">
@@ -33,15 +38,7 @@ export default class StepSignUp extends Component {
                     {user.name ?
                         (
                             <div>
-                                {user.editAccount ?
-                                    (
-                                        <EditAccount/>
-                                    ) :
-                                    (
-                                        <SignedIn/>
-                                    )
-                                }
-                                
+                                {nextStep}                                
                             </div>
                         ) :
                         (

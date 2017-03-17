@@ -127,3 +127,29 @@ export function setPaymentId(paymentId) {
         payload: paymentId
     }
 }
+
+
+export function changePassword() {
+    return {
+        type: 'CHANGE_PASSWORD'
+    }
+}
+
+
+export function cancelChangePassword() {
+    return {
+        type: 'CANCEL_CHANGE_PASSWORD'
+    }
+}
+
+
+export function changeUserPassword(registration, user) {
+    return {
+        type: 'CHANGE_USER_PASSWORD',
+        payload: axios.post(`${process.env.HOST}auth/local/change-password`, registration, {
+            headers: {
+                'Authorization': user.token
+            }
+        })
+    }
+}

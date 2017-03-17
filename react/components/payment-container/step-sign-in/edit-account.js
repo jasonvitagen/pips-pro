@@ -54,7 +54,7 @@ export default class EditAccount extends Component {
                 <div className="alert alert-info">{email}</div>
 
 
-                <div className={"form-group " + (passwordError ? 'has-error' : '')}>
+                <div className={"hidden form-group " + (passwordError ? 'has-error' : '')}>
                     <label className="sr-only control-label" htmlFor="password">password<span className=" "> </span></label>
                     <input id="password" name="password" type="password" value={password} onChange={this.type.bind(this, 'password')} placeholder="Password" className="form-control input-md" required=""/>
                     {passwordError &&
@@ -63,7 +63,7 @@ export default class EditAccount extends Component {
                 </div>
 
 
-                <div className={"form-group " + (confirmPasswordError ? 'has-error' : '')}>
+                <div className={"hidden form-group " + (confirmPasswordError ? 'has-error' : '')}>
                     <label className="sr-only control-label" htmlFor="passwordConfirm">password<span className=" "> </span></label>
                     <input id="passwordConfirm" name="passwordConfirm" type="password" value={confirmPassword} onChange={this.type.bind(this, 'confirmPassword')} placeholder="Confirm Password" className="form-control input-md" required=""/>
                     {confirmPasswordError &&

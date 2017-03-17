@@ -14,6 +14,7 @@ module.exports = (req, res, next) => {
         if (err) {
             return next(err);
         }
+
         req.decodedToken = decoded;
         next();
     });

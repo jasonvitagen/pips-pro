@@ -53,7 +53,6 @@ passport.use('local-edit-account', new LocalStrategy({
     passReqToCallback: true
 }, (req, email, password, done) => {
     process.nextTick(() => {
-
         const 
             {name, mobile} = req.body
             , {email: decodedEmail} = req.decodedToken;
@@ -63,7 +62,45 @@ passport.use('local-edit-account', new LocalStrategy({
             update: {
                 $set: {
                     name,
-                    mobile,
+                    mobile
+                }
+            },
+            new: true
+        }, (err, user) => {
+            if (err) {
+                return done(err);
+            }
+            if (!user) {
+                return done('User does not exist');
+            }
+            const {name: userName, mobile: userMobile} = user;
+            jwt.sign({name: userName, mobile: userMobile, email: decodedEmail}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRY}, (err, token) => {
+                if (err) {
+                    return done(err);
+                }
+                user.token = token;
+                return done(null, user);
+            });
+        });
+
+
+    });
+}));
+
+
+passport.use('local-change-password', new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+}, (req, email, password, done) => {
+    process.nextTick(() => {
+        const 
+            {email: decodedEmail} = req.decodedToken;
+        
+        db.User.findAndModify({
+            query: {'email': decodedEmail},
+            update: {
+                $set: {
                     password: bcrypt.hashSync(password)
                 }
             },

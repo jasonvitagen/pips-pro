@@ -65,8 +65,14 @@ export function user(state = {}, action) {
             return {...state, editAccount: true};
         case 'CANCEL_EDIT_ACCOUNT':
             return {...state, editAccount: false};
+        case 'CANCEL_CHANGE_PASSWORD':
+            return {...state, changePassword: false};
         case 'EDIT_USER_ACCOUNT_FULFILLED':
-            return {...state, ...action.payload};
+            return {...state, ...action.payload, editAccount: false};
+        case 'CHANGE_USER_PASSWORD_FULFILLED':
+            return {...state, ...action.payload, changePassword: false};
+        case 'CHANGE_PASSWORD':
+            return {...state, changePassword: true};
     }
     return state;
 };
@@ -78,22 +84,34 @@ export function registration(state = registrationInitialState, action) {
             return {...state, submitting: true};
         case 'EDIT_USER_ACCOUNT_PENDING':
             return {...state, submitting: true};
+        case 'CHANGE_USER_PASSWORD_PENDING':
+            return {...state, submitting: true};
         case 'TYPE_IN_REGISTRATION':
             return {...state, [action.payload.field]: action.payload.value};
         case 'CREATE_ACCOUNT_REJECTED':
             return {...state, errors: action.payload.response.data, error: action.payload.response.data, submitting: false};
         case 'EDIT_USER_ACCOUNT_REJECTED':
             return {...state, errors: action.payload.response.data, error: action.payload.response.data, submitting: false};
+        case 'CHANGE_USER_PASSWORD_REJECTED':
+            return {...state, errors: action.payload.response.data, error: action.payload.response.data, submitting: false};
         case 'CREATE_ACCOUNT_FULFILLED':
             return registrationInitialState;
         case 'EDIT_USER_ACCOUNT_FULFILLED':
-            return {...state, errors: {}, error: '', password: '', confirmPassword: '', submitting: false};
+            return {...state, errors: {}, error: '', submitting: false};
+        case 'CHANGE_USER_PASSWORD_FULFILLED':
+            return {...state, errors: {}, error: '', submitting: false};
         case 'CLEAR_REGISTRATION':
             return registrationInitialState;
         case 'EDIT_ACCOUNT':
-            return {...state, ...action.payload, editAccount: true};
+            return {...state, ...action.payload, editAccount: true, password: 123, confirmPassword: 123};
+        case 'CHANGE_PASSWORD':
+            return {...state, ...action.payload, changePassword: true, email: '123'};
         case 'CANCEL_EDIT_ACCOUNT':
-            return {...state, editAccount: false};
+            return {...state, editAccount: false, password: '', confirmPassword: ''};
+        case 'CANCEL_CHANGE_PASSWORD':
+            return {...state, changePassword: false, email: ''};
+        case 'CANCEL_CHANGE_PASSWORD':
+            return {...state, changePassword: false};
     }
     return state;
 }

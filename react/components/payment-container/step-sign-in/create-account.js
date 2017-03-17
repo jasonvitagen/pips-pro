@@ -94,6 +94,7 @@ export default class CreateAccount extends Component {
                 <br/>
                 <br/>
 
+                <p><small>By creating an account, you agree to our <a href="/terms-of-use.html">Terms of Use</a></small></p>
 
                 <div className="form-group">
                     <button className="btn btn-default" onClick={this.createAccount.bind(this)} disabled={submitting}>Create Account<div className={'ball-clip-rotate ' + (submitting ? '' : 'hidden')}><div></div></div></button>

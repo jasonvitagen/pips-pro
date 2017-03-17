@@ -17,6 +17,9 @@ export default class SignedIn extends Component {
     editAccount() {
         this.actions.editAccount(this.props.user);
     }
+    changePassword() {
+        this.actions.changePassword();
+    }
     render() {
         const {user} = this.props;
         return (
@@ -26,6 +29,7 @@ export default class SignedIn extends Component {
                 <div className="alert alert-info">Mobile: {user.mobile}</div>
                 <br/>
                 <p><button className="btn btn-xs btn-ouline" onClick={this.editAccount.bind(this)}>Edit account</button></p>
+                <p><button className="btn btn-xs btn-ouline" onClick={this.changePassword.bind(this)}>Change password</button></p>
                 <p><button className="btn btn-xs btn-ouline" onClick={this.signOut.bind(this)}>Sign out</button></p>
             </div>
         );

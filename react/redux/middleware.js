@@ -8,6 +8,7 @@ const
             case 'CREATE_ACCOUNT_FULFILLED':
             case 'SIGN_IN_USER_FULFILLED':
             case 'EDIT_USER_ACCOUNT_FULFILLED':
+            case 'CHANGE_USER_PASSWORD_FULFILLED':
                 cookie.save('Authorization', action.payload.data, {maxAge: 604800});
                 action.payload = {...jwtDecode(action.payload.data), token: action.payload.data};
                 $('#sign-up-link').click();
@@ -43,6 +44,9 @@ const
             case 'EDIT_USER_ACCOUNT_REJECTED':
                 notify.show('Edit is unsuccessful, please check', 'error');
                 break;
+            case 'CHANGE_USER_PASSWORD_REJECTED':
+                notify.show('Password change is unsuccessful, please check', 'error');
+                break;
             case 'SIGN_IN_USER_FULFILLED':
                 notify.show('Signed in successfully', 'success');
                 break;
@@ -51,6 +55,9 @@ const
                 break;
             case 'EDIT_USER_ACCOUNT_FULFILLED':
                 notify.show('Edited successfully', 'success');
+                break;
+            case 'CHANGE_USER_PASSWORD_FULFILLED':
+                notify.show('Password changed successfully', 'success');
                 break;
             case 'SIGN_OUT':
                 notify.show('Signed out successfully', 'success');
