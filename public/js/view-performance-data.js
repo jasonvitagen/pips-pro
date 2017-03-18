@@ -4,10 +4,17 @@ $.getJSON('/json/performance.json', function (performanceData) {
     $('#view-full-performance').attr('disabled', false);
 
     var renderPerformanceData = function() {
-        var years = [{year: 2017, months: [1]}, {year: 2016, months: [12, 11, 10, 9 , 8, 7, 6]}];
+        var years = Object.keys(performanceData);
+        var data = years.map(function (year) {
+            var months = Object.keys(performanceData[year]);
+            return {
+                year: year,
+                months: months
+            }
+        });
         var monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
-        years.forEach(function (year) {
+        data.forEach(function (year) {
             var html = '';
             var yearVal = year.year;
             var monthsVal = year.months;
@@ -27,6 +34,7 @@ $.getJSON('/json/performance.json', function (performanceData) {
                 html += '<th>Remark</th>';
                 html += '</tr>';
 
+                var monthlyProfit = 0;
                 var monthData = performanceData[yearVal][month];
                 monthData.forEach(function (md) {
                     html += '<tr>';
@@ -40,7 +48,20 @@ $.getJSON('/json/performance.json', function (performanceData) {
                     html += '<td>' + md.profit + '</td>';
                     html += '<td>' + md.remark + '</td>';
                     html += '</tr>';
+                    monthlyProfit += Number(md.profit);
                 });
+
+                html += '<tr>';
+                html += '<td></td>';
+                html += '<td></td>';
+                html += '<td></td>';
+                html += '<td></td>';
+                html += '<td></td>';
+                html += '<td></td>';
+                html += '<td></td>';
+                html += '<td>' + monthlyProfit + '</td>';
+                html += '<td>Total Profit</td>';
+                html += '</tr>';
 
                 html += '</table>';
             });
