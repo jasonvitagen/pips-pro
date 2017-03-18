@@ -18,11 +18,11 @@ const config = {
         publicPath : '/js'
     },
     module  : {
-        loaders : [
+        rules : [
             {
                 test     : /\.js$/,
                 exclude  : /node_modules/,
-                loaders  : ['babel']
+                use  : ['babel-loader']
             },
         ]
     },
