@@ -1,5 +1,5 @@
 const
-    transporter = require('../setup/mailgun');
+    mailgun = require('../setup/mailgun');
 
 module.exports = (req, res, next) => {
     process.nextTick(() => {
