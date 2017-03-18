@@ -14,7 +14,6 @@ export default class TransactionList extends Component {
         this.actions.checkCookie();
         setTimeout(() => {
             this.actions.getTransactions(this.props.user);
-            console.log(this.props.user);
         });
     }
     render() {
