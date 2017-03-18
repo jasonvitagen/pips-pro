@@ -35,6 +35,8 @@ export default class StepMakePayment extends Component {
                 <div className="bg-white pinside40 number-block outline mb60 bg-boxshadow">
                     <div className="circle"><span className="number">3</span></div>
                     <h3 className="number-title">Make Payment</h3>
+                    <div className={(Amount ? '' : 'hidden') + ' mt0'}>You will be charged:</div>
+                    <div className="mt10 mb30"><h2>{Amount ? `RM ${Amount}` : ''}</h2></div>
                     <p>Select a payment method:</p>
                     <form action={PaymentPostUrl} method="POST">
                         <table className="payment-method-list">
@@ -105,9 +107,10 @@ export default class StepMakePayment extends Component {
                         </tr>
                         </tbody>
                         </table>
-                        <div className={Amount ? '' : 'hidden'}>You will be charged:</div>
-                        <div className="mt10 mb30"><h2>{Amount ? `RM ${Amount}` : ''}</h2></div>
 
+                        <div className={(Amount ? '' : 'hidden') + ' mt0'}>You will be charged:</div>
+                        <div className="mt10 mb30"><h2>{Amount ? `RM ${Amount}` : ''}</h2></div>
+                        
                         <input name="MerchantCode" type="hidden" value={MerchantCode} />
                         <input name="PaymentId" type="hidden" value={PaymentId} />
                         <input name="RefNo" type="hidden" value={RefNo} />

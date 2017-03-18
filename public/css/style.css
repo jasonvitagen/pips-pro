@@ -987,3 +987,8 @@ Landing Page Template
   color: #778191;
   margin: 0 -40px;
 }
+
+.choose-package-list label {
+  font-weight: 500;
+  color: #3c4d6b;
+}
