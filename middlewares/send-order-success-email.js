@@ -4,15 +4,15 @@ const
 module.exports = (req, res, next) => {
 
     process.nextTick(() => {
-        const {Name, UserEmail, MerchantCode, PaymentId, RefNo, Amount, Currency, Remark, TransId, AuthCode, Status, ErrDesc, Signature} = req.body;
+        const {Name, UserEmail, SignalPackage, MerchantCode, PaymentId, RefNo, Amount, Currency, Remark, TransId, AuthCode, Status, ErrDesc, Signature} = req.body;
         const
             message = {
                 from: 'Pips-Pro <admin@pips-pro.com>',
                 to: UserEmail,
-                subject: 'Order at Pips-Pro.com',
+                subject: `Your Order at Pips-Pro.com (#${RefNo})`,
                 html: `
                     <p>Hi ${Name},</p>
-                    <p>Your payment is successful.</p>
+                    <p>Your payment for ${SignalPackage}-month signal package is successful.</p>
                     <p>Please find below your order info:</p>
                     <p>Reference Number: ${RefNo}</p>
                     <p>Amount: ${Currency}${Amount}</p>
