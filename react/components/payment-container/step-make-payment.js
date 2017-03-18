@@ -19,7 +19,7 @@ export default class StepConfirmUser extends Component {
     }
     render() {
         const {PaymentPostUrl, MerchantCode, PaymentId, RefNo, Amount, Currency, ProdDesc, UserName, UserEmail, UserContact, Remark, Signature, ResponseUrl, BackendUrl, verifying} = this.props.payment;
-        const disabled = Object.getOwnPropertyNames(this.props.user).length === 0 || verifying;
+        const disabled = !this.props.user.email || verifying;
 
         let button;
         if (Object.getOwnPropertyNames(this.props.user).length === 0) {

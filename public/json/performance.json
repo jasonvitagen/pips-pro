@@ -54,7 +54,7 @@
                 "tp1": 10061,
                 "tp2": 10041,
                 "profit": "0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "06/06/2016",
@@ -76,7 +76,7 @@
                 "tp1": 1.8601,
                 "tp2": 1.8551,
                 "profit": "0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "06/07/2016",
@@ -142,7 +142,7 @@
                 "tp1": 1.8121,
                 "tp2": 1.8101,
                 "profit": "0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "06/14/2016",
@@ -153,7 +153,7 @@
                 "tp1": 149.31,
                 "tp2": 150,
                 "profit": "0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "06/15/2016",
@@ -164,7 +164,7 @@
                 "tp1": 1.8151,
                 "tp2": 1.8131,
                 "profit": "0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "06/17/2016",
@@ -219,7 +219,7 @@
                 "tp1": 9551,
                 "tp2": 9531,
                 "profit": "0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "06/30/2016",
@@ -243,7 +243,7 @@
                 "tp1": 135.96,
                 "tp2": 135.71,
                 "profit": "0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "07/05/2016",
@@ -276,7 +276,7 @@
                 "tp1": 1.6751,
                 "tp2": 1.6731,
                 "profit": "15",
-                "remark": "change TP1(1.6755),TP2(1.6750), We take profit 1"
+                "remark": "Change TP1(1.6755),TP2(1.6750), We take profit 1"
             },
             {
                 "date": "07/08/2016",
@@ -287,7 +287,7 @@
                 "tp1": 129.96,
                 "tp2": 129.76,
                 "profit": "0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "07/11/2016",
@@ -298,7 +298,7 @@
                 "tp1": 132.76,
                 "tp2": 132.51,
                 "profit": "0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "07/12/2016",
@@ -320,7 +320,7 @@
                 "tp1": 139.41,
                 "tp2": 139.61,
                 "profit": "0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "07/15/2016",
@@ -432,7 +432,7 @@
                 "tp1": 10211,
                 "tp2": 10231,
                 "profit": "0",
-                "remark": "Close order in entry price : 10190"
+                "remark": "Close order in entry price : 10191"
             },
             {
                 "date": "08/03/2016",
@@ -619,7 +619,7 @@
                 "tp1": 134.21,
                 "tp2": 134.41,
                 "profit": "0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "08/29/2016",
@@ -742,7 +742,7 @@
                 "tp1": 10391,
                 "tp2": 10381,
                 "profit": "0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "09/16/2016",
@@ -764,7 +764,7 @@
                 "tp1": 10256,
                 "tp2": 10246,
                 "profit": "0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "09/19/2016",
@@ -786,7 +786,7 @@
                 "tp1": 10316,
                 "tp2": 10291,
                 "profit": "75",
-                "remark": "change TP2(10310), We tooked P1"
+                "remark": "Change TP2(10310), We tooked P1"
             },
             {
                 "date": "09/20/2016",
@@ -874,7 +874,7 @@
                 "tp1": 130.46,
                 "tp2": 130.21,
                 "profit": "-0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "09/28/2016",
@@ -929,7 +929,7 @@
                 "tp1": 10246,
                 "tp2": 10236,
                 "profit": "0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             }
         ],
         "10": [
@@ -1030,7 +1030,7 @@
                 "tp1": 127.81,
                 "tp2": 127.71,
                 "profit": "0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "10/11/2016",
@@ -1107,7 +1107,7 @@
                 "tp1": 1.5986,
                 "tp2": 1.5976,
                 "profit": "0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "10/19/2016",
@@ -1140,7 +1140,7 @@
                 "tp1": 10696,
                 "tp2": 10691,
                 "profit": "0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "10/24/2016",
@@ -1219,7 +1219,7 @@
                 "tp1": 1.5936,
                 "tp2": 1.5926,
                 "profit": "0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "11/02/2016",
@@ -1296,7 +1296,7 @@
                 "tp1": 1.6411,
                 "tp2": 1.6401,
                 "profit": "0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "11/15/2016",
@@ -1307,7 +1307,7 @@
                 "tp1": 134.51,
                 "tp2": 134.41,
                 "profit": "0",
-                "remark": "Canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "11/16/2016",
@@ -1351,7 +1351,7 @@
                 "tp1": 10711,
                 "tp2": 10721,
                 "profit": "0",
-                "remark": "canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "11/21/2016",
@@ -1450,7 +1450,7 @@
                 "tp1": 10566,
                 "tp2": 10561,
                 "profit": "0",
-                "remark": "Changed SL to entry price : 10585"
+                "remark": "Changed SL to entry price : 10586"
             },
             {
                 "date": "11/29/2016",
@@ -1606,7 +1606,7 @@
                 "tp1": 144.31,
                 "tp2": 144.41,
                 "profit": "0",
-                "remark": "canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "12/09/2016",
@@ -1705,7 +1705,7 @@
                 "tp1": 11416,
                 "tp2": 11421,
                 "profit": "0",
-                "remark": "canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "12/19/2016",
@@ -1738,7 +1738,7 @@
                 "tp1": 11471,
                 "tp2": 11481,
                 "profit": "0",
-                "remark": "canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "12/21/2016",
@@ -1815,7 +1815,7 @@
                 "tp1": 142.51,
                 "tp2": 142.41,
                 "profit": "0",
-                "remark": "canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "12/30/2016",
@@ -1863,7 +1863,7 @@
                 "tp1": 1.2291,
                 "tp2": 1.2281,
                 "profit": "0",
-                "remark": "canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "01/05/2017",
@@ -1918,7 +1918,7 @@
                 "tp1": 1.6116,
                 "tp2": 1.6126,
                 "profit": "0",
-                "remark": "canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "01/11/2017",
@@ -2017,7 +2017,7 @@
                 "tp1": 1.6491,
                 "tp2": 1.6501,
                 "profit": "0",
-                "remark": "canceled"
+                "remark": "Cancelled"
             },
             {
                 "date": "01/25/2017",
@@ -2028,7 +2028,7 @@
                 "tp1": 1.6521,
                 "tp2": 1.6531,
                 "profit": "0",
-                "remark": "Changed SL to entry price : 1.6500"
+                "remark": "Changed SL to entry price : 1.6501"
             },
             {
                 "date": "01/26/2017",
