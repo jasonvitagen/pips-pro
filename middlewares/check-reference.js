@@ -7,6 +7,9 @@ module.exports = (req, res, next) => {
         if (err) {
             return next(err);
         }
+        if (!reply) {
+            return next('Reference not available');
+        }
         req.body.UserEmail = reply.UserEmail;
         req.body.SignalPackage = reply.SignalPackage;
         req.body.Name = reply.Name;
