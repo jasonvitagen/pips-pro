@@ -11,7 +11,7 @@ const
     , forgotPassword = require('../middlewares/forgot-password')
     , resetPassword = require('../middlewares/reset-password');
 
-router.post('/local/create-account', validateRegistration(), validateRecaptcha, passport.authenticate('local-create-account', {session: false}), cacheSignIn, /*sendConfirmationEmail,*/ (req, res, next) => {
+router.post('/local/create-account', validateRegistration(), validateRecaptcha, passport.authenticate('local-create-account', {session: false}), cacheSignIn, sendConfirmationEmail, (req, res, next) => {
     res.json(req.user.token);
 });
 
