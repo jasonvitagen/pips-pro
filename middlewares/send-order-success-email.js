@@ -19,6 +19,7 @@ module.exports = (req, res, next) => {
                     <p>Package expire at: ${req.packageExpireAt}</p>
                     <p>Your forex signal package is now active and we'll start sending forex signals to your mobile number.</p>
                     <p>Thank you for choosing us.</p>
+                    <p>Pips-Pro</p>
                 `
             };
 

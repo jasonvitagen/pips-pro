@@ -15,7 +15,8 @@ module.exports = (req, res, next) => {
                     <p>Please find below your registration info:</p>
                     <p>Email: ${email}</p>
                     <p>Mobile: ${mobile}</p>
-                    <p>Thank you.</p>
+                    <p>Thanks,</p>
+                    <p>Pips-Pro</p>
                 `
             };
 
