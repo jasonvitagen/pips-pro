@@ -49,12 +49,12 @@ module.exports = (req, res, next) => {
                                 `
                             };
 
-                        // mailgun.messages().send(message, (err, body) => {
-                        //     if (err) {
-                        //         console.log(err);
-                        //     }
-                        //     console.log(body);
-                        // });
+                        mailgun.messages().send(message, (err, body) => {
+                            if (err) {
+                                console.log(err);
+                            }
+                            console.log(body);
+                        });
 
                         redis.setbit(keyForgotPassword, count++, 1, (err, reply) => {
                             if (err) {
