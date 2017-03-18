@@ -982,3 +982,8 @@ Landing Page Template
   margin: 0;
 }
 
+.signed-in .bg-primary {
+  border-bottom: 1px solid #dee4ee;
+  color: #778191;
+  margin: 0 -40px;
+}

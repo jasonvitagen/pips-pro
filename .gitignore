@@ -47,6 +47,7 @@ jspm_packages
 .yarn-integrity
 
 public/js/bundle.js
+public/js/transactions.js
 
 public/webpack-cached/
 

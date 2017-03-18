@@ -105,8 +105,8 @@ export default class StepConfirmUser extends Component {
                         </tr>
                         </tbody>
                         </table>
-                        <p className={Amount ? '' : 'hidden'}>You will be charged:</p>
-                        <h2>{Amount ? `RM ${Amount}` : ''}</h2>
+                        <div className={Amount ? '' : 'hidden'}>You will be charged:</div>
+                        <p><h2>{Amount ? `RM ${Amount}` : ''}</h2></p>
 
                         <input name="MerchantCode" type="hidden" value={MerchantCode} />
                         <input name="PaymentId" type="hidden" value={PaymentId} />
