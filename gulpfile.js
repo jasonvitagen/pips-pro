@@ -103,6 +103,7 @@ gulp.task('general-pages-inject', ['build-external-css', 'build-external-js'], (
             './public/terms-of-use.html',
             './public/payment-status-ok.html',
             './public/payment-status-nok.html',
+            './public/my-account.html'
         ])
         .pipe(inject(gulp.src([
             'public/versioned/external-*.css',
