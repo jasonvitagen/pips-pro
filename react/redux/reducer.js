@@ -73,6 +73,10 @@ export function user(state = {}, action) {
             return {...state, ...action.payload, changePassword: false};
         case 'CHANGE_PASSWORD':
             return {...state, changePassword: true};
+        case 'FORGOT_PASSWORD':
+            return {...state, forgotPassword: true};
+        case 'CANCEL_FORGOT_PASSWORD':
+            return {...state, forgotPassword: false};
     }
     return state;
 };
@@ -129,6 +133,12 @@ export function signIn(state = signInInitialState, action) {
             return {...state, [action.payload.field]: action.payload.value};
         case 'CLEAR_SIGN_IN':
             return signInInitialState;
+        case 'FORGOT_USER_PASSWORD_PENDING':
+            return {...state, submitting: true};
+        case 'FORGOT_USER_PASSWORD_FULFILLED':
+            return {...state, submitting: false};
+        case 'FORGOT_USER_PASSWORD_REJECTED':
+            return {...state, submitting: false};
     }
     return state;
 }

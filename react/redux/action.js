@@ -153,3 +153,29 @@ export function changeUserPassword(registration, user) {
         })
     }
 }
+
+
+export function forgotPassword() {
+    return {
+        type: 'FORGOT_PASSWORD'
+    }
+}
+
+
+export function cancelForgotPassword() {
+    return {
+        type: 'CANCEL_FORGOT_PASSWORD'
+    }
+}
+
+
+export function forgotUserPassword(payload, user) {
+    return {
+        type: 'FORGOT_USER_PASSWORD',
+        payload: axios.post(`${process.env.HOST}auth/local/forgot-password`, payload, {
+            headers: {
+                'Authorization': user.token
+            }
+        })
+    }
+}

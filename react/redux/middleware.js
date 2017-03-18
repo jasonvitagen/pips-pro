@@ -62,6 +62,9 @@ const
             case 'SIGN_OUT':
                 notify.show('Signed out successfully', 'success');
                 break;
+            case 'FORGOT_USER_PASSWORD_FULFILLED':
+                notify.show('Check your email', 'success');
+                break;
         }
         next(action);
     }

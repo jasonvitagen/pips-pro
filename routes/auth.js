@@ -7,7 +7,8 @@ const
     , validateToken = require('../middlewares/validate-token')
     , sendConfirmationEmail = require('../middlewares/send-confirmation-email')
     , cacheSignIn = require('../middlewares/cache-sign-in')
-    , checkSignInCache = require('../middlewares/check-sign-in-cache');
+    , checkSignInCache = require('../middlewares/check-sign-in-cache')
+    , forgotPassword = require('../middlewares/forgot-password');
 
 router.post('/local/create-account', validateRegistration(), validateRecaptcha, passport.authenticate('local-create-account', {session: false}), cacheSignIn, /*sendConfirmationEmail,*/ (req, res, next) => {
     res.json(req.user.token);
@@ -23,6 +24,10 @@ router.post('/local/edit-account', validateRegistration({skip: {password: 1}}), 
 
 router.post('/local/change-password', validateRegistration({skip: {email: 1, mobile: 1, name: 1, recaptcha: 1}}), validateToken, passport.authenticate('local-change-password', {session: false}), cacheSignIn, (req, res, next) => {
     res.json(req.user.token);
-})
+});
+
+router.post('/local/forgot-password', forgotPassword, (req, res, next) => {
+    res.send();
+});
 
 module.exports = router;
