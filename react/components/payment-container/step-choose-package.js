@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
     payment: store.payment,
     user: store.user
 }))
-export default class StepConfirmUser extends Component {
+export default class StepChoosePackage extends Component {
     constructor(props) {
         super(props);
         this.actions = bindActionCreators(actions, this.props.dispatch);

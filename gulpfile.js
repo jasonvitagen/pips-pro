@@ -15,7 +15,7 @@ gulp.task('clean-up', () => {
     ]);
 });
 
-gulp.task('build-index-external-css', () => {
+gulp.task('build-external-css', () => {
     return gulp.src([
         './public/css/bootstrap.min.css',
         './public/css/style.css',
@@ -23,50 +23,15 @@ gulp.task('build-index-external-css', () => {
         './public/css/fontello.css',
         './public/css/loaders.min.css',
         ])
-        .pipe(concat('index-external-bundle.css'))
+        .pipe(concat('external-bundle.css'))
         .pipe(uglifyCss({
-            "maxLineLen": 80,
             "uglyComments": true
         }))
         .pipe(rev())
         .pipe(gulp.dest('./public/versioned'));
 });
 
-gulp.task('build-about-external-css', () => {
-    return gulp.src([
-        './public/css/bootstrap.min.css',
-        './public/css/style.css',
-        './public/css/font-awesome.min.css',
-        './public/css/fontello.css',
-        './public/css/loaders.min.css',
-        ])
-        .pipe(concat('about-external-bundle.css'))
-        .pipe(uglifyCss({
-            "maxLineLen": 80,
-            "uglyComments": true
-        }))
-        .pipe(rev())
-        .pipe(gulp.dest('./public/versioned'));
-});
-
-gulp.task('build-index-external-js', () => {
-    return gulp.src([
-        './public/js/jquery.min.js',
-        './public/js/bootstrap.min.js',
-        './public/js/menumaker.js',
-        './public/js/jquery.sticky.js',
-        './public/js/sticky-header.js',
-        './public/js/back-to-top.js',
-        './public/js/jquery.smooth-scroll.min.js',
-        './public/js/script.js'])
-        .pipe(concat('index-external-bundle.js'))
-        .pipe(uglify())
-        .pipe(rev())
-        .pipe(gulp.dest('./public/versioned'));
-
-});
-
-gulp.task('build-about-external-js', () => {
+gulp.task('build-external-js', () => {
     return gulp.src([
         './public/js/jquery.min.js',
         './public/js/bootstrap.min.js',
@@ -76,18 +41,39 @@ gulp.task('build-about-external-js', () => {
         './public/js/jquery.easing.min.js',
         './public/js/scrolling-nav.js',
         './public/js/accordion.js',
-        './public/js/jquery-ui.js',
         './public/js/back-to-top.js',
         './public/js/jquery.smooth-scroll.min.js',
         './public/js/modernizr.js',
         './public/js/jquery.isotope.min.js',
         './public/js/filter-script.js',
         './public/js/script.js'])
-        .pipe(concat('about-external-bundle.js'))
+        .pipe(concat('external-bundle.js'))
         .pipe(uglify())
         .pipe(rev())
         .pipe(gulp.dest('./public/versioned'));
+});
 
+gulp.task('build-transactions-external-js', () => {
+    return gulp.src([
+        './public/js/jquery.min.js',
+        './public/js/bootstrap.min.js',
+        './public/js/menumaker.js',
+        './public/js/jquery.sticky.js',
+        './public/js/sticky-header.js',
+        './public/js/jquery.easing.min.js',
+        './public/js/scrolling-nav.js',
+        './public/js/accordion.js',
+        './public/js/back-to-top.js',
+        './public/js/jquery.smooth-scroll.min.js',
+        './public/js/modernizr.js',
+        './public/js/jquery.isotope.min.js',
+        './public/js/filter-script.js',
+        './public/js/script.js',
+        './public/js/transactions.js'])
+        .pipe(concat('transactions-external-bundle.js'))
+        .pipe(uglify())
+        .pipe(rev())
+        .pipe(gulp.dest('./public/versioned'));
 });
 
 gulp.task('version-webpack-bundle', () => {
@@ -96,11 +82,11 @@ gulp.task('version-webpack-bundle', () => {
         .pipe(gulp.dest('./public/versioned'));
 });
 
-gulp.task('html-inject', ['build-index-external-css', 'build-about-external-js', 'version-webpack-bundle'], () => {
+gulp.task('html-inject', ['build-external-css', 'build-external-js', 'version-webpack-bundle'], () => {
     return gulp.src('./public/index.html')
         .pipe(inject(gulp.src([
-            'public/versioned/index-*.css',
-            'public/versioned/about-*.js',
+            'public/versioned/external-*.css',
+            'public/versioned/external-*.js',
             'public/versioned/bundle-*.js',
         ], {read: false}), {
             addRootSlash: false,
@@ -110,7 +96,7 @@ gulp.task('html-inject', ['build-index-external-css', 'build-about-external-js',
         .pipe(gulp.dest('public'))
 });
 
-gulp.task('about-inject', ['build-about-external-css', 'build-about-external-js'], () => {
+gulp.task('general-pages-inject', ['build-external-css', 'build-external-js'], () => {
     return gulp.src([
             './public/about.html',
             './public/privacy-policy.html',
@@ -119,8 +105,8 @@ gulp.task('about-inject', ['build-about-external-css', 'build-about-external-js'
             './public/payment-status-nok.html',
         ])
         .pipe(inject(gulp.src([
-            'public/versioned/index-*.css',
-            'public/versioned/about-*.js'
+            'public/versioned/external-*.css',
+            'public/versioned/external-*.js'
         ], {read: false}), {
             addRootSlash: false,
             addPrefix: 'https://malaysia-6d6d.kxcdn.com',
@@ -129,5 +115,20 @@ gulp.task('about-inject', ['build-about-external-css', 'build-about-external-js'
         .pipe(gulp.dest('public'));
 });
 
-gulp.task('build', ['about-inject', 'html-inject']);
+gulp.task('transactions-inject', ['build-external-css', 'build-transactions-external-js'], () => {
+    return gulp.src([
+            './public/my-account/transactions.html',
+        ])
+        .pipe(inject(gulp.src([
+            'public/versioned/external-*.css',
+            'public/versioned/transactions-external-*.js'
+        ], {read: false}), {
+            addRootSlash: false,
+            addPrefix: 'https://malaysia-6d6d.kxcdn.com',
+            ignorePath: ['public']
+        }))
+        .pipe(gulp.dest('public/my-account'));
+});
+
+gulp.task('build', ['general-pages-inject', 'html-inject', 'transactions-inject']);
 

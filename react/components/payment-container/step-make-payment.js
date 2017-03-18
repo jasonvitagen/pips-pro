@@ -8,7 +8,7 @@ import {bindActionCreators} from 'redux';
     payment: store.payment,
     selectedPackage: store.selectedPackage
 }))
-export default class StepConfirmUser extends Component {
+export default class StepMakePayment extends Component {
     constructor(props) {
         super(props);
         this.actions = bindActionCreators(actions, this.props.dispatch);
@@ -106,7 +106,7 @@ export default class StepConfirmUser extends Component {
                         </tbody>
                         </table>
                         <div className={Amount ? '' : 'hidden'}>You will be charged:</div>
-                        <p><h2>{Amount ? `RM ${Amount}` : ''}</h2></p>
+                        <div className="mb30"><h2>{Amount ? `RM ${Amount}` : ''}</h2></div>
 
                         <input name="MerchantCode" type="hidden" value={MerchantCode} />
                         <input name="PaymentId" type="hidden" value={PaymentId} />

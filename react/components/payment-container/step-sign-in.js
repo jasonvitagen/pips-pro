@@ -20,6 +20,7 @@ export default class StepSignUp extends Component {
         if (window.location.search.indexOf('resetpassword') > -1) {
             const token = window.location.search.split('&')[0].split('=')[1];
             this.actions.resetPassword(token);
+            window.history.replaceState(null, null, '/');
         }
     }
     signUp(event) {

@@ -181,3 +181,12 @@ export function payment(state = paymentInitialState, action) {
     }
     return state;
 }
+
+
+export function transactions(state = [], action) {
+    switch (action.type) {
+        case 'GET_TRANSACTIONS_FULFILLED':
+            return action.payload.data
+    }
+    return state;
+}

@@ -8,10 +8,13 @@ require('dotenv').config({path: './process.env'});
 
 
 const config = {
-    entry   : './client.js',
+    entry   : {
+        bundle: './client.js',
+        transactions: './public/my-account/transactions.js'
+    },
     output  : {
         path     : __dirname + '/public/js',
-        filename : 'bundle.js',
+        filename : '[name].js',
         publicPath : '/js'
     },
     module  : {
@@ -20,7 +23,7 @@ const config = {
                 test     : /\.js$/,
                 exclude  : /node_modules/,
                 loaders  : ['babel']
-            }
+            },
         ]
     },
     devServer : {

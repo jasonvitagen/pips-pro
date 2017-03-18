@@ -195,3 +195,15 @@ export function resetUserPassword(registration) {
         payload: axios.post(`${process.env.HOST}auth/local/reset-password`, registration)
     }
 }
+
+
+export function getTransactions(user) {
+    return {
+        type: 'GET_TRANSACTIONS',
+        payload: axios.get(`${process.env.HOST}my-account/transactions`, {
+            headers: {
+                'Authorization': user.token
+            }
+        })
+    }
+}
