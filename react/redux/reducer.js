@@ -77,6 +77,8 @@ export function user(state = {}, action) {
             return {...state, forgotPassword: true};
         case 'CANCEL_FORGOT_PASSWORD':
             return {...state, forgotPassword: false};
+        case 'FORGOT_USER_PASSWORD_FULFILLED':
+            return {...state, forgotPassword: false};
     }
     return state;
 };

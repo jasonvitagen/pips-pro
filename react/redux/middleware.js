@@ -65,6 +65,9 @@ const
             case 'FORGOT_USER_PASSWORD_FULFILLED':
                 notify.show('Check your email', 'success');
                 break;
+            case 'FORGOT_USER_PASSWORD_REJECTED':
+                notify.show(action.payload.response.data.email, 'error');
+                break;
         }
         next(action);
     }

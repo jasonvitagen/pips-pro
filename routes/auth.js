@@ -26,7 +26,7 @@ router.post('/local/change-password', validateRegistration({skip: {email: 1, mob
     res.json(req.user.token);
 });
 
-router.post('/local/forgot-password', forgotPassword, (req, res, next) => {
+router.post('/local/forgot-password', validateRegistration({skip: {password: 1, mobile: 1, name: 1, recaptcha: 1}}), forgotPassword, (req, res, next) => {
     res.send();
 });
 

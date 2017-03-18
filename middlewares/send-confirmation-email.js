@@ -1,5 +1,5 @@
 const
-    transporter = require('../setup/nodemailer');
+    transporter = require('../setup/mailgun');
 
 module.exports = (req, res, next) => {
     process.nextTick(() => {
@@ -19,11 +19,11 @@ module.exports = (req, res, next) => {
                 `
             };
 
-        transporter.sendMail(message, (err, info) => {
+        mailgun.messages().send(message, (err, body) => {
             if (err) {
                 console.log(err);
             }
-            console.log(info);
+            console.log(body);
         });
 
         next();
