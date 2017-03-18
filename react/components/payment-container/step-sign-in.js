@@ -17,6 +17,10 @@ export default class StepSignUp extends Component {
     constructor(props) {
         super(props);
         this.actions = bindActionCreators(actions, this.props.dispatch);
+        if (window.location.search.indexOf('resetpassword') > -1) {
+            const token = window.location.search.split('&')[0].split('=')[1];
+            this.actions.resetPassword(token);
+        }
     }
     signUp(event) {
         this.actions.signUp();
@@ -33,15 +37,16 @@ export default class StepSignUp extends Component {
         if (user.changePassword) signedIn = <ChangePassword/>;
 
         let signIn = <SignIn/>;
-        if (user.forgotPassword) signIn = <ForgotPassword/>
+        if (user.forgotPassword) signIn = <ForgotPassword/>;
+
         return (
             <div className="col-md-4 col-sm-4 col-xs-12">
                 <div className="bg-white pinside40 number-block outline mb60 bg-boxshadow">
                     <div className="circle"><span className="number">1</span></div>
-                    {user.name ?
+                    {user.name || user.resetPassword ?
                         (
                             <div>
-                                {signedIn}                                
+                                {signedIn}
                             </div>
                         ) :
                         (

@@ -68,6 +68,12 @@ const
             case 'FORGOT_USER_PASSWORD_REJECTED':
                 notify.show(action.payload.response.data.email, 'error');
                 break;
+            case 'RESET_USER_PASSWORD_REJECTED':
+                notify.show('Password change is unsuccessful, please check', 'error');
+                break;
+            case 'RESET_USER_PASSWORD_FULFILLED':
+                notify.show(action.payload.data, 'success');
+                break;
         }
         next(action);
     }

@@ -18,7 +18,11 @@ export default class ChangePassword extends Component {
     }
     changeUserPassword(event) {
         event.preventDefault();
-        this.actions.changeUserPassword(this.props.registration, this.props.user);
+        if (this.props.user.resetPassword) {
+            this.actions.resetUserPassword(this.props.registration);
+        } else {
+            this.actions.changeUserPassword(this.props.registration, this.props.user);
+        }
     }
     cancelChangePassword(event) {
         this.actions.cancelChangePassword(this.props.registration);
@@ -26,7 +30,7 @@ export default class ChangePassword extends Component {
     }
     render() {
         const 
-            {password, confirmPassword, submitting} = this.props.registration
+            {password, confirmPassword, submitting, resetPasswordToken} = this.props.registration
             , {email} = this.props.user
             , {email: emailError, password: passwordError, confirmPassword: confirmPasswordError} = this.props.registration.errors;
 
@@ -58,6 +62,9 @@ export default class ChangePassword extends Component {
                         <p className="alert alert-danger"><small>{confirmPasswordError}</small></p>
                     }
                 </div>
+
+
+                <input type="hidden" value={resetPasswordToken}/>
 
 
                 <div className="form-group">

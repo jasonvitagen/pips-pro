@@ -179,3 +179,19 @@ export function forgotUserPassword(payload, user) {
         })
     }
 }
+
+
+export function resetPassword(token) {
+    return {
+        type: 'RESET_PASSWORD',
+        payload: token
+    }
+}
+
+
+export function resetUserPassword(registration) {
+    return {
+        type: 'RESET_USER_PASSWORD',
+        payload: axios.post(`${process.env.HOST}auth/local/reset-password`, registration)
+    }
+}

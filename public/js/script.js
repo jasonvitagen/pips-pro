@@ -27,7 +27,6 @@ $(function () {
                 return $('#performance-chart').show();
             }
             loaded = true;
-            addScript('/js/highcharts.js', 'highcharts');
             addScript('/js/view-performance-data.js', 'view-performance-data');
             $('.view-full-performance-loader').addClass('ball-clip-rotate');
             $('#view-full-performance').attr('disabled', true);

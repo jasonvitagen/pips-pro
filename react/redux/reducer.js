@@ -66,7 +66,7 @@ export function user(state = {}, action) {
         case 'CANCEL_EDIT_ACCOUNT':
             return {...state, editAccount: false};
         case 'CANCEL_CHANGE_PASSWORD':
-            return {...state, changePassword: false};
+            return {...state, resetPassword: false, changePassword: false};
         case 'EDIT_USER_ACCOUNT_FULFILLED':
             return {...state, ...action.payload, editAccount: false};
         case 'CHANGE_USER_PASSWORD_FULFILLED':
@@ -79,6 +79,10 @@ export function user(state = {}, action) {
             return {...state, forgotPassword: false};
         case 'FORGOT_USER_PASSWORD_FULFILLED':
             return {...state, forgotPassword: false};
+        case 'RESET_PASSWORD':
+            return {...state, resetPassword: true, changePassword: true};
+        case 'RESET_USER_PASSWORD_FULFILLED':
+            return {...state, resetPassword: false, changePassword: false};
     }
     return state;
 };
@@ -112,12 +116,16 @@ export function registration(state = registrationInitialState, action) {
             return {...state, ...action.payload, editAccount: true, password: 123, confirmPassword: 123};
         case 'CHANGE_PASSWORD':
             return {...state, ...action.payload, changePassword: true, email: '123'};
+        case 'CHANGE_PASSWORD_REJECTED':
+            return {...state, errors: action.payload.response.data};
         case 'CANCEL_EDIT_ACCOUNT':
             return {...state, editAccount: false, password: '', confirmPassword: ''};
         case 'CANCEL_CHANGE_PASSWORD':
-            return {...state, changePassword: false, email: ''};
-        case 'CANCEL_CHANGE_PASSWORD':
-            return {...state, changePassword: false};
+            return {...state, changePassword: false, email: '', resetPasswordToken: ''};
+        case 'RESET_PASSWORD':
+            return {...state, resetPasswordToken: action.payload};
+        case 'RESET_USER_PASSWORD_REJECTED':
+            return {...state, errors: action.payload.response.data};
     }
     return state;
 }
