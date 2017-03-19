@@ -980,6 +980,7 @@ Landing Page Template
 
 .payment-status-message p {
   margin: 0;
+  font-weight: 500;
 }
 
 .signed-in .bg-primary {
