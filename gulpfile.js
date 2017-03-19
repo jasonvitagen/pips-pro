@@ -8,7 +8,8 @@ const
     , shell = require('gulp-shell')
     , series = require('stream-series')
     , uglifyCss = require('gulp-uglifycss')
-    , htmlmin = require('gulp-htmlmin');
+    , htmlmin = require('gulp-htmlmin')
+    , cleancss = require('gulp-clean-css');
 
 gulp.task('clean-up', () => {
     return del.sync([
@@ -28,6 +29,7 @@ gulp.task('build-external-css', () => {
         .pipe(uglifyCss({
             "uglyComments": true
         }))
+        .pipe(cleancss())
         .pipe(rev())
         .pipe(gulp.dest('./public/versioned'));
 });
