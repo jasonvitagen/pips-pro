@@ -35,7 +35,7 @@ export default class EditAccount extends Component {
 
                 <div className={"form-group " + (nameError ? 'has-error' : '')}>
                     <label className="sr-only control-label" htmlFor="name">name<span className=" "> </span></label>
-                    <input id="name" name="name" type="text" value={name} onChange={this.type.bind(this, 'name')} placeholder="Name" className="form-control input-md" required="" ref={ref=>this.firstInput = ref}/>
+                    <input id="name" name="name" type="text" value={name} onChange={this.type.bind(this, 'name')} placeholder="Name" className="form-control input-md" required="" ref={ref=>this.firstInput = ref} maxLength="254"/>
                     {nameError &&
                         <p className="alert alert-danger"><small>{nameError}</small></p>
                     }
@@ -44,7 +44,7 @@ export default class EditAccount extends Component {
 
                 <div className={"form-group " + (mobileError ? 'has-error' : '')}>
                     <label className="sr-only control-label" htmlFor="mobile">mobile<span className=" "> </span></label>
-                    <input id="mobile" name="mobile" type="text" value={mobile} onChange={this.type.bind(this, 'mobile')} placeholder="Mobile number e.g. 0164140900" className="form-control input-md" required=""/>
+                    <input id="mobile" name="mobile" type="text" value={mobile} onChange={this.type.bind(this, 'mobile')} placeholder="Mobile number e.g. 0164140900" className="form-control input-md" required="" maxLength="15"/>
                     {mobileError &&
                         <p className="alert alert-danger"><small>{mobileError}</small></p>
                     }

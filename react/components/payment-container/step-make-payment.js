@@ -107,9 +107,6 @@ export default class StepMakePayment extends Component {
                         </tr>
                         </tbody>
                         </table>
-
-                        <div className={(Amount ? '' : 'hidden') + ' mt0'}>You will be charged:</div>
-                        <div className="mt10 mb30"><h2>{Amount ? `RM ${Amount}` : ''}</h2></div>
                         
                         <input name="MerchantCode" type="hidden" value={MerchantCode} />
                         <input name="PaymentId" type="hidden" value={PaymentId} />

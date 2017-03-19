@@ -30,7 +30,7 @@ export default class ForgotPassword extends Component {
 
                 <div className="form-group">
                     <label className="sr-only control-label" htmlFor="email">email<span className=" "> </span></label>
-                    <input id="email" name="email" type="text" value={email} onChange={this.type.bind(this, 'email')} placeholder="Email" className="form-control input-md" required="" ref={ref=>this.firstInput = ref}/>
+                    <input id="email" name="email" type="text" value={email} onChange={this.type.bind(this, 'email')} placeholder="Email" className="form-control input-md" required="" ref={ref=>this.firstInput = ref} maxLength="254"/>
                 </div>
 
 

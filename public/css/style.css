@@ -992,3 +992,7 @@ Landing Page Template
   font-weight: 500;
   color: #3c4d6b;
 }
+
+#payment-process {
+  word-wrap: break-word;
+}

@@ -48,7 +48,7 @@ export default class ChangePassword extends Component {
 
                 <div className={"form-group " + (passwordError ? 'has-error' : '')}>
                     <label className="sr-only control-label" htmlFor="password">password<span className=" "> </span></label>
-                    <input id="password" name="password" type="password" value={password} onChange={this.type.bind(this, 'password')} placeholder="Password" className="form-control input-md" required="" ref={ref=>this.firstInput = ref}/>
+                    <input id="password" name="password" type="password" value={password} onChange={this.type.bind(this, 'password')} placeholder="Password" className="form-control input-md" required="" ref={ref=>this.firstInput = ref} maxLength="128"/>
                     {passwordError &&
                         <p className="alert alert-danger"><small>{passwordError}</small></p>
                     }
@@ -57,7 +57,7 @@ export default class ChangePassword extends Component {
 
                 <div className={"form-group " + (confirmPasswordError ? 'has-error' : '')}>
                     <label className="sr-only control-label" htmlFor="passwordConfirm">password<span className=" "> </span></label>
-                    <input id="passwordConfirm" name="passwordConfirm" type="password" value={confirmPassword} onChange={this.type.bind(this, 'confirmPassword')} placeholder="Confirm Password" className="form-control input-md" required=""/>
+                    <input id="passwordConfirm" name="passwordConfirm" type="password" value={confirmPassword} onChange={this.type.bind(this, 'confirmPassword')} placeholder="Confirm Password" className="form-control input-md" required="" maxLength="128"/>
                     {confirmPasswordError &&
                         <p className="alert alert-danger"><small>{confirmPasswordError}</small></p>
                     }
