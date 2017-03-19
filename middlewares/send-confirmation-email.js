@@ -1,5 +1,6 @@
 const
-    mailgun = require('../setup/mailgun');
+    mailgun = require('../setup/mailgun')
+    , emailTemplate = require('../emails/confirmation');
 
 module.exports = (req, res, next) => {
     process.nextTick(() => {
@@ -9,15 +10,7 @@ module.exports = (req, res, next) => {
                 from: 'Pips-Pro <admin@pips-pro.com>',
                 to: req.body.email,
                 subject: 'Registration at Pips-Pro.com',
-                html: `
-                    <p>Hi ${name},</p>
-                    <p>Thank you for your registration at pips-pro.com</p>
-                    <p>Please find below your registration info:</p>
-                    <p>Email: ${email}</p>
-                    <p>Mobile: ${mobile}</p>
-                    <p>Thanks,</p>
-                    <p>Pips-Pro</p>
-                `
+                html: emailTemplate(req.user)
             };
 
         mailgun.messages().send(message, (err, body) => {
