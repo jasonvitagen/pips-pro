@@ -7,7 +7,8 @@ const
     , inject = require('gulp-inject')
     , shell = require('gulp-shell')
     , series = require('stream-series')
-    , uglifyCss = require('gulp-uglifycss');
+    , uglifyCss = require('gulp-uglifycss')
+    , htmlmin = require('gulp-htmlmin');
 
 gulp.task('clean-up', () => {
     return del.sync([
@@ -93,6 +94,7 @@ gulp.task('html-inject', ['build-external-css', 'build-external-js', 'version-we
             addPrefix: 'https://malaysia-6d6d.kxcdn.com',
             ignorePath: ['public']
         }))
+        .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('public'))
 });
 
@@ -113,6 +115,7 @@ gulp.task('general-pages-inject', ['build-external-css', 'build-external-js'], (
             addPrefix: 'https://malaysia-6d6d.kxcdn.com',
             ignorePath: ['public']
         }))
+        .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('public'));
 });
 
@@ -128,6 +131,7 @@ gulp.task('transactions-inject', ['build-external-css', 'build-transactions-exte
             addPrefix: 'https://malaysia-6d6d.kxcdn.com',
             ignorePath: ['public']
         }))
+        .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('public/my-account'));
 });
 
