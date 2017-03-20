@@ -52,8 +52,7 @@ module.exports = (req, res, next) => {
                     if (err) {
                         return next(err);
                     }
-                    req.packageExpireAt = user.packageExpireAt;
-                    console.log(req.packageExpireAt);
+                    req.body.packageExpireAt = user.packageExpireAt;
                     done();
                 });
             });

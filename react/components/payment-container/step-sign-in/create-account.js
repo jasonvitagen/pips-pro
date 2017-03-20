@@ -47,7 +47,7 @@ export default class CreateAccount extends Component {
 
                 <div className={"form-group " + (mobileError ? 'has-error' : '')}>
                     <label className="sr-only control-label" htmlFor="mobile">mobile<span className=" "> </span></label>
-                    <input id="mobile" name="mobile" type="tel" value={mobile} onChange={this.type.bind(this, 'mobile')} placeholder="Mobile number e.g. 0164140900" className="form-control input-md" required="" maxLength="15"/>
+                    <input id="mobile" name="mobile" type="tel" value={mobile} onChange={this.type.bind(this, 'mobile')} placeholder="Mobile number e.g. 0162140200" className="form-control input-md" required="" maxLength="15"/>
                     {mobileError &&
                         <p className="alert alert-danger"><small>{mobileError}</small></p>
                     }

@@ -1,10 +1,9 @@
-module.exports = (data) => `
-    <!doctype html>
+<!doctype html>
     <html>
       <head>
         <meta name="viewport" content="width=device-width" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Registration at Pips-Pro.com</title>
+        <title>Your Order at Pips-Pro.com</title>
         <style>
           /* -------------------------------------
               GLOBAL RESETS
@@ -295,65 +294,21 @@ module.exports = (data) => `
                         </tr>
                         <tr>
                           <td>
-                            <p>Hi ${data.name},</p>
+                            <p>Hi ${data.Name},</p>
                             <br>
-                            <p>Thank you for your registration at <a href="${process.env.HOST}" target="_blank">pips-pro.com</a>.</p>
+                            <p>Your payment for ${data.SignalPackage}-month signal package at pips-pro.com is successful.</p>
                             <br>
-                            <p><b>Your account info:</b></p>
-                            <p><u>Email</u></p>
-                            <p>${data.email}</p>
-                            <p><u>Mobile</u></p>
-                            <p>${data.mobile}</p>
-                            <p>Please ensure that your mobile number is correct, as it will be used to receive your forex signal sms. You can change your mobile number at anytime in the Edit Account section.</p>
-                            <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
-                              <tbody>
-                                <tr>
-                                  <td align="left">
-                                    <table border="0" cellpadding="0" cellspacing="0">
-                                      <tbody>
-                                        <tr>
-                                          <td> <a href="${process.env.HOST}#sign-up-1" target="_blank">Change mobile number</a> </td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
+                            <p><b>Your order info:</b></p>
+                            <p><u>Reference Number</u></p>
+                            <p>${data.RefNo}</p>
+                            <p><u>Amount</u></p>
+                            <p>${data.Currency}${data.Amount}</p>
                             <br>
-                            <p><b>With an account, you can:</b></p>
-                            <p>* Purchase a signal package, choose among the 1-month, 3-month and 6-month packages</p>
-                            <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
-                              <tbody>
-                                <tr>
-                                  <td align="left">
-                                    <table border="0" cellpadding="0" cellspacing="0">
-                                      <tbody>
-                                        <tr>
-                                          <td> <a href="${process.env.HOST}#sign-up-1" target="_blank">Purchase a Signal Package</a> </td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <p>* View all your past transactions</p>
-                            <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
-                              <tbody>
-                                <tr>
-                                  <td align="left">
-                                    <table border="0" cellpadding="0" cellspacing="0">
-                                      <tbody>
-                                        <tr>
-                                          <td> <a href="${process.env.HOST}my-account/transactions.html" target="_blank">View Transactions</a> </td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
+                            <p>Your purchased forex signal package is now active and we'll start sending forex signals to your mobile number.</p>
+                            <p><u>Your package is active until</u></p>
+                            <p>${data.packageExpireAt}</p>
+                            <br>
+                            <p>Thank you for choosing us.</p>
                             <br>
                             <p>For assistance, please drop us an email at admin@pips-pro.com</p>
                             <br>
@@ -393,5 +348,3 @@ module.exports = (data) => `
         </table>
       </body>
     </html>
-
-`

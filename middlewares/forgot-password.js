@@ -1,7 +1,8 @@
 const
     redis = require('../setup/redis')
     , crypto = require('crypto')
-    , mailgun = require('../setup/mailgun');
+    , mailgun = require('../setup/mailgun')
+    , emailTemplate = require('../emails/forgot-password.js');
 
 module.exports = (req, res, next) => {
     process.nextTick(() => {
@@ -39,14 +40,7 @@ module.exports = (req, res, next) => {
                                 from: 'Pips-Pro <admin@pips-pro.com>',
                                 to: req.body.email,
                                 subject: 'Reset Your Password at Pips-Pro.com',
-                                html: `
-                                    <p>Hi,</p>
-                                    <p>We've received a request to reset your password at <a href="${process.env.HOST}">Pips-Pro.com</a></p>
-                                    <p>If you didn't make the request, just ignore this message. Otherwise, you can reset your password using this link:</p>
-                                    <p><a href="${process.env.HOST}?resetpassword=${token}">Click here to reset your password</a></p>
-                                    <p>Thanks,</p>
-                                    <p>Pips-Pro</p>
-                                `
+                                html: emailTemplate({token})
                             };
 
                         mailgun.messages().send(message, (err, body) => {
