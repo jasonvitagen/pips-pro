@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
-import * as actions from '../../../react/redux/action';
+import * as actions from '../../react/redux/action';
 import {connect} from 'react-redux';
 
 @connect(store => ({
