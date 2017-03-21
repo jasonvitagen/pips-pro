@@ -26,12 +26,11 @@ app.use(bodyParser.json());
 
 app.use(passport.initialize());
 
-app.use(express.static(path.join(__dirname, 'public'), {index: false, extensions: ['html']}));
-
 app.use('/auth', authRoute);
 app.use('/payment', paymentRoute);
 app.use('/my-account', myAccountRoute);
 
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use((err, req, res, next) => {
