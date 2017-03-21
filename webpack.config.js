@@ -10,7 +10,7 @@ require('dotenv').config({path: './process.env'});
 const config = {
     entry   : {
         bundle: './client.js',
-        transactions: './public/my-account/transactions/index.js'
+        transactions: './public/my-account/transactions.js'
     },
     output  : {
         path     : __dirname + '/public/js',

@@ -100,12 +100,12 @@ gulp.task('html-inject', ['build-external-css', 'build-external-js', 'version-we
 
 gulp.task('general-pages-inject', ['build-external-css', 'build-external-js'], () => {
     return gulp.src([
-            './public/about/index.html',
-            './public/privacy-policy/index.html',
-            './public/terms-of-use/index.html',
-            './public/payment-status-ok/index.html',
-            './public/payment-status-nok/index.html',
-            './public/my-account/index.html'
+            './public/about.html',
+            './public/privacy-policy.html',
+            './public/terms-of-use.html',
+            './public/payment-status-ok.html',
+            './public/payment-status-nok.html',
+            './public/my-account.html'
         ])
         .pipe(inject(gulp.src([
             'public/versioned/external-*.css',
@@ -121,7 +121,7 @@ gulp.task('general-pages-inject', ['build-external-css', 'build-external-js'], (
 
 gulp.task('transactions-inject', ['build-external-css', 'build-transactions-external-js'], () => {
     return gulp.src([
-            './public/my-account/transactions/index.html',
+            './public/my-account/transactions.html',
         ])
         .pipe(inject(gulp.src([
             'public/versioned/external-*.css',
