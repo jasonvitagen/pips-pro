@@ -70,7 +70,7 @@ gulp.task('build-transactions-external-js', () => {
         './public/js/jquery.isotope.min.js',
         './public/js/filter-script.js',
         './public/js/script.js',
-        './public/my-account/transactions.js'])
+        './public/js/transactions.js'])
         .pipe(concat('transactions-external-bundle.js'))
         .pipe(uglify())
         .pipe(rev())
