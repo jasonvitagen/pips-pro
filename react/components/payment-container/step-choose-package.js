@@ -23,7 +23,7 @@ export default class StepChoosePackage extends Component {
             <div className="col-md-4 col-sm-4 col-xs-12">
                 <div className="bg-white pinside40 number-block outline mb60 bg-boxshadow">
                     <div className="circle"><span className="number">2</span></div>
-                    <h3 className="number-title">Choose Your Package</h3>
+                    <h3 className="number-title">Choose A Package</h3>
                     <div className="choose-package-list mt30">
                         <div className="mb10">
                             <label htmlFor="1-month">
