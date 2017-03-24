@@ -11,7 +11,7 @@ const
             case 'CHANGE_USER_PASSWORD_FULFILLED':
                 cookie.save('Authorization', action.payload.data, {maxAge: 604800});
                 action.payload = {...jwtDecode(action.payload.data), token: action.payload.data};
-                $('#sign-up-link').click();
+                $('#buy-signals-link').click();
                 break;
             case 'CHECK_COOKIE':
                 const cookieVal = cookie.load('Authorization');

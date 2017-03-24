@@ -312,7 +312,7 @@ module.exports = (data) => `
                                     <table border="0" cellpadding="0" cellspacing="0">
                                       <tbody>
                                         <tr>
-                                          <td> <a href="${process.env.HOST}#sign-up-1" target="_blank">Change mobile number</a> </td>
+                                          <td> <a href="${process.env.HOST}#buy-signals-1" target="_blank">Change mobile number</a> </td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -330,7 +330,7 @@ module.exports = (data) => `
                                     <table border="0" cellpadding="0" cellspacing="0">
                                       <tbody>
                                         <tr>
-                                          <td> <a href="${process.env.HOST}#sign-up-1" target="_blank">Purchase a Signal Package</a> </td>
+                                          <td> <a href="${process.env.HOST}#buy-signals-1" target="_blank">Purchase a Signal Package</a> </td>
                                         </tr>
                                       </tbody>
                                     </table>
