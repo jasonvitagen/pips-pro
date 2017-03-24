@@ -60,7 +60,7 @@ General css class
 -----------------------------------*/
 
 body { font-size: 15px; font-family: 'Poppins', sans-serif; line-height: 1.4; color: #778191; background-color: #f4f6f8; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-overflow-y: scroll; /* has to be scroll, not auto */
+overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
  }
 h1, h2, h3, h4, h5, h6 { margin: 0px 0px 10px 0px; color: #3c4d6b; font-weight: 500; }
