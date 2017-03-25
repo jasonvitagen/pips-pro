@@ -23,11 +23,11 @@ export default class StepMakePayment extends Component {
 
         let button;
         if (Object.getOwnPropertyNames(this.props.user).length === 0) {
-            button = <button className="btn btn-default" disabled={true}>Please complete step 1</button>
+            button = <button className="btn btn-default" id="payment-button" disabled={true}>Please complete step 1</button>
         } else if (!PaymentId) {
-            button = <button className="btn btn-default" disabled={true}>Select a payment method</button>
+            button = <button className="btn btn-default" id="payment-button" disabled={true}>Select a payment method</button>
         } else {
-            button = <button className="btn btn-default" disabled={verifying}>{verifying ? 'Verifying' : 'Proceed to payment page'}<div className={'ball-clip-rotate ' + (verifying ? '' : 'hidden')}><div></div></div></button>
+            button = <button className="btn btn-default" id="payment-button" disabled={verifying}>{verifying ? 'Verifying' : 'Proceed to payment page'}<div className={'ball-clip-rotate ' + (verifying ? '' : 'hidden')}><div></div></div></button>
         }
 
         return (

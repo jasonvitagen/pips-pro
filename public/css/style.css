@@ -997,3 +997,19 @@ Landing Page Template
 #payment-process {
   word-wrap: break-word;
 }
+
+#features-container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+}
+
+#features-container .feature-box {
+  height: 100%;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  #payment-button {
+    white-space: normal;
+  } 
+}
