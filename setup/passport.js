@@ -73,8 +73,8 @@ passport.use('local-edit-account', new LocalStrategy({
             if (!user) {
                 return done('User does not exist');
             }
-            const {name: userName, mobile: userMobile} = user;
-            jwt.sign({name: userName, mobile: userMobile, email: decodedEmail}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRY}, (err, token) => {
+            const {name: userName, mobile: userMobile, packageExpireAt} = user;
+            jwt.sign({name: userName, mobile: userMobile, email: decodedEmail, packageExpireAt}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRY}, (err, token) => {
                 if (err) {
                     return done(err);
                 }
@@ -112,8 +112,8 @@ passport.use('local-change-password', new LocalStrategy({
             if (!user) {
                 return done('User does not exist');
             }
-            const {name: userName, mobile: userMobile} = user;
-            jwt.sign({name: userName, mobile: userMobile, email: decodedEmail}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRY}, (err, token) => {
+            const {name: userName, mobile: userMobile, packageExpireAt} = user;
+            jwt.sign({name: userName, mobile: userMobile, email: decodedEmail, packageExpireAt}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRY}, (err, token) => {
                 if (err) {
                     return done(err);
                 }
@@ -139,9 +139,9 @@ passport.use('local-sign-in', new LocalStrategy({
                 return done(err);
             }
             if (user) {
-                const {name, mobile, password: userPassword} = user;
+                const {name, mobile, password: userPassword, packageExpireAt} = user;
                 if (bcrypt.compareSync(password, userPassword)) {
-                    return jwt.sign({name, mobile, email}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRY}, (err, token) => {
+                    return jwt.sign({name, mobile, email, packageExpireAt}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRY}, (err, token) => {
                         if (err) {
                             return done(err);
                         }
