@@ -60,12 +60,12 @@ export default class TransactionList extends Component {
                         (
                             <div>
                                 <p>You do not have any transactions yet.</p>
-                                <p><a href="/#sign-up-1" className="btn-link">Get a forex signal package now!</a></p>
+                                <p><a href="/#buy-signals-1" className="btn-link">Buy signals now!</a></p>
                             </div>
                         )
                 ):
                 (
-                    <a href="/#sign-up-1" className="btn-link">Please sign in first</a>
+                    <a href="/#buy-signals-1" className="btn-link">Please sign in first</a>
                 )
             }
             </div>
