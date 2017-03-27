@@ -171,7 +171,7 @@ gulp.task('boss-inject', ['build-external-css', 'build-boss-external-js'], () =>
             ignorePath: ['public']
         }))
         .pipe(htmlmin({collapseWhitespace: true}))
-        .pipe(gulp.dest('public/my-account'));
+        .pipe(gulp.dest('public/boss'));
 });
 
 gulp.task('build', ['general-pages-inject', 'html-inject', 'transactions-inject', 'boss-inject']);
