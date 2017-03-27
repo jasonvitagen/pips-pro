@@ -8,7 +8,8 @@ const
     , bodyParser = require('body-parser')
     , authRoute = require('./routes/auth')
     , paymentRoute = require('./routes/payment')
-    , myAccountRoute = require('./routes/my-account');
+    , myAccountRoute = require('./routes/my-account')
+    , bossRoute = require('./routes/boss');
     
 require('dotenv').config({path: require('path').join(__dirname, './process.env')});
 require('./setup/passport');
@@ -29,6 +30,7 @@ app.use(passport.initialize());
 app.use('/auth', authRoute);
 app.use('/payment', paymentRoute);
 app.use('/my-account', myAccountRoute);
+app.use('/boss', bossRoute);
 
 app.use(express.static(path.join(__dirname, 'public')));
 

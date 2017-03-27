@@ -207,3 +207,15 @@ export function getTransactions(user) {
         })
     }
 }
+
+
+export function getActiveCustomers(user) {
+    return {
+        type: 'GET_ACTIVE_CUSTOMERS',
+        payload: axios.get(`${process.env.HOST}boss/active-customers`, {
+            headers: {
+                'Authorization': user.token
+            }
+        })
+    }
+}

@@ -190,3 +190,12 @@ export function transactions(state = [], action) {
     }
     return state;
 }
+
+
+export function activeCustomers(state = [], action) {
+    switch (action.type) {
+        case 'GET_ACTIVE_CUSTOMERS_FULFILLED':
+            return action.payload.data
+    }
+    return state;
+}
