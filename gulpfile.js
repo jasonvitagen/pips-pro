@@ -77,6 +77,29 @@ gulp.task('build-transactions-external-js', () => {
         .pipe(gulp.dest('./public/versioned'));
 });
 
+gulp.task('build-boss-external-js', () => {
+    return gulp.src([
+        './public/js/jquery.min.js',
+        './public/js/bootstrap.min.js',
+        './public/js/menumaker.js',
+        './public/js/jquery.sticky.js',
+        './public/js/sticky-header.js',
+        './public/js/jquery.easing.min.js',
+        './public/js/scrolling-nav.js',
+        './public/js/accordion.js',
+        './public/js/back-to-top.js',
+        './public/js/jquery.smooth-scroll.min.js',
+        './public/js/modernizr.js',
+        './public/js/jquery.isotope.min.js',
+        './public/js/filter-script.js',
+        './public/js/script.js',
+        './public/js/boss.js'])
+        .pipe(concat('boss-external-bundle.js'))
+        .pipe(uglify())
+        .pipe(rev())
+        .pipe(gulp.dest('./public/versioned'));
+});
+
 gulp.task('version-webpack-bundle', () => {
     return gulp.src('./public/js/bundle.js')
         .pipe(rev())
@@ -135,5 +158,21 @@ gulp.task('transactions-inject', ['build-external-css', 'build-transactions-exte
         .pipe(gulp.dest('public/my-account'));
 });
 
-gulp.task('build', ['general-pages-inject', 'html-inject', 'transactions-inject']);
+gulp.task('boss-inject', ['build-external-css', 'build-boss-external-js'], () => {
+    return gulp.src([
+            './public/boss/index.html',
+        ])
+        .pipe(inject(gulp.src([
+            'public/versioned/external-*.css',
+            'public/versioned/boss-external-*.js'
+        ], {read: false}), {
+            addRootSlash: false,
+            addPrefix: 'https://malaysia-6d6d.kxcdn.com',
+            ignorePath: ['public']
+        }))
+        .pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(gulp.dest('public/my-account'));
+});
+
+gulp.task('build', ['general-pages-inject', 'html-inject', 'transactions-inject', 'boss-inject']);
 
