@@ -87,7 +87,7 @@
                 "tp1": 157,
                 "tp2": 155.71,
                 "profit": "18",
-                "remark": "Close order at market price : 156.06"
+                "remark": "Order closed at market price : 156.06"
             },
             {
                 "date": "06/08/2016",
@@ -98,7 +98,7 @@
                 "tp1": 1.4451,
                 "tp2": 1.4421,
                 "profit": "15",
-                "remark": "Close order at market price : 1.4465"
+                "remark": "Order closed at market price : 1.4465"
             },
             {
                 "date": "06/09/2016",
