@@ -16,7 +16,13 @@ export default class Boss extends Component {
             this.actions.getActiveCustomers(this.props.user);
         });
     }
+    select() {
+        this.textarea.select();
+    }
     render() {
+        const activeCustomers = this.props.activeCustomers.map(customer => {
+            return customer.mobile.charAt(0) !== '6' ? '6' + customer.mobile : customer.mobile + ','
+        });
         return (
             <div>
             {this.props.activeCustomers.length > 0 &&
@@ -26,15 +32,13 @@ export default class Boss extends Component {
                             <h4>Active Customers</h4>
                             <ul>
                                 {this.props.activeCustomers.map(customer => (
-                                    <li>{customer.mobile.charAt(0) !== '6' ? '6' + customer.mobile : customer.mobile} {customer.name}</li>
+                                    <li key={customer.mobile}>{customer.mobile.charAt(0) !== '6' ? '6' + customer.mobile : customer.mobile} {customer.name}</li>
                                 ))}
                             </ul>
                         </div>
                         <div>
                             <h4>Active Customers</h4>
-                            <p>{this.props.activeCustomers.map(customer => (
-                                    <span>{customer.mobile.charAt(0) !== '6' ? '6' + customer.mobile : customer.mobile},</span>
-                                ))}</p>
+                            <textarea value={activeCustomers} cols="60" rows="20" ref={(ref) => {this.textarea = ref;}} onClick={this.select.bind(this)} readOnly></textarea>
                         </div>
                     </div>
                 )
