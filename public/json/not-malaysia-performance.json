@@ -1,0 +1,185 @@
+{
+    "2017": {
+  "1": [
+        {
+          "date": "01/04/2017",
+          "currency": "GBPUSD",
+          "type": "SELL",
+          "open": "1.2330",
+          "sl": "1.2375",
+          "tp1": "1.2310",
+          "tp2": "1.2300",
+          "profit": "0",
+          "remark": "Cancelled"
+        },
+        {
+          "date": "01/9/2017",
+          "currency": "GBPCAD",
+          "type": "BUY",
+          "open": "1.6115",
+          "sl": "1.6085",
+          "tp1": "1.6135",
+          "tp2": "1.6145",
+          "profit": "0",
+          "remark": "Cancelled"
+        },
+        {
+          "date": "01/110/2017",
+          "currency": "GBPCAD",
+          "type": "SELL",
+          "open": "1.6035",
+          "sl": "1.6060",
+          "tp1": "1.6000",
+          "tp2": "1.6590",
+          "profit": "45",
+          "remark": "Take Profit 2 earned"
+        },
+        {
+          "date": "01/11/2017",
+          "currency": "GBPCAD",
+          "type": "SELL",
+          "open": "1.6025",
+          "sl": "1.6045",
+          "tp1": "1.6005",
+          "tp2": "1.5995",
+          "profit": "30",
+          "remark": "Take Profit 2 earned"
+        },
+        {
+          "date": "01/13/2017",
+          "currency": "GBPCAD",
+          "type": "SELL",
+          "open": "1.6125",
+          "sl": "1.6160",
+          "tp1": "1.6105",
+          "tp2": "1.6095",
+          "profit": "20",
+          "remark": "Take Profit 1 earned"
+        },
+        {
+          "date": "01/20/2017",
+          "currency": "GBPAUD",
+          "type": "SELL",
+          "open": "1.6300",
+          "sl": "1.6335",
+          "tp1": "1.6270",
+          "tp2": "1.6260",
+          "profit": "-35",
+          "remark": ""
+        },
+        {
+          "date": "01/22/2017",
+          "currency": "GBPCAD",
+          "type": "BUY",
+          "open": "1.6530",
+          "sl": "1.6480",
+          "tp1": "1.6610",
+          "tp2": "1.6560",
+          "profit": "0",
+          "remark": "Moved SL to entry price : 1.6500"
+        },
+        {
+          "date": "01/29/2017",
+          "currency": "GBPAUD",
+          "type": "SELL",
+          "open": "1.6570",
+          "sl": "1.6600",
+          "tp1": "1.6550",
+          "tp2": "1.6540",
+          "profit": "30",
+          "remark": "Take Profit 2 earned"
+        }
+      ],
+      "2": [
+        {
+          "date": "02/02/2017",
+          "currency": "GBPAUD",
+          "type": "BUY",
+          "open": "1.6600",
+          "sl": "1.6555",
+          "tp1": "1.6630",
+          "tp2": "1.6640",
+          "profit": "40",
+          "remark": "Take Profit 2 earned"
+        },
+        {
+          "date": "02/05/2017",
+          "currency": "GBPCAD",
+          "type": "SELL",
+          "open": "1.6325",
+          "sl": "1.6345",
+          "tp1": "1.6300",
+          "tp2": "1.6290",
+          "profit": "0",
+          "remark": "Cancelled"
+        },
+        {
+          "date": "02/06/2017",
+          "currency": "GBPCAD",
+          "type": "BUY",
+          "open": "1.6250",
+          "sl": "1.6220",
+          "tp1": "1.6275",
+          "tp2": "1.6285",
+          "profit": "-30",
+          "remark": ""
+        },
+        {
+          "date": "02/07/2017",
+          "currency": "GBPCAD",
+          "type": "BUY",
+          "open": "1.6345",
+          "sl": "1.6310",
+          "tp1": "1.6370",
+          "tp2": "1.6380",
+          "profit": "-35",
+          "remark": ""
+        },
+        {
+          "date": "02/14/2017",
+          "currency": "GBPAUD",
+          "type": "BUY",
+          "open": "1.6235",
+          "sl": "1.6215",
+          "tp1": "1.6255",
+          "tp2": "1.6265",
+          "profit": "20",
+          "remark": "Take Profit 1 earned"
+        },
+        {
+          "date": "02/16/2017",
+          "currency": "GBPAUD",
+          "type": "BUY",
+          "open": "1.6250",
+          "sl": "1.6215",
+          "tp1": "1.6275",
+          "tp2": "1.6285",
+          "profit": "25",
+          "remark": "Take Profit 1 earned"
+        },
+        {
+          "date": "02/21/2017",
+          "currency": "GBPCAD",
+          "type": "BUY",
+          "open": "1.6350",
+          "sl": "1.6305",
+          "tp1": "1.6375",
+          "tp2": "1.6385",
+          "profit": "35",
+          "remark": "Take Profit 2 earned"
+        },
+
+        {
+          "date": "02/27/2017",
+          "currency": "GBPCAD",
+          "type": "BUY",
+          "open": "1.6415",
+          "sl": "1.6375",
+          "tp1": "1.6445",
+          "tp2": "1.6455",
+          "profit": "40",
+          "remark": "Take Profit 2 earned"
+        }
+      ]
+    }
+}

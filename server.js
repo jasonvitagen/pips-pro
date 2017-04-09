@@ -9,14 +9,15 @@ const
     , authRoute = require('./routes/auth')
     , paymentRoute = require('./routes/payment')
     , myAccountRoute = require('./routes/my-account')
-    , bossRoute = require('./routes/boss');
+    , bossRoute = require('./routes/boss')
+    , jsonRoute = require('./routes/json');
     
 require('dotenv').config({path: require('path').join(__dirname, './process.env')});
 require('./setup/passport');
 require('./setup/sync-sign-in-cache');
 require('./setup/process-payments');
 
-app.set('trust proxy', 'loopback');
+app.set('trust proxy');
 
 app.use(cors());
 
@@ -31,6 +32,7 @@ app.use('/auth', authRoute);
 app.use('/payment', paymentRoute);
 app.use('/my-account', myAccountRoute);
 app.use('/boss', bossRoute);
+app.use('/json', jsonRoute);
 
 app.use(express.static(path.join(__dirname, 'public')));
 

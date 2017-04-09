@@ -1,4 +1,4 @@
-$.getJSON('/json/performance.json', function (performanceData) {
+$.getJSON('/json/performance', function (performanceData) {
 
     $('.view-full-performance-loader').removeClass('ball-clip-rotate');
     $('#view-full-performance').attr('disabled', false);
