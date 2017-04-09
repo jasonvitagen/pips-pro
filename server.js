@@ -17,7 +17,7 @@ require('./setup/passport');
 require('./setup/sync-sign-in-cache');
 require('./setup/process-payments');
 
-app.enable('trust proxy');
+app.set('trust proxy', true);
 
 app.use(cors());
 
