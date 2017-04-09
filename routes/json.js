@@ -8,9 +8,8 @@ const
     , notMalaysiaPerformanceJSON = JSON.parse(fs.readFileSync(path.resolve(__dirname, '..', 'public/json/not-malaysia-performance.json')))
 
 router.get('/performance', (req, res, next) => {
-    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    console.log(ip);
-    axios.get(`http://freegeoip.net/json/${ip}`)
+    console.log(req.ip);
+    axios.get(`http://freegeoip.net/json/${req.ip}`)
         .then(response => {
             if (response.data.country_name === 'Malaysia') {
                 res.json(performanceJSON);
