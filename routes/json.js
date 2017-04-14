@@ -11,7 +11,7 @@ router.get('/performance', (req, res, next) => {
     console.log(req.ip);
     axios.get(`http://freegeoip.net/json/${req.ip}`)
         .then(response => {
-            if (response.data.country_name === 'Malaysia') {
+            if (response.data.country_name === 'Malaysia' || response.data.country_name === 'Singapore') {
                 res.json(performanceJSON);
             } else {
                 res.send(notMalaysiaPerformanceJSON);
