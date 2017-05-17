@@ -10,18 +10,20 @@ cron.schedule('*/5 * * * * *', () => {
             return console.log(err);
         }
         users.forEach(user => {
-            const message = {
-                from: 'Pips-Pro <admin@pips-pro.com>',
-                to: user.email,
-                subject: 'Signal Package Expired at Pips-Pro.com',
-                html: emailTemplate(user)
-            };
-            mailgun.messages().send(message, (err, body) => {
-                if (err) {
-                    console.log(err);
-                }
-                console.log(body);
-            });
+            if (user.email === 'jasoncheng@live.com.my') {
+                const message = {
+                    from: 'Pips-Pro <admin@pips-pro.com>',
+                    to: user.email,
+                    subject: 'Signal Package Expired at Pips-Pro.com',
+                    html: emailTemplate(user)
+                };
+                mailgun.messages().send(message, (err, body) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                    console.log(body);
+                });
+            }
         });
     });
 });
