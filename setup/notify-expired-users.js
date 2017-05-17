@@ -6,7 +6,7 @@ const
 
 cron.schedule('0 14 * * *', () => {
     console.log('Running notify expired users cron task');
-    db.User.find({packageExpireAt: {$lt: new Date(), $gt: new Date(new Date().setDate(new Date().getDate() - 30))}}, (err, users) => {
+    db.User.find({packageExpireAt: {$lt: new Date(), $gt: new Date(new Date().setDate(new Date().getDate() - 1))}}, (err, users) => {
         if (err) {
             return console.log(err);
         }
