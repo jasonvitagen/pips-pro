@@ -2263,6 +2263,364 @@
         "profit": "40",
         "remark": "Take Profit 2 earned"
       }
+    ],
+    "3": [
+      {
+        "date": "03/01/2017",
+        "currency": "",
+        "type": "",
+        "open": "",
+        "sl": "",
+        "tp1": "",
+        "tp2": "",
+        "profit": "",
+        "remark": "We are on 1-month holiday"
+      }
+    ],
+    "4": [
+      {
+        "date": "04/04/2017",
+        "currency": "GBPCAD",
+        "type": "BUY",
+        "open": "1.6680",
+        "sl": "1.6635",
+        "tp1": "1.6700",
+        "tp2": "1.6710",
+        "profit": "30",
+        "remark": "Take Profit 2 earned"
+      },
+      {
+        "date": "04/05/2017",
+        "currency": "GBPUSD",
+        "type": "BUY",
+        "open": "1.2480",
+        "sl": "1.2460",
+        "tp1": "1.2500",
+        "tp2": "1.2510",
+        "profit": "25",
+        "remark": "Take Profit 1 earned"
+      },
+      {
+        "date": "04/07/2017",
+        "currency": "GBPJPY",
+        "type": "BUY",
+        "open": "137.55",
+        "sl": "137.20",
+        "tp1": "138.80",
+        "tp2": "139.90",
+        "profit": "-35",
+        "remark": ""
+      },
+      {
+        "date": "04/10/2017",
+        "currency": "GBPNZD",
+        "type": "BUY",
+        "open": "1.7850",
+        "sl": "1.7815",
+        "tp1": "1.7880",
+        "tp2": "1.7890",
+        "profit": "40",
+        "remark": "Take Profit 2 earned"
+      },
+      {
+        "date": "04/12/2017",
+        "currency": "GBPAUD",
+        "type": "SELL",
+        "open": "1.6660",
+        "sl": "1.6695",
+        "tp1": "1.6640",
+        "tp2": "1.6630",
+        "profit": "-35",
+        "remark": ""
+      },
+      {
+        "date": "04/13/2017",
+        "currency": "GBPCAD",
+        "type": "SELL",
+        "open": "1.6610",
+        "sl": "1.6650",
+        "tp1": "1.6590",
+        "tp2": "1.7580",
+        "profit": "30",
+        "remark": "Take Profit 2 earned"
+      },
+      {
+        "date": "04/14/2017",
+        "currency": "GBPCAD",
+        "type": "SELL",
+        "open": "1.6660",
+        "sl": "1.6690",
+        "tp1": "1.6640",
+        "tp2": "1.6630",
+        "profit": "30",
+        "remark": "Take Profit 2 earned"
+      },
+      {
+        "date": "04/18/2017",
+        "currency": "GBPJPY",
+        "type": "SELL",
+        "open": "136.95",
+        "sl": "137.40",
+        "tp1": "136.70",
+        "tp2": "136.60",
+        "profit": "35",
+        "remark": "Take Profit 2 earned"
+      },
+      {
+        "date": "04/19/2017",
+        "currency": "GBPAUD",
+        "type": "BUY",
+        "open": "1.7075",
+        "sl": "1.7035",
+        "tp1": "1.7095",
+        "tp2": "1.7105",
+        "profit": "-40",
+        "remark": ""
+      },
+      {
+        "date": "04/26/2017",
+        "currency": "GBPCAD",
+        "type": "BUY",
+        "open": "1.7425",
+        "sl": "1.7390",
+        "tp1": "1.7450",
+        "tp2": "1.7460",
+        "profit": "",
+        "remark": "Cancelled"
+      },
+      {
+        "date": "04/27/2017",
+        "currency": "GBPNZD",
+        "type": "BUY",
+        "open": "1.8630",
+        "sl": "1.8585",
+        "tp1": "1.8650",
+        "tp2": "1.8660",
+        "profit": "30",
+        "remark": "Take Profit 2 earned"
+      },
+      {
+        "date": "04/28/2017",
+        "currency": "GBPJPY",
+        "type": "BUY",
+        "open": "143.55",
+        "sl": "143.20",
+        "tp1": "143.75",
+        "tp2": "143.85",
+        "profit": "30",
+        "remark": "Take Profit 2 earned"
+      }
+    ],
+    "5": [
+        {
+          "date": "05/01/2017",
+          "currency": "GBPNZD",
+          "type": "SELL",
+          "open": "1.8810",
+          "sl": "1.8850",
+          "tp1": "1.8785",
+          "tp2": "1.8775",
+          "profit": "35",
+          "remark": "Take Profit 2 earned"
+        },
+        {
+          "date": "05/02/2017",
+          "currency": "GBPCAD",
+          "type": "SELL",
+          "open": "1.7600",
+          "sl": "1.7645",
+          "tp1": "1.7580",
+          "tp2": "1.7570",
+          "profit": "0",
+          "remark": "Cancelled"
+        },
+        {
+          "date": "05/03/2017",
+          "currency": "GBPJPY",
+          "type": "SELL",
+          "open": "144.75",
+          "sl": "144.50",
+          "tp1": "145.00",
+          "tp2": "145.10",
+          "profit": "35",
+          "remark": "Take Profit 2 earned"
+        }, 
+        {
+          "date": "05/04/2017",
+          "currency": "GBPCAD",
+          "type": "BUY",
+          "open": "1.7665",
+          "sl": "1.7630",
+          "tp1": "1.7690",
+          "tp2": "1.7700",
+          "profit": "35",
+          "remark": "Take Profit 2 earned"
+        }, 
+        {
+          "date": "05/05/2017",
+          "currency": "GBPJPY",
+          "type": "BUY",
+          "open": "145.40",
+          "sl": "145.40",
+          "tp1": "145.60",
+          "tp2": "145.70",
+          "profit": "30",
+          "remark": "Take Profit 2 earned"
+        }, 
+        {
+          "date": "05/05/2017",
+          "currency": "GBPNZD",
+          "type": "BUY",
+          "open": "1.8760",
+          "sl": "1.8735",
+          "tp1": "1.8780",
+          "tp2": "1.8790",
+          "profit": "30",
+          "remark": "-25"
+        }, 
+        {
+          "date": "05/09/2017",
+          "currency": "GBPCAD",
+          "type": "BUY",
+          "open": "1.7700",
+          "sl": "1.7660",
+          "tp1": "1.7730",
+          "tp2": "1.7740",
+          "profit": "40",
+          "remark": "Take Profit 2 earned"
+        }, 
+        {
+          "date": "05/10/2017",
+          "currency": "GBPCAD",
+          "type": "BUY",
+          "open": "1.7760",
+          "sl": "1.7710",
+          "tp1": "1.7800",
+          "tp2": "1.7810",
+          "profit": "-50",
+          "remark": ""
+        }, 
+        {
+          "date": "05/11/2017",
+          "currency": "GBPJPY",
+          "type": "BUY",
+          "open": "147.60",
+          "sl": "147.20",
+          "tp1": "147.90",
+          "tp2": "148.00",
+          "profit": "0",
+          "remark": "Cancelled"
+        },
+        {
+          "date": "05/12/2017",
+          "currency": "GBPNZD",
+          "type": "BUY",
+          "open": "1.8785",
+          "sl": "1.8740",
+          "tp1": "1.8810",
+          "tp2": "1.8820",
+          "profit": "35",
+          "remark": "Take Profit 2 earned"
+        },
+        {
+          "date": "05/16/2017",
+          "currency": "GBPNZD",
+          "type": "SELL",
+          "open": "1.8700",
+          "sl": "1.8745",
+          "tp1": "1.8680",
+          "tp2": "1.8670",
+          "profit": "20",
+          "remark": "Take Profit 1 earned"
+        },
+        {
+          "date": "05/16/2017",
+          "currency": "GBPJPY",
+          "type": "BUY",
+          "open": "146.55",
+          "sl": "146.20",
+          "tp1": "146.90",
+          "tp2": "147.00",
+          "profit": "45",
+          "remark": "Take Profit 2 earned"
+        },
+        {
+          "date": "05/17/2017",
+          "currency": "GBPAUD",
+          "type": "BUY",
+          "open": "1.7385",
+          "sl": "1.7340",
+          "tp1": "1.7410",
+          "tp2": "1.7420",
+          "profit": "35",
+          "remark": "Take Profit 2 earned"
+        },
+        {
+          "date": "05/18/2017",
+          "currency": "GBPNZD",
+          "type": "BUY",
+          "open": "1.8700",
+          "sl": "1.8665",
+          "tp1": "1.8720",
+          "tp2": "1.8730",
+          "profit": "30",
+          "remark": "Take Profit 2 earned"
+        },
+        {
+          "date": "05/19/2017",
+          "currency": "GBPAUD",
+          "type": "BUY",
+          "open": "1.7445",
+          "sl": "1.7395",
+          "tp1": "1.7480",
+          "tp2": "1.7490",
+          "profit": "45",
+          "remark": "Take Profit 2 earned"
+        },
+        {
+          "date": "05/22/2017",
+          "currency": "GBPJPY",
+          "type": "BUY",
+          "open": "145.00",
+          "sl": "144.75",
+          "tp1": "145.20",
+          "tp2": "145.30",
+          "profit": "0",
+          "remark": "Cancelled"
+        },
+        {
+          "date": "05/22/2017",
+          "currency": "GBPCAD",
+          "type": "BUY",
+          "open": "1.7590",
+          "sl": "1.7545",
+          "tp1": "1.7620",
+          "tp2": "",
+          "profit": "0",
+          "remark": "Cancelled"
+        },
+        {
+          "date": "05/24/2017",
+          "currency": "GBPNZD",
+          "type": "SELL",
+          "open": "1.8495",
+          "sl": "1.8540",
+          "tp1": "1.8470",
+          "tp2": "1.8460",
+          "profit": "35",
+          "remark": "Take Profit 2 earned"
+        },
+        {
+          "date": "05/25/2017",
+          "currency": "GBPJPY",
+          "type": "SELL",
+          "open": "144.95",
+          "sl": "145.20",
+          "tp1": "144.70",
+          "tp2": "144.60",
+          "profit": "25",
+          "remark": "Take Profit 1 earned"
+        }
     ]
   }
 }
