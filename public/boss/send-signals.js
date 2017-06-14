@@ -21,11 +21,18 @@ export default class extends Component {
     render() {
         return (
             <div>
-                <h4>Send Signals</h4>
-                <form onSubmit={this.submit.bind(this)}>
-                    <textarea name="" id="" cols="60" rows="20" ref={ref=>this.signal = ref}></textarea>
-                    <button type="submit">Send</button>
-                </form>
+                {this.props.user.email === 'jasonvitagen@gmail.com' &&
+                    (
+                        <div>
+                            <h4>Send Signals</h4>
+                            <form onSubmit={this.submit.bind(this)}>
+                                <textarea name="" id="" cols="60" rows="20" ref={ref=>this.signal = ref}></textarea>
+                                <button type="submit">Send</button>
+                            </form>
+                        </div>
+                    )
+
+                }
             </div>
         )
     }
