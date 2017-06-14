@@ -6,6 +6,7 @@ module.exports = (req, res, next) => {
         if (err) {
             return console.log(err);
         }
-        res.json(users);
+        req.users = users;
+        next();
     });
 }
