@@ -21,8 +21,8 @@ export default class Boss extends Component {
     }
     render() {
         const activeCustomers = this.props.activeCustomers.map(customer => {
-            return customer.mobile.charAt(0) !== '6' ? '6' + customer.mobile : customer.mobile + ','
-        });
+            return customer.mobile.charAt(0) !== '6' ? '6' + customer.mobile : customer.mobile
+        }).join(',');
         return (
             <div>
             {this.props.activeCustomers.length > 0 &&
