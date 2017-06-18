@@ -23,4 +23,21 @@ router.get('/performance', (req, res, next) => {
         });
 });
 
+router.get('/location', (req, res, next) => {
+
+    axios.get(`http://freegeoip.net/json/${req.ip}`)
+        .then(location => {
+            return axios.get(`https://restcountries.eu/rest/v2/alpha/${location.data.country_code}`)
+                .then(({data}) => {
+                    res.json({
+                        countryCode: data.alpha2Code,
+                        callingCode: data.callingCodes[0]
+                    });
+                });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+});
+
 module.exports = router;

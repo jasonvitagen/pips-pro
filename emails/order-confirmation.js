@@ -337,7 +337,7 @@ module.exports = (data) => `
                         </tr>
                         <tr>
                           <td class="content-block powered-by">
-                            Whatsapp us at 016-214-0200 for immediate inquiry and service
+                            Whatsapp us at 6016-214-0200 for immediate inquiry and service
                           </td>
                         </tr>
                       </table>

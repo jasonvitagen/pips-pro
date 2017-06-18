@@ -48,6 +48,7 @@ jspm_packages
 
 public/js/bundle.js
 public/js/transactions.js
+public/js/boss.js
 
 public/webpack-cached/
 

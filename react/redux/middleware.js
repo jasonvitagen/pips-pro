@@ -73,12 +73,35 @@ const
                 break;
             case 'RESET_USER_PASSWORD_FULFILLED':
                 notify.show(action.payload.data, 'success');
+
                 break;
         }
         next(action);
-    }
+    },
+    currencyMiddleware = store => next => action => {
+        switch(action.type) {
+            case 'GET_LOCATION_FULFILLED':
+                let pricing = '';
+                switch(action.payload.data.countryCode) {
+                    case 'SG':
+                        pricing = 'S$50';
+                        break;
+                    default:
+                        pricing = 'RM100'
+                        break;
+                }
+                let bigPricing = document.getElementById('price-big');
+                if (bigPricing) {
+                    bigPricing.innerText = pricing;
+                    document.getElementById('new-price').classList.remove('hidden');
+                }
+                break;
+        }
+        next(action);
+    };
 
 export {
     jwtDecodeMiddleware,
-    notificationMiddleware
+    notificationMiddleware,
+    currencyMiddleware
 };

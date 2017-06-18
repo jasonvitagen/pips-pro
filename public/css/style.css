@@ -1013,3 +1013,16 @@ Landing Page Template
     white-space: normal;
   } 
 }
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#new-price {
+  animation: fade .2s linear;
+}

@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
 
     const {ISMS_USERNAME, ISMS_PASSWORD} = process.env;
     const users = req.users.map(user => {
-        return user.mobile.charAt(0) !== '6' ? '6' + user.mobile : user.mobile;
+        return user.mobile;
     }).join(';');
     axios.post('https://www.isms.com.my/isms_send.php', querystring.stringify({
         un: ISMS_USERNAME,

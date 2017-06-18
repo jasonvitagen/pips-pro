@@ -32,8 +32,11 @@ const
         ResponseUrl: '',
         BackendUrl: '',
         verifying: false,
-
-    };
+    }
+    , locationInitialState = {
+        countryCode: '',
+        callingCode: ''
+    }
 
 
 export function signInIntent(state = '', action) {
@@ -196,6 +199,15 @@ export function activeCustomers(state = [], action) {
     switch (action.type) {
         case 'GET_ACTIVE_CUSTOMERS_FULFILLED':
             return action.payload.data
+    }
+    return state;
+}
+
+
+export function location(state = locationInitialState, action) {
+    switch (action.type) {
+        case 'GET_LOCATION_FULFILLED':
+            return {...state, ...action.payload.data};
     }
     return state;
 }

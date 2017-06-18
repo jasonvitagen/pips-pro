@@ -14,6 +14,7 @@ export default class PaymentContainer extends Component {
         super(props);
         this.actions = bindActionCreators(actions, this.props.dispatch);
         this.actions.checkCookie();
+        this.actions.getLocation();
     }
     render() {
         return (

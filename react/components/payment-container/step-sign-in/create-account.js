@@ -5,7 +5,8 @@ import {connect} from 'react-redux';
 import Recaptcha from 'react-google-recaptcha';
 
 @connect(store => ({
-    registration: store.registration
+    registration: store.registration,
+    location: store.location
 }))
 export default class CreateAccount extends Component {
     constructor(props) {
@@ -30,7 +31,18 @@ export default class CreateAccount extends Component {
 
         const 
             {name, mobile, email, password, confirmPassword, submitting} = this.props.registration
+            , {countryCode} = this.props.location
             , {name: nameError, mobile: mobileError, email: emailError, password: passwordError, confirmPassword: confirmPasswordError, recaptcha: recaptchaError} = this.props.registration.errors;
+
+        let mobilePlacholder = '';
+        switch (countryCode) {
+            case 'MY':
+                mobilePlacholder = '60162140200';
+                break;
+            case 'SG':
+                mobilePlacholder = '6589362786';
+                break;
+        }
 
         return (
             <form onSubmit={this.createAccount.bind(this)}>
@@ -47,7 +59,7 @@ export default class CreateAccount extends Component {
 
                 <div className={"form-group " + (mobileError ? 'has-error' : '')}>
                     <label className="sr-only control-label" htmlFor="mobile">mobile<span className=" "> </span></label>
-                    <input id="mobile" name="mobile" type="tel" value={mobile} onChange={this.type.bind(this, 'mobile')} placeholder="Mobile number e.g. 0162140200" className="form-control input-md" required="" maxLength="15"/>
+                    <input id="mobile" name="mobile" type="tel" value={mobile} onChange={this.type.bind(this, 'mobile')} placeholder={`Mobile number e.g. ${mobilePlacholder}`} className="form-control input-md" required="" maxLength="15"/>
                     {mobileError &&
                         <p className="alert alert-danger"><small>{mobileError}</small></p>
                     }

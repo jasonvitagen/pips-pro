@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 
 @connect(store => ({
     selectedPackage: store.selectedPackage,
+    location: store.location,
     payment: store.payment,
     user: store.user
 }))
@@ -15,7 +16,7 @@ export default class StepChoosePackage extends Component {
     }
     packageChanged(event) {
         this.actions.selectPackage(event.target.value);
-        this.actions.getPaymentSignature(this.props.payment.PaymentId, event.target.value, this.props.user);
+        this.actions.getPaymentSignature(this.props.payment.PaymentId, event.target.value, this.props.user, this.props.location.countryCode);
     }
     render() {
         const {verifying} = this.props.payment;

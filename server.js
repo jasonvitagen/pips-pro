@@ -10,13 +10,15 @@ const
     , paymentRoute = require('./routes/payment')
     , myAccountRoute = require('./routes/my-account')
     , bossRoute = require('./routes/boss')
-    , jsonRoute = require('./routes/json');
+    , jsonRoute = require('./routes/json')
+    , paypalRoute = require('./routes/paypal');
     
 require('dotenv').config({path: require('path').join(__dirname, './process.env')});
 require('./setup/passport');
 require('./setup/sync-sign-in-cache');
 require('./setup/process-payments');
 require('./setup/notify-expired-users');
+require('./setup/paypal');
 
 app.set('trust proxy', 'loopback');
 
@@ -34,6 +36,7 @@ app.use('/payment', paymentRoute);
 app.use('/my-account', myAccountRoute);
 app.use('/boss', bossRoute);
 app.use('/json', jsonRoute);
+app.use('/paypal', paypalRoute);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
