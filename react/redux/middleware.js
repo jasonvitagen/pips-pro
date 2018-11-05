@@ -2,15 +2,19 @@ import jwtDecode from 'jwt-decode';
 import {notify} from 'react-notify-toast';
 import cookie from 'react-cookie';
 
-const
-    jwtDecodeMiddleware = store => next => action => {
+const jwtDecodeMiddleware = store => next => action => {
         switch (action.type) {
             case 'CREATE_ACCOUNT_FULFILLED':
             case 'SIGN_IN_USER_FULFILLED':
             case 'EDIT_USER_ACCOUNT_FULFILLED':
             case 'CHANGE_USER_PASSWORD_FULFILLED':
-                cookie.save('Authorization', action.payload.data, {maxAge: 604800});
-                action.payload = {...jwtDecode(action.payload.data), token: action.payload.data};
+                // cookie.save('Authorization', action.payload.data, {
+                //     maxAge: 604800
+                // });
+                // action.payload = {
+                //     ...jwtDecode(action.payload.data),
+                //     token: action.payload.data
+                // };
                 $('#buy-signals-link').click();
                 break;
             case 'CHECK_COOKIE':
@@ -28,14 +32,17 @@ const
                 cookie.remove('Authorization');
         }
         next(action);
-    }
-    , notificationMiddleware = store => next => action => {
-        switch(action.type) {
+    },
+    notificationMiddleware = store => next => action => {
+        switch (action.type) {
             case 'CREATE_ACCOUNT_REJECTED':
                 if (typeof action.payload.response.data === 'string') {
                     notify.show(action.payload.response.data, 'error');
                 } else {
-                    notify.show('Registration is unsuccessful, please check', 'error');
+                    notify.show(
+                        'Registration is unsuccessful, please check',
+                        'error'
+                    );
                 }
                 break;
             case 'SIGN_IN_USER_REJECTED':
@@ -45,7 +52,10 @@ const
                 notify.show('Edit is unsuccessful, please check', 'error');
                 break;
             case 'CHANGE_USER_PASSWORD_REJECTED':
-                notify.show('Password change is unsuccessful, please check', 'error');
+                notify.show(
+                    'Password change is unsuccessful, please check',
+                    'error'
+                );
                 break;
             case 'SIGN_IN_USER_FULFILLED':
                 notify.show('Signed in successfully', 'success');
@@ -69,7 +79,10 @@ const
                 notify.show(action.payload.response.data.email, 'error');
                 break;
             case 'RESET_USER_PASSWORD_REJECTED':
-                notify.show('Password change is unsuccessful, please check', 'error');
+                notify.show(
+                    'Password change is unsuccessful, please check',
+                    'error'
+                );
                 break;
             case 'RESET_USER_PASSWORD_FULFILLED':
                 notify.show(action.payload.data, 'success');
@@ -77,31 +90,6 @@ const
                 break;
         }
         next(action);
-    },
-    currencyMiddleware = store => next => action => {
-        switch(action.type) {
-            case 'GET_LOCATION_FULFILLED':
-                let pricing = '';
-                switch(action.payload.data.countryCode) {
-                    case 'SG':
-                        pricing = 'S$50';
-                        break;
-                    default:
-                        pricing = 'RM100'
-                        break;
-                }
-                let bigPricing = document.getElementById('price-big');
-                if (bigPricing) {
-                    bigPricing.innerText = pricing;
-                    document.getElementById('new-price').classList.remove('hidden');
-                }
-                break;
-        }
-        next(action);
     };
 
-export {
-    jwtDecodeMiddleware,
-    notificationMiddleware,
-    currencyMiddleware
-};
+export {jwtDecodeMiddleware, notificationMiddleware};

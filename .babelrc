@@ -1,7 +1,7 @@
 {
     "env" : {
         "development" : {
-            "presets" : ["react", ["es2015", {"modules": false}], "react-hmre"],
+            "presets" : ["react", ["es2015", {"modules": false}]],
             "plugins" : ["transform-object-rest-spread", "transform-decorators-legacy"]
         },
         "production" : {

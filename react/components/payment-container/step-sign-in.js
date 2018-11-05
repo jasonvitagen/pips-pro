@@ -8,9 +8,11 @@ import ForgotPassword from './step-sign-in/forgot-password';
 import SignedIn from './step-sign-in/signed-in';
 import SignIn from './step-sign-in/sign-in';
 import * as actions from '../../redux/action';
+import VerifyUser from './step-sign-in/verify-user';
 
 @connect(store => ({
     user: store.user,
+    registration: store.registration,
     signInIntent: store.signInIntent
 }))
 export default class StepSignUp extends Component {
@@ -32,36 +34,50 @@ export default class StepSignUp extends Component {
         event.preventDefault();
     }
     render() {
-        const {user, signInIntent} = this.props;
-        let signedIn = <SignedIn/>;
-        if (user.editAccount) signedIn = <EditAccount/>;
-        if (user.changePassword) signedIn = <ChangePassword/>;
+        const {user, signInIntent, registration} = this.props;
+        let signedIn = <SignedIn />;
+        if (user.editAccount) signedIn = <EditAccount />;
+        if (user.changePassword) signedIn = <ChangePassword />;
 
-        let signIn = <SignIn/>;
-        if (user.forgotPassword) signIn = <ForgotPassword/>;
+        let signIn = <SignIn />;
+        if (user.forgotPassword) signIn = <ForgotPassword />;
+
+        let createAccount = <CreateAccount />;
+        if (registration.editVerificationCode) createAccount = <VerifyUser />;
 
         return (
             <div className="col-md-4 col-sm-4 col-xs-12">
                 <div className="bg-white pinside40 number-block outline mb60 bg-boxshadow">
-                    <div className="circle"><span className="number">1</span></div>
-                    {user.name || user.resetPassword ?
-                        (
-                            <div>
-                                {signedIn}
-                            </div>
-                        ) :
-                        (
-                            <div>
-                                <p><a href="#" type="button" className="btn-link" onClick={this.signUp.bind(this)}>Create an account</a></p>
-                                {signInIntent === 'signup' &&
-                                    <CreateAccount/>
-                                }
-                                <p>or</p>
-                                <p><a href="#" type="button" className="btn-link" onClick={this.signIn.bind(this)}>Sign in</a></p>
-                                {signInIntent === 'signin' && signIn}
-                            </div>
-                        )
-                    }
+                    <div className="circle">
+                        <span className="number">1</span>
+                    </div>
+                    {user.name || user.resetPassword ? (
+                        <div>{signedIn}</div>
+                    ) : (
+                        <div>
+                            <p>
+                                <a
+                                    href="#"
+                                    type="button"
+                                    className="btn-link"
+                                    onClick={this.signUp.bind(this)}>
+                                    Create an account
+                                </a>
+                            </p>
+                            {signInIntent === 'signup' && createAccount}
+                            <p>or</p>
+                            <p>
+                                <a
+                                    href="#"
+                                    type="button"
+                                    className="btn-link"
+                                    onClick={this.signIn.bind(this)}>
+                                    Sign in
+                                </a>
+                            </p>
+                            {signInIntent === 'signin' && signIn}
+                        </div>
+                    )}
                 </div>
             </div>
         );

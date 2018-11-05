@@ -1,22 +1,20 @@
-const
-    registrationInitialState = {
+const registrationInitialState = {
         name: '',
         mobile: '',
         email: '',
         password: '',
         confirmPassword: '',
-        recaptcha: '',
         errors: {},
         error: '',
         submitting: false,
         editAccount: false
-    }
-    , signInInitialState = {
+    },
+    signInInitialState = {
         email: '',
         password: '',
         submitting: false
-    }
-    , paymentInitialState = {
+    },
+    paymentInitialState = {
         PaymentPostUrl: '',
         MerchantCode: '',
         PaymentId: '',
@@ -31,13 +29,8 @@ const
         Signature: '',
         ResponseUrl: '',
         BackendUrl: '',
-        verifying: false,
-    }
-    , locationInitialState = {
-        countryCode: '',
-        callingCode: ''
-    }
-
+        verifying: false
+    };
 
 export function signInIntent(state = '', action) {
     switch (action.type) {
@@ -52,7 +45,6 @@ export function signInIntent(state = '', action) {
     }
     return state;
 }
-
 
 export function user(state = {}, action) {
     switch (action.type) {
@@ -88,8 +80,7 @@ export function user(state = {}, action) {
             return {...state, resetPassword: false, changePassword: false};
     }
     return state;
-};
-
+}
 
 export function registration(state = registrationInitialState, action) {
     switch (action.type) {
@@ -101,12 +92,29 @@ export function registration(state = registrationInitialState, action) {
             return {...state, submitting: true};
         case 'TYPE_IN_REGISTRATION':
             return {...state, [action.payload.field]: action.payload.value};
+        case 'TYPE_IN_USER_VERIFICATION_CODE':
+            return {...state, [action.payload.field]: action.payload.value};
         case 'CREATE_ACCOUNT_REJECTED':
-            return {...state, errors: action.payload.response.data, error: action.payload.response.data, submitting: false};
+            return {
+                ...state,
+                errors: action.payload.response.data,
+                error: action.payload.response.data,
+                submitting: false
+            };
         case 'EDIT_USER_ACCOUNT_REJECTED':
-            return {...state, errors: action.payload.response.data, error: action.payload.response.data, submitting: false};
+            return {
+                ...state,
+                errors: action.payload.response.data,
+                error: action.payload.response.data,
+                submitting: false
+            };
         case 'CHANGE_USER_PASSWORD_REJECTED':
-            return {...state, errors: action.payload.response.data, error: action.payload.response.data, submitting: false};
+            return {
+                ...state,
+                errors: action.payload.response.data,
+                error: action.payload.response.data,
+                submitting: false
+            };
         case 'CREATE_ACCOUNT_FULFILLED':
             return registrationInitialState;
         case 'EDIT_USER_ACCOUNT_FULFILLED':
@@ -116,15 +124,36 @@ export function registration(state = registrationInitialState, action) {
         case 'CLEAR_REGISTRATION':
             return registrationInitialState;
         case 'EDIT_ACCOUNT':
-            return {...state, ...action.payload, editAccount: true, password: 123, confirmPassword: 123};
+            return {
+                ...state,
+                ...action.payload,
+                editAccount: true,
+                password: 123,
+                confirmPassword: 123
+            };
         case 'CHANGE_PASSWORD':
-            return {...state, ...action.payload, changePassword: true, email: '123'};
+            return {
+                ...state,
+                ...action.payload,
+                changePassword: true,
+                email: '123'
+            };
         case 'CHANGE_PASSWORD_REJECTED':
             return {...state, errors: action.payload.response.data};
         case 'CANCEL_EDIT_ACCOUNT':
-            return {...state, editAccount: false, password: '', confirmPassword: ''};
+            return {
+                ...state,
+                editAccount: false,
+                password: '',
+                confirmPassword: ''
+            };
         case 'CANCEL_CHANGE_PASSWORD':
-            return {...state, changePassword: false, email: '', resetPasswordToken: ''};
+            return {
+                ...state,
+                changePassword: false,
+                email: '',
+                resetPasswordToken: ''
+            };
         case 'RESET_PASSWORD':
             return {...state, resetPasswordToken: action.payload};
         case 'RESET_USER_PASSWORD_REJECTED':
@@ -132,7 +161,6 @@ export function registration(state = registrationInitialState, action) {
     }
     return state;
 }
-
 
 export function signIn(state = signInInitialState, action) {
     switch (action.type) {
@@ -156,7 +184,6 @@ export function signIn(state = signInInitialState, action) {
     return state;
 }
 
-
 export function selectedPackage(state = '1', action) {
     switch (action.type) {
         case 'SELECT_PACKAGE':
@@ -164,7 +191,6 @@ export function selectedPackage(state = '1', action) {
     }
     return state;
 }
-
 
 export function payment(state = paymentInitialState, action) {
     switch (action.type) {
@@ -177,37 +203,35 @@ export function payment(state = paymentInitialState, action) {
         case 'GET_PAYMENT_SIGNATURE_REJECTED':
             return {...state, verifying: false};
         case 'CREATE_ACCOUNT_FULFILLED':
-            return {...state, UserName: action.payload.name, UserEmail: action.payload.email, UserContact: action.payload.mobile};
+            return {
+                ...state
+                // UserName: action.payload.name,
+                // UserEmail: action.payload.email,
+                // UserContact: action.payload.mobile
+            };
         case 'SIGN_IN_USER_FULFILLED':
-            return {...state, UserName: action.payload.name, UserEmail: action.payload.email, UserContact: action.payload.mobile};
-
+            return {
+                ...state,
+                UserName: action.payload.name,
+                UserEmail: action.payload.email,
+                UserContact: action.payload.mobile
+            };
     }
     return state;
 }
-
 
 export function transactions(state = [], action) {
     switch (action.type) {
         case 'GET_TRANSACTIONS_FULFILLED':
-            return action.payload.data
+            return action.payload.data;
     }
     return state;
 }
-
 
 export function activeCustomers(state = [], action) {
     switch (action.type) {
         case 'GET_ACTIVE_CUSTOMERS_FULFILLED':
-            return action.payload.data
-    }
-    return state;
-}
-
-
-export function location(state = locationInitialState, action) {
-    switch (action.type) {
-        case 'GET_LOCATION_FULFILLED':
-            return {...state, ...action.payload.data};
+            return action.payload.data;
     }
     return state;
 }
