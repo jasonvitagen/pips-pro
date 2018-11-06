@@ -92,7 +92,7 @@ export default class ForgotPassword extends Component {
                         <input
                             id="email"
                             name="email"
-                            type="text"
+                            type="email"
                             value={email}
                             onChange={this.type.bind(this, 'email')}
                             placeholder="Email"
