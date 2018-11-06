@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../../redux/action';
 import {connect} from 'react-redux';
+import Recaptcha from 'react-google-recaptcha';
 
 @connect(store => ({
     registration: store.registration
@@ -18,6 +19,13 @@ export default class CreateAccount extends Component {
         this.actions.createAccount(this.props.registration);
         event.preventDefault();
     }
+    recaptchaChanged(value) {
+        this.actions.typeInRegistration({field: 'recaptcha', value});
+    }
+    reset() {
+        grecaptcha.reset();
+        this.actions.typeInRegistration({field: 'recaptcha', value: ''});
+    }
     render() {
         const {
                 name,
@@ -32,7 +40,8 @@ export default class CreateAccount extends Component {
                 mobile: mobileError,
                 email: emailError,
                 password: passwordError,
-                confirmPassword: confirmPasswordError
+                confirmPassword: confirmPasswordError,
+                recaptcha: recaptchaError
             } = this.props.registration.errors;
 
         let mobilePlacholder = '0162140200';
@@ -168,6 +177,24 @@ export default class CreateAccount extends Component {
                     )}
                 </div>
 
+                <Recaptcha
+                    sitekey={process.env.RECAPTCHA_KEY}
+                    onChange={this.recaptchaChanged.bind(this)}
+                />
+                {recaptchaError && (
+                    <p className="alert alert-danger">
+                        <small>{recaptchaError}</small>
+                    </p>
+                )}
+
+                <button
+                    type="button"
+                    className="btn btn-link-orange btn-xs"
+                    onClick={this.reset.bind(this)}>
+                    Reset reCAPTCHA
+                </button>
+
+                <br />
                 <br />
 
                 <p>

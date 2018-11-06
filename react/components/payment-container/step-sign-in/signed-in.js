@@ -22,20 +22,60 @@ export default class SignedIn extends Component {
     }
     render() {
         const {user} = this.props;
-        let packageDetail = <div></div>;
+        let packageDetail = <div />;
         if (user.packageExpireAt) {
-            packageDetail = <div className={`bg-primary pinside20 ${user.packageExpireAt ? '' : 'hidden'}`}><span>Package active until: <h4 className="mt10">{new Date(user.packageExpireAt).toLocaleString()}</h4></span></div>;
+            packageDetail = (
+                <div
+                    className={`bg-primary pinside20 ${
+                        user.packageExpireAt ? '' : 'hidden'
+                    }`}>
+                    <span>
+                        Package active until:{' '}
+                        <h4 className="mt10">
+                            {new Date(user.packageExpireAt).toLocaleString()}
+                        </h4>
+                    </span>
+                </div>
+            );
         }
         return (
             <div className="signed-in">
-                <div className="mb20">Welcome <h4>{user.name}.</h4></div>
-                <div className="bg-primary pinside20"><span>Email: <h4 className="mt10">{user.email}</h4></span></div>
-                <div className="bg-primary pinside20"><span>Mobile: <h4 className="mt10">{user.mobile}</h4></span></div>
+                <div className="mb20">
+                    Welcome <h4>{user.name}.</h4>
+                </div>
+                <div className="bg-primary pinside20">
+                    <span>
+                        Email: <h4 className="mt10">{user.email}</h4>
+                    </span>
+                </div>
+                <div className="bg-primary pinside20">
+                    <span>
+                        Mobile: <h4 className="mt10">{user.phone_number}</h4>
+                    </span>
+                </div>
                 {packageDetail}
-                <br/>
-                <p><button className="btn btn-xs btn-ouline" onClick={this.editAccount.bind(this)}>Edit account</button></p>
-                <p><button className="btn btn-xs btn-ouline" onClick={this.changePassword.bind(this)}>Change password</button></p>
-                <p><button className="btn btn-xs btn-ouline" onClick={this.signOut.bind(this)}>Sign out</button></p>
+                <br />
+                <p>
+                    <button
+                        className="btn btn-xs btn-ouline"
+                        onClick={this.editAccount.bind(this)}>
+                        Edit account
+                    </button>
+                </p>
+                <p>
+                    <button
+                        className="btn btn-xs btn-ouline"
+                        onClick={this.changePassword.bind(this)}>
+                        Change password
+                    </button>
+                </p>
+                <p>
+                    <button
+                        className="btn btn-xs btn-ouline"
+                        onClick={this.signOut.bind(this)}>
+                        Sign out
+                    </button>
+                </p>
             </div>
         );
     }

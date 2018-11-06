@@ -34,6 +34,7 @@ export default class ChangePassword extends Component {
         const {
                 password,
                 confirmPassword,
+                oldPassword,
                 submitting,
                 resetPasswordToken
             } = this.props.registration,
@@ -41,7 +42,8 @@ export default class ChangePassword extends Component {
             {
                 email: emailError,
                 password: passwordError,
-                confirmPassword: confirmPasswordError
+                confirmPassword: confirmPasswordError,
+                oldPassword: oldPasswordError
             } = this.props.registration.errors;
 
         return (
@@ -73,6 +75,35 @@ export default class ChangePassword extends Component {
 
                 <div
                     className={
+                        'form-group ' + (oldPasswordError ? 'has-error' : '')
+                    }>
+                    <label
+                        className="sr-only control-label"
+                        htmlFor="oldPassword">
+                        old password
+                        <span className=" "> </span>
+                    </label>
+                    <input
+                        id="oldPassword"
+                        name="oldPassword"
+                        type="password"
+                        value={oldPassword}
+                        onChange={this.type.bind(this, 'oldPassword')}
+                        placeholder="Old Password"
+                        className="form-control input-md"
+                        required=""
+                        ref={ref => (this.firstInput = ref)}
+                        maxLength="128"
+                    />
+                    {oldPasswordError && (
+                        <p className="alert alert-danger">
+                            <small>{oldPasswordError}</small>
+                        </p>
+                    )}
+                </div>
+
+                <div
+                    className={
                         'form-group ' + (passwordError ? 'has-error' : '')
                     }>
                     <label className="sr-only control-label" htmlFor="password">
@@ -88,7 +119,6 @@ export default class ChangePassword extends Component {
                         placeholder="Password"
                         className="form-control input-md"
                         required=""
-                        ref={ref => (this.firstInput = ref)}
                         maxLength="128"
                     />
                     {passwordError && (
@@ -106,7 +136,7 @@ export default class ChangePassword extends Component {
                     <label
                         className="sr-only control-label"
                         htmlFor="passwordConfirm">
-                        password
+                        confirm password
                         <span className=" "> </span>
                     </label>
                     <input

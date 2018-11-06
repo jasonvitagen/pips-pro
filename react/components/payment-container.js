@@ -17,7 +17,7 @@ export default class PaymentContainer extends Component {
     constructor(props) {
         super(props);
         this.actions = bindActionCreators(actions, this.props.dispatch);
-        this.actions.checkCookie();
+        this.actions.checkCognitoSession();
     }
     render() {
         return (

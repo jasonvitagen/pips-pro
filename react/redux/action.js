@@ -1,6 +1,11 @@
 import axios from 'axios';
 import {cognitoUserPool} from '../components/payment-container';
-import {CognitoUserAttribute} from 'amazon-cognito-identity-js';
+import {
+    AuthenticationDetails,
+    CognitoUser,
+    CognitoUserAttribute
+} from 'amazon-cognito-identity-js';
+import {registration} from './reducer';
 
 export function typeInRegistration(payload) {
     return {
@@ -55,6 +60,9 @@ export function createAccount(registration) {
             'Confirmation password does not match';
     if (!confirmPassword)
         validationErrors.confirmPassword = 'Confirmation password is required';
+    if (!recaptcha && !editAccount) {
+        if (!recaptcha) validationErrors.recaptcha = 'Recaptcha is required';
+    }
 
     if (Object.keys(validationErrors).length > 0) {
         return {
@@ -82,6 +90,10 @@ export function createAccount(registration) {
         new CognitoUserAttribute({
             Name: 'phone_number',
             Value: newMobile
+        }),
+        new CognitoUserAttribute({
+            Name: 'custom:recaptcha2',
+            Value: recaptcha
         })
     ];
 
@@ -102,16 +114,32 @@ export function createAccount(registration) {
                         });
                         return;
                     }
-                    resolve(result);
+                    const cognitoUser = new CognitoUser({
+                        Username: email,
+                        Pool: cognitoUserPool
+                    });
+                    const authenticationDetails = new AuthenticationDetails({
+                        Username: email,
+                        Password: password
+                    });
+                    cognitoUser.authenticateUser(authenticationDetails, {
+                        onSuccess(result, userConfirmationNecessary) {
+                            const idToken = result.getIdToken().decodePayload();
+                            resolve(idToken);
+                        },
+                        onFailure(err) {
+                            reject(err.message || JSON.stringify(err));
+                        }
+                    });
                 }
             );
         })
     };
 }
 
-export function checkCookie() {
+export function checkCognitoSession() {
     return {
-        type: 'CHECK_COOKIE'
+        type: 'CHECK_COGNITO_SESSION'
     };
 }
 
@@ -146,12 +174,28 @@ export function clearSignIn() {
 }
 
 export function signInUser(signInCredentials) {
+    const cognitoUser = new CognitoUser({
+        Username: signInCredentials.email,
+        Pool: cognitoUserPool
+    });
+    const authenticationDetails = new AuthenticationDetails({
+        Username: signInCredentials.email,
+        Password: signInCredentials.password
+    });
+
     return {
         type: 'SIGN_IN_USER',
-        payload: axios.post(
-            `${process.env.HOST}auth/local/sign-in`,
-            signInCredentials
-        )
+        payload: new Promise((resolve, reject) => {
+            cognitoUser.authenticateUser(authenticationDetails, {
+                onSuccess(result, userConfirmationNecessary) {
+                    const idToken = result.getIdToken().decodePayload();
+                    resolve(idToken);
+                },
+                onFailure(err) {
+                    reject(err.message || JSON.stringify(err));
+                }
+            });
+        })
     };
 }
 
@@ -171,15 +215,40 @@ export function cancelEditAccount() {
 export function editUserAccount(registration, user) {
     return {
         type: 'EDIT_USER_ACCOUNT',
-        payload: axios.post(
-            `${process.env.HOST}auth/local/edit-account`,
-            registration,
-            {
-                headers: {
-                    Authorization: user.token
-                }
+        payload: new Promise((resolve, reject) => {
+            const cognitoUser = cognitoUserPool.getCurrentUser();
+            if (cognitoUser) {
+                cognitoUser.getSession((err, session) => {
+                    if (err) {
+                        reject(err.message || JSON.stringify(err));
+                        return;
+                    }
+                    const attributeList = [
+                        new CognitoUserAttribute({
+                            Name: 'name',
+                            Value: registration.name
+                        }),
+                        new CognitoUserAttribute({
+                            Name: 'phone_number',
+                            Value: registration.phone_number
+                        })
+                    ];
+                    cognitoUser.updateAttributes(
+                        attributeList,
+                        (err, result) => {
+                            if (err) {
+                                reject(err.message || JSON.stringify(err));
+                                return;
+                            }
+                            resolve({
+                                name: registration.name,
+                                phone_number: registration.phone_number
+                            });
+                        }
+                    );
+                });
             }
-        )
+        })
     };
 }
 
@@ -225,17 +294,67 @@ export function cancelChangePassword() {
 }
 
 export function changeUserPassword(registration, user) {
-    return {
-        type: 'CHANGE_USER_PASSWORD',
-        payload: axios.post(
-            `${process.env.HOST}auth/local/change-password`,
-            registration,
-            {
-                headers: {
-                    Authorization: user.token
+    const {password, confirmPassword, oldPassword} = registration;
+    const validationErrors = {};
+
+    if (oldPassword.length < 6) {
+        validationErrors.oldPassword = 'Min 6 characters for old password';
+    }
+    if (!oldPassword) {
+        validationErrors.oldPassword = 'Old password is required';
+    }
+    if (password.length < 6)
+        validationErrors.password = 'Min 6 characters for password';
+    if (password.length > 128)
+        validationErrors.password = 'Max 128 characters for password';
+    if (!password) validationErrors.password = 'Password is required';
+    if (confirmPassword.length > 128)
+        validationErrors.confirmPassword = 'Max 128 characters for password';
+    if (password !== confirmPassword)
+        validationErrors.confirmPassword =
+            'Confirmation password does not match';
+    if (!confirmPassword)
+        validationErrors.confirmPassword = 'Confirmation password is required';
+
+    if (Object.keys(validationErrors).length > 0) {
+        return {
+            type: 'CHANGE_USER_PASSWORD_REJECTED',
+            payload: {
+                response: {
+                    data: validationErrors
                 }
             }
-        )
+        };
+    }
+
+    return {
+        type: 'CHANGE_USER_PASSWORD',
+        payload: new Promise((resolve, reject) => {
+            const cognitoUser = cognitoUserPool.getCurrentUser();
+            if (cognitoUser) {
+                cognitoUser.getSession((err, session) => {
+                    if (err) {
+                        reject(err.message || JSON.stringify(err));
+                        return;
+                    }
+                    cognitoUser.changePassword(
+                        oldPassword,
+                        password,
+                        (err, result) => {
+                            if (err) {
+                                reject({
+                                    response: {
+                                        data: err.message || JSON.stringify(err)
+                                    }
+                                });
+                                return;
+                            }
+                            resolve();
+                        }
+                    );
+                });
+            }
+        })
     };
 }
 
@@ -245,24 +364,55 @@ export function forgotPassword() {
     };
 }
 
+export function forgotUserPasswordVerification(signInState) {
+    return {
+        type: 'FORGOT_USER_PASSWORD_VERIFICATION',
+        payload: new Promise((resolve, reject) => {
+            const userData = {
+                Username: signInState.email,
+                Pool: cognitoUserPool
+            };
+            const cognitoUser = new CognitoUser(userData);
+            cognitoUser.confirmPassword(
+                signInState.verificationCode,
+                signInState.password,
+                {
+                    onSuccess(data) {
+                        resolve(data);
+                    },
+                    onFailure(err) {
+                        reject(err.message || JSON.stringify(err));
+                    }
+                }
+            );
+        })
+    };
+}
+
 export function cancelForgotPassword() {
     return {
         type: 'CANCEL_FORGOT_PASSWORD'
     };
 }
 
-export function forgotUserPassword(payload, user) {
+export function forgotUserPassword(signInState, user) {
     return {
         type: 'FORGOT_USER_PASSWORD',
-        payload: axios.post(
-            `${process.env.HOST}auth/local/forgot-password`,
-            payload,
-            {
-                headers: {
-                    Authorization: user.token
+        payload: new Promise((resolve, reject) => {
+            const userData = {
+                Username: signInState.email,
+                Pool: cognitoUserPool
+            };
+            const cognitoUser = new CognitoUser(userData);
+            cognitoUser.forgotPassword({
+                onSuccess(data) {
+                    resolve(data);
+                },
+                onFailure(err) {
+                    reject(err.message || JSON.stringify(err));
                 }
-            }
-        )
+            });
+        })
     };
 }
 

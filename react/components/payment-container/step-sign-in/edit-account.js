@@ -26,7 +26,7 @@ export default class EditAccount extends Component {
     render() {
         const {
                 name,
-                mobile,
+                phone_number,
                 email,
                 password,
                 confirmPassword,
@@ -37,7 +37,7 @@ export default class EditAccount extends Component {
                 mobile: mobileError,
                 email: emailError,
                 password: passwordError,
-                confirmPassword: confirmPasswordError,
+                confirmPassword: confirmPasswordError
             } = this.props.registration.errors;
 
         return (
@@ -78,9 +78,9 @@ export default class EditAccount extends Component {
                         id="mobile"
                         name="mobile"
                         type="text"
-                        value={mobile}
-                        onChange={this.type.bind(this, 'mobile')}
-                        placeholder="Mobile number e.g. 0164140900"
+                        value={phone_number}
+                        onChange={this.type.bind(this, 'phone_number')}
+                        placeholder="Mobile number e.g. +60164140900"
                         className="form-control input-md"
                         required=""
                         maxLength="15"

@@ -4,6 +4,7 @@ const registrationInitialState = {
         email: '',
         password: '',
         confirmPassword: '',
+        oldPassword: '',
         errors: {},
         error: '',
         submitting: false,
@@ -12,6 +13,8 @@ const registrationInitialState = {
     signInInitialState = {
         email: '',
         password: '',
+        phone_number: '',
+        verificationCode: '',
         submitting: false
     },
     paymentInitialState = {
@@ -27,6 +30,7 @@ const registrationInitialState = {
         UserContact: '',
         Remark: '',
         Signature: '',
+        SignatureType: '',
         ResponseUrl: '',
         BackendUrl: '',
         verifying: false
@@ -49,8 +53,11 @@ export function signInIntent(state = '', action) {
 export function user(state = {}, action) {
     switch (action.type) {
         case 'CREATE_ACCOUNT_FULFILLED':
-            return {...state, ...action.payload};
-        case 'CHECK_COOKIE':
+            return {
+                ...state,
+                ...action.payload
+            };
+        case 'CHECK_COGNITO_SESSION':
             return {...state, ...action.payload};
         case 'SIGN_OUT':
             return {};
@@ -70,10 +77,26 @@ export function user(state = {}, action) {
             return {...state, changePassword: true};
         case 'FORGOT_PASSWORD':
             return {...state, forgotPassword: true};
+        case 'FORGOT_PASSWORD_VERIFICATION':
+            return {...state, forgotPasswordVerification: true};
         case 'CANCEL_FORGOT_PASSWORD':
-            return {...state, forgotPassword: false};
+            return {
+                ...state,
+                forgotPassword: false,
+                forgotPasswordVerification: false
+            };
         case 'FORGOT_USER_PASSWORD_FULFILLED':
-            return {...state, forgotPassword: false};
+            return {
+                ...state,
+                forgotPassword: true,
+                forgotPasswordVerification: true
+            };
+        case 'FORGOT_USER_PASSWORD_VERIFICATION_FULFILLED':
+            return {
+                ...state,
+                forgotPassword: false,
+                forgotPasswordVerification: false
+            };
         case 'RESET_PASSWORD':
             return {...state, resetPassword: true, changePassword: true};
         case 'RESET_USER_PASSWORD_FULFILLED':
@@ -91,8 +114,6 @@ export function registration(state = registrationInitialState, action) {
         case 'CHANGE_USER_PASSWORD_PENDING':
             return {...state, submitting: true};
         case 'TYPE_IN_REGISTRATION':
-            return {...state, [action.payload.field]: action.payload.value};
-        case 'TYPE_IN_USER_VERIFICATION_CODE':
             return {...state, [action.payload.field]: action.payload.value};
         case 'CREATE_ACCOUNT_REJECTED':
             return {
@@ -151,6 +172,7 @@ export function registration(state = registrationInitialState, action) {
             return {
                 ...state,
                 changePassword: false,
+
                 email: '',
                 resetPasswordToken: ''
             };
@@ -176,9 +198,15 @@ export function signIn(state = signInInitialState, action) {
             return signInInitialState;
         case 'FORGOT_USER_PASSWORD_PENDING':
             return {...state, submitting: true};
+        case 'FORGOT_USER_PASSWORD_VERIFICATION_PENDING':
+            return {...state, submitting: true};
         case 'FORGOT_USER_PASSWORD_FULFILLED':
             return {...state, submitting: false};
+        case 'FORGOT_USER_PASSWORD_VERIFICATION_FULFILLED':
+            return {...state, submitting: false};
         case 'FORGOT_USER_PASSWORD_REJECTED':
+            return {...state, submitting: false};
+        case 'FORGOT_USER_PASSWORD_VERIFICATION_REJECTED':
             return {...state, submitting: false};
     }
     return state;
@@ -211,10 +239,10 @@ export function payment(state = paymentInitialState, action) {
             };
         case 'SIGN_IN_USER_FULFILLED':
             return {
-                ...state,
-                UserName: action.payload.name,
-                UserEmail: action.payload.email,
-                UserContact: action.payload.mobile
+                ...state
+                // UserName: action.payload.name,
+                // UserEmail: action.payload.email,
+                // UserContact: action.payload.mobile
             };
     }
     return state;
