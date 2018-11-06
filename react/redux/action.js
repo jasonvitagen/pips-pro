@@ -16,13 +16,6 @@ export function typeInSignIn(payload) {
     };
 }
 
-export function typeInUserVerificationCode(payload) {
-    return {
-        type: 'TYPE_IN_USER_VERIFICATION_CODE',
-        payload
-    };
-}
-
 export function createAccount(registration) {
     const {
             name,
@@ -255,12 +248,6 @@ export function forgotPassword() {
 export function cancelForgotPassword() {
     return {
         type: 'CANCEL_FORGOT_PASSWORD'
-    };
-}
-
-export function cancelVerifyUser() {
-    return {
-        type: 'CANCEL_VERIFY_USER'
     };
 }
 
