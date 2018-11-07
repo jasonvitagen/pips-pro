@@ -95,34 +95,34 @@ export default class StepMakePayment extends Component {
                     <p>Select a payment method:</p>
                     <form action={PaymentPostUrl} method="POST">
                         <table className="payment-method-list">
-                            <thead>
-                                <tr>
-                                    <td>
-                                        <input
-                                            type="radio"
-                                            id="paypal"
-                                            name="payment-method"
-                                            value="paypal"
-                                            onChange={this.paymentIdChanged.bind(
-                                                this,
-                                                'paypal'
-                                            )}
-                                            className="payment-method-radio"
-                                            disabled={disabled}
-                                        />
-                                    </td>
-                                    <td>
-                                        <label
-                                            htmlFor="paypal"
-                                            className="payment-label payment-paypal">
-                                            <img
-                                                src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppppcmcvdam.png"
-                                                alt="Credit Card Badges"
-                                            />
-                                        </label>
-                                    </td>
-                                </tr>
-                            </thead>
+                            {/*<thead>*/}
+                            {/*<tr>*/}
+                            {/*<td>*/}
+                            {/*<input*/}
+                            {/*type="radio"*/}
+                            {/*id="paypal"*/}
+                            {/*name="payment-method"*/}
+                            {/*value="paypal"*/}
+                            {/*onChange={this.paymentIdChanged.bind(*/}
+                            {/*this,*/}
+                            {/*'paypal'*/}
+                            {/*)}*/}
+                            {/*className="payment-method-radio"*/}
+                            {/*disabled={disabled}*/}
+                            {/*/>*/}
+                            {/*</td>*/}
+                            {/*<td>*/}
+                            {/*<label*/}
+                            {/*htmlFor="paypal"*/}
+                            {/*className="payment-label payment-paypal">*/}
+                            {/*<img*/}
+                            {/*src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppppcmcvdam.png"*/}
+                            {/*alt="Credit Card Badges"*/}
+                            {/*/>*/}
+                            {/*</label>*/}
+                            {/*</td>*/}
+                            {/*</tr>*/}
+                            {/*</thead>*/}
                             <tbody>
                                 <tr>
                                     <td>

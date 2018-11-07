@@ -71,7 +71,7 @@ const cognitoSessionMiddleware = store => next => action => {
                 if (typeof action.payload.response.data === 'string') {
                     if (
                         action.payload.response.data.indexOf(
-                            'invalid recaptcha'
+                            'Invalid recaptcha'
                         ) > -1
                     ) {
                         notify.show('Invalid recaptcha', 'error');
@@ -89,7 +89,11 @@ const cognitoSessionMiddleware = store => next => action => {
                 notify.show('Invalid username or password', 'error');
                 break;
             case 'EDIT_USER_ACCOUNT_REJECTED':
-                notify.show('Edit is unsuccessful, please check', 'error');
+                if (typeof action.payload.response.data === 'string') {
+                    notify.show(action.payload.response.data, 'error');
+                } else {
+                    notify.show('Edit is unsuccessful, please check', 'error');
+                }
                 break;
             case 'CHANGE_USER_PASSWORD_REJECTED':
                 if (typeof action.payload.response.data === 'string') {

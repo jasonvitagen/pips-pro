@@ -2,7 +2,6 @@ const axios = require('axios');
 const queryString = require('querystring');
 
 exports.handler = async event => {
-    console.log(event);
     return axios
         .post(
             'https://www.google.com/recaptcha/api/siteverify',
@@ -12,7 +11,6 @@ exports.handler = async event => {
             })
         )
         .then(response => {
-            console.log(response);
             if (!response.data.success) {
                 throw new Error('Invalid recaptcha');
                 return;

@@ -128,7 +128,11 @@ export function createAccount(registration) {
                             resolve(idToken);
                         },
                         onFailure(err) {
-                            reject(err.message || JSON.stringify(err));
+                            reject({
+                                response: {
+                                    data: err.message || JSON.stringify(err)
+                                }
+                            });
                         }
                     });
                 }
@@ -220,7 +224,11 @@ export function editUserAccount(registration, user) {
             if (cognitoUser) {
                 cognitoUser.getSession((err, session) => {
                     if (err) {
-                        reject(err.message || JSON.stringify(err));
+                        reject({
+                            response: {
+                                data: err.message || JSON.stringify(err)
+                            }
+                        });
                         return;
                     }
                     const attributeList = [
@@ -237,7 +245,11 @@ export function editUserAccount(registration, user) {
                         attributeList,
                         (err, result) => {
                             if (err) {
-                                reject(err.message || JSON.stringify(err));
+                                reject({
+                                    response: {
+                                        data: err.message || JSON.stringify(err)
+                                    }
+                                });
                                 return;
                             }
                             resolve({
@@ -259,18 +271,39 @@ export function selectPackage(value) {
     };
 }
 
-export function getPaymentSignature(paymentId, selectedPackage, user, country) {
+export function getPaymentSignature(paymentId, selectedPackage, user) {
     return {
         type: 'GET_PAYMENT_SIGNATURE',
-        payload: axios.post(
-            `${process.env.HOST}payment/signature`,
-            {paymentId: paymentId, selectedPackage: selectedPackage, country},
-            {
-                headers: {
-                    Authorization: user.token
-                }
+        payload: new Promise((resolve, reject) => {
+            const cognitoUser = cognitoUserPool.getCurrentUser();
+            if (cognitoUser) {
+                cognitoUser.getSession((err, session) => {
+                    if (err) {
+                        reject(err.message || JSON.stringify(err));
+                        return;
+                    }
+                    const token = session.getIdToken().getJwtToken();
+                    console.log(token);
+                    return axios
+                        .post(
+                            `https://501yiv9gui.execute-api.ap-southeast-1.amazonaws.com/prod/paymentsignature`,
+                            {
+                                paymentId: paymentId,
+                                selectedPackage: selectedPackage
+                            },
+                            {
+                                headers: {
+                                    Authorization: token
+                                }
+                            }
+                        )
+                        .then(resolve)
+                        .catch(reject);
+                });
+            } else {
+                reject();
             }
-        )
+        })
     };
 }
 
@@ -334,7 +367,11 @@ export function changeUserPassword(registration, user) {
             if (cognitoUser) {
                 cognitoUser.getSession((err, session) => {
                     if (err) {
-                        reject(err.message || JSON.stringify(err));
+                        reject({
+                            response: {
+                                data: err.message || JSON.stringify(err)
+                            }
+                        });
                         return;
                     }
                     cognitoUser.changePassword(
