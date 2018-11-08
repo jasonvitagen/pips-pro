@@ -283,7 +283,6 @@ export function getPaymentSignature(paymentId, selectedPackage, user) {
                         return;
                     }
                     const token = session.getIdToken().getJwtToken();
-                    console.log(token);
                     return axios
                         .post(
                             `https://501yiv9gui.execute-api.ap-southeast-1.amazonaws.com/prod/paymentsignature`,
@@ -473,9 +472,29 @@ export function resetUserPassword(registration) {
 export function getTransactions(user) {
     return {
         type: 'GET_TRANSACTIONS',
-        payload: axios.get(`${process.env.HOST}my-account/transactions`, {
-            headers: {
-                Authorization: user.token
+        payload: new Promise((resolve, reject) => {
+            const cognitoUser = cognitoUserPool.getCurrentUser();
+            if (cognitoUser) {
+                cognitoUser.getSession((err, session) => {
+                    if (err) {
+                        reject(err.message || JSON.stringify(err));
+                        return;
+                    }
+                    const token = session.getIdToken().getJwtToken();
+                    return axios
+                        .post(
+                            `https://501yiv9gui.execute-api.ap-southeast-1.amazonaws.com/prod/usertransactions`,
+                            {
+                                headers: {
+                                    Authorization: token
+                                }
+                            }
+                        )
+                        .then(resolve)
+                        .catch(reject);
+                });
+            } else {
+                reject();
             }
         })
     };
