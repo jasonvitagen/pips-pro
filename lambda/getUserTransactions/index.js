@@ -20,7 +20,8 @@ exports.handler = async (event, context) => {
                     ComparisonOperator: 'EQ',
                     AttributeValueList: [username]
                 }
-            }
+            },
+            ScanIndexForward: false
         })
         .promise();
 

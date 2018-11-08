@@ -484,6 +484,7 @@ export function getTransactions(user) {
                     return axios
                         .post(
                             `https://501yiv9gui.execute-api.ap-southeast-1.amazonaws.com/prod/usertransactions`,
+                            {},
                             {
                                 headers: {
                                     Authorization: token

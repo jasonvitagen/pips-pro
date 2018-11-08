@@ -49,7 +49,10 @@ const config = {
             'process.env': {
                 HOST: JSON.stringify(process.env.HOST),
                 RECAPTCHA_KEY: JSON.stringify(process.env.RECAPTCHA_KEY),
-                NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+                NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+                PRICE_1_MONTH: JSON.stringify(process.env.PRICE_1_MONTH),
+                PRICE_3_MONTH: JSON.stringify(process.env.PRICE_3_MONTH),
+                PRICE_6_MONTH: JSON.stringify(process.env.PRICE_6_MONTH)
             }
         })
     ]
