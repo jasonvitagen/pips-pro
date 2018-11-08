@@ -29,6 +29,8 @@ exports.handler = async (event, context) => {
             Status
     );
 
+    console.log(reqBody);
+
     let response = {
         statusCode: 301,
         headers: {

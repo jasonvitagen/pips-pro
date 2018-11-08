@@ -50,7 +50,7 @@ exports.handler = async (event, context) => {
     const refNo = shortid.generate();
 
     const signalPackageMapping = {
-        1: '250.00',
+        1: '1.00',
         3: '600.00',
         6: '1,050.00'
     };
