@@ -29,7 +29,13 @@ exports.handler = async (event, context) => {
 
     console.log(reqBody);
 
-    const {IPAY_MERCHANT_KEY, IPAY_MERCHANT_CODE} = process.env;
+    const {
+        IPAY_MERCHANT_KEY,
+        IPAY_MERCHANT_CODE,
+        PRICE_1_MONTH,
+        PRICE_3_MONTH,
+        PRICE_6_MONTH
+    } = process.env;
 
     const ourSignature = sha256(
         IPAY_MERCHANT_KEY +
@@ -63,7 +69,7 @@ exports.handler = async (event, context) => {
             TableName: 'Transaction',
             Key: {
                 Username: username,
-                TransId
+                RefNo
             },
             ConsistentRead: true
         })
@@ -132,9 +138,9 @@ exports.handler = async (event, context) => {
     });
 
     const signalPackageMapping = {
-        '1.00': 1,
-        '600.00': 3,
-        '1,050.00': 6
+        [PRICE_1_MONTH]: 1,
+        [PRICE_3_MONTH]: 3,
+        [PRICE_6_MONTH]: 6
     };
 
     const signalPackage = signalPackageMapping[Amount];
@@ -190,7 +196,9 @@ exports.handler = async (event, context) => {
             RefNo,
             Currency,
             Amount,
-            packageExpireAt: expireAt * 1000
+            packageExpireAt: new Date(
+                expireAt * 1000 + 480 * 60 * 1000
+            ).toLocaleString('en-MY')
         })
     };
 

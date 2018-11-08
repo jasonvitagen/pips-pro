@@ -12,7 +12,10 @@ exports.handler = async (event, context) => {
         IPAY_PAYMENT_POST_URL,
         CURRENCY,
         IPAY_RESPONSE_URL,
-        IPAY_BACKEND_URL
+        IPAY_BACKEND_URL,
+        PRICE_1_MONTH,
+        PRICE_3_MONTH,
+        PRICE_6_MONTH
     } = process.env;
 
     const username = event.requestContext.authorizer.claims['cognito:username'];
@@ -50,9 +53,9 @@ exports.handler = async (event, context) => {
     const refNo = shortid.generate();
 
     const signalPackageMapping = {
-        1: '1.00',
-        3: '600.00',
-        6: '1,050.00'
+        1: PRICE_1_MONTH,
+        3: PRICE_3_MONTH,
+        6: PRICE_6_MONTH
     };
 
     const amount = signalPackageMapping[selectedPackage];

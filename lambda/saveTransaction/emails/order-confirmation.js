@@ -309,9 +309,7 @@ module.exports = data => `
                                 <br>
                                 <p>Your purchased forex signal package is now active and we'll start sending forex signals to your mobile number.</p>
                                 <p><u>Your package is active until</u></p>
-                                <p>${new Date(
-                                    data.packageExpireAt
-                                ).toLocaleString('en-MY')}</p>
+                                <p>${data.packageExpireAt}</p>
                                 <br>
                                 <p>Thank you for choosing us.</p>
                                 <br>
