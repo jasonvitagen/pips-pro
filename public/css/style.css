@@ -451,7 +451,7 @@ index-1
 /*--------------------------------
  Page header 
 ---------------------------------*/
-.page-header { margin: 0; padding: 175px 0px 80px; min-height: 410px; border: none; background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), rgba(0, 0, 0, 0.2) url(https://i.imgur.com/LidzQkq.jpg) no-repeat center; background-size: cover; }
+.page-header { margin: 0; padding: 175px 0px 80px; min-height: 410px; border: none; background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), rgba(0, 0, 0, 0.2) url(/images/page-header-optimized.jpg) no-repeat center; background-size: cover; }
 .page-title { margin-bottom: 0px; font-size: 36px; }
 .rate-block { text-align: right; }
 .rate-number { margin-bottom: 0px; line-height: 1; color: #f51f8a; }
@@ -753,7 +753,7 @@ Header - 2
 Landing Page Template
 ------------------------------------------*/
 .hero {position: relative; 
-  padding-top: 60px; padding-bottom: 100px; background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), rgba(0, 0, 0, 0.2) url(https://i.imgur.com/5pMG4eY.jpg) no-repeat center; background-size: cover; }
+  padding-top: 60px; padding-bottom: 100px; background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), rgba(0, 0, 0, 0.2) url(/images/lp-car-image_optimized.jpg) no-repeat center; background-size: cover; }
 .hero-title { font-size: 48px; line-height: 52px;  color: #fff; font-weight: 800; letter-spacing: -1px; margin-bottom: 30px;}
 .hero-captions{padding-top: 80px;}
 .hero-text{color: #fff;}
@@ -874,97 +874,97 @@ Landing Page Template
 }
 
 .payment-cimb {
-  background: url(https://i.imgur.com/uJyGqBX.png) no-repeat -24px -18px;
+  background: url(/images/iPay88_Payment_gateways_small_optimized.png) no-repeat -24px -18px;
   width: 142px;
   height: 24px;
 }
 
 .payment-maybank {
-  background: url(https://i.imgur.com/uJyGqBX.png) no-repeat -229px -18px;
+  background: url(/images/iPay88_Payment_gateways_small_optimized.png) no-repeat -229px -18px;
   width: 145px;
   height: 23px;
 }
 
 .payment-hongleong {
-  background: url(https://i.imgur.com/uJyGqBX.png) no-repeat -428px -20px;
+  background: url(/images/iPay88_Payment_gateways_small_optimized.png) no-repeat -428px -20px;
   width: 141px;
   height: 15px;
 }
 
 .payment-ambank {
-  background: url(https://i.imgur.com/uJyGqBX.png) no-repeat -641px -1px;
+  background: url(/images/iPay88_Payment_gateways_small_optimized.png) no-repeat -641px -1px;
   width: 120px;
   height: 48px;
 }
 
 .payment-alliance {
-  background: url(https://i.imgur.com/uJyGqBX.png) no-repeat -828px -10px;
+  background: url(/images/iPay88_Payment_gateways_small_optimized.png) no-repeat -828px -10px;
   width: 146px;
   height: 31px;
 }
 
 .payment-rhb {
-  background: url(https://i.imgur.com/uJyGqBX.png) no-repeat -33px -80px;
+  background: url(/images/iPay88_Payment_gateways_small_optimized.png) no-repeat -33px -80px;
   width: 125px;
   height: 31px;
 }
 
 .payment-islam {
-  background: url(https://i.imgur.com/uJyGqBX.png) no-repeat -232px -81px;;
+  background: url(/images/iPay88_Payment_gateways_small_optimized.png) no-repeat -232px -81px;;
   width: 134px;
   height: 28px;
 }
 
 .payment-publicbank {
-  background: url(https://i.imgur.com/uJyGqBX.png) no-repeat  -428px -75px;
+  background: url(/images/iPay88_Payment_gateways_small_optimized.png) no-repeat  -428px -75px;
   width: 138px;
   height: 46px;
 }
 
 .payment-fpx {
-  background: url(https://i.imgur.com/uJyGqBX.png) no-repeat -653px -76px;;
+  background: url(/images/iPay88_Payment_gateways_small_optimized.png) no-repeat -653px -76px;;
   width: 97px;
   height: 42px;
 }
 
 .payment-webcash {
-  background: url(https://i.imgur.com/uJyGqBX.png) no-repeat -876px -73px;
+  background: url(/images/iPay88_Payment_gateways_small_optimized.png) no-repeat -876px -73px;
   width: 45px;
   height: 45px;
 }
 
 .payment-affinbank {
-  background: url(https://i.imgur.com/uJyGqBX.png) no-repeat -24px -147px;
+  background: url(/images/iPay88_Payment_gateways_small_optimized.png) no-repeat -24px -147px;
   width: 142px;
   height: 41px;
 }
 
 .payment-uob {
-  background: url(https://i.imgur.com/uJyGqBX.png) no-repeat -232px -142px;
+  background: url(/images/iPay88_Payment_gateways_small_optimized.png) no-repeat -232px -142px;
   width: 126px;
   height: 47px;
 }
 
 .payment-standardchartered {
-  background: url(https://i.imgur.com/uJyGqBX.png) no-repeat -429px -140px;
+  background: url(/images/iPay88_Payment_gateways_small_optimized.png) no-repeat -429px -140px;
   width: 142px;
   height: 54px;
 }
 
 .payment-ocbc {
-  background: url(https://i.imgur.com/uJyGqBX.png) no-repeat -634px -152px;
+  background: url(/images/iPay88_Payment_gateways_small_optimized.png) no-repeat -634px -152px;
   width: 142px;
   height: 31px;
 }
 
 .payment-muamalat {
-  background: url(https://i.imgur.com/uJyGqBX.png) no-repeat -828px -153px;
+  background: url(/images/iPay88_Payment_gateways_small_optimized.png) no-repeat -828px -153px;
   width: 142px;
   height: 31px;
 }
 
 .payment-bsn {
-  background: url(https://i.imgur.com/uJyGqBX.png) no-repeat -36px -216px;
+  background: url(/images/iPay88_Payment_gateways_small_optimized.png) no-repeat -36px -216px;
   width: 92px;
   height: 45px;
 }
