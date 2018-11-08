@@ -7,6 +7,7 @@ path = require('path');
 require('dotenv').config({path: './process.env'});
 
 const PATHS = {
+    public: path.resolve(__dirname, 'public'),
     build: path.resolve(__dirname, 'dist')
 };
 
@@ -34,7 +35,10 @@ const config = {
         outputPath: PATHS.build
     },
     plugins: [
-        new CleanWebpackPlugin([PATHS.build]),
+        new CleanWebpackPlugin([
+            path.join(PATHS.public, 'webpack-cached'),
+            PATHS.build
+        ]),
         new CopyWebpackPlugin([
             {
                 from: 'public/',
