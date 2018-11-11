@@ -1,7 +1,8 @@
 {
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
-    "start": "cross-env NODE_ENV=production node server.js"
+    "start": "cross-env NODE_ENV=production node server.js",
+    "dev-server": "webpack-dev-server"
   },
   "dependencies": {
     "amazon-cognito-identity-js": "^3.0.3",

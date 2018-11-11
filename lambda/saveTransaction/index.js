@@ -9,6 +9,7 @@ const mailgun = require('mailgun-js')({
 
 const ddb = new AWS.DynamoDB.DocumentClient();
 const cognitoIdentityServiceProvider = new AWS.CognitoIdentityServiceProvider();
+const sns = new AWS.SNS();
 
 exports.handler = async (event, context) => {
     const reqBody = queryString.parse(event.body);
@@ -73,7 +74,8 @@ exports.handler = async (event, context) => {
             },
             ConsistentRead: true
         })
-        .promise();
+        .promise()
+        .catch(errorPromise);
 
     if (existingRecord) {
         console.log('duplicate record');
@@ -100,7 +102,8 @@ exports.handler = async (event, context) => {
                 ...nonEmptyReqBody
             }
         })
-        .promise();
+        .promise()
+        .catch(errorPromise);
 
     const {Item} = await ddb
         .get({
@@ -109,7 +112,8 @@ exports.handler = async (event, context) => {
                 Username: username
             }
         })
-        .promise();
+        .promise()
+        .catch(errorPromise);
 
     const user = await new Promise((resolve, reject) => {
         cognitoIdentityServiceProvider.adminGetUser(
@@ -137,6 +141,8 @@ exports.handler = async (event, context) => {
         );
     });
 
+    console.log(user);
+
     const signalPackageMapping = {
         [PRICE_1_MONTH]: 1,
         [PRICE_3_MONTH]: 3,
@@ -147,6 +153,32 @@ exports.handler = async (event, context) => {
 
     let expireAt;
     if (Item) {
+        let subscriptionArn;
+        if (Item.Phone !== user.phone_number) {
+            await new Promise((resolve, reject) => {
+                sns.unsubscribe(
+                    {
+                        SubscriptionArn: Item.SubscriptionArn
+                    },
+                    (err, data) => {
+                        if (err) {
+                            reject(err);
+                        }
+                        resolve(data);
+                    }
+                );
+            });
+            const {SubscriptionArn} = await sns
+                .subscribe({
+                    Protocol: 'sms',
+                    TopicArn: 'arn:aws:sns:ap-southeast-1:125084610626:PipsPro',
+                    Endpoint: user.phone_number
+                })
+                .promise()
+                .catch(errorPromise);
+            subscriptionArn = SubscriptionArn;
+        }
+
         expireAt = Math.round(
             new Date(
                 new Date(Item.ExpireAt * 1000).setMonth(
@@ -160,13 +192,33 @@ exports.handler = async (event, context) => {
                 Key: {
                     Username: username
                 },
-                UpdateExpression: 'SET ExpireAt = :expireAt',
+                UpdateExpression: `SET ExpireAt = :expireAt ${
+                    subscriptionArn
+                        ? ', SubscriptionArn = :subscriptionArn, Phone = :phone'
+                        : ''
+                }`,
                 ExpressionAttributeValues: {
-                    ':expireAt': expireAt
+                    ':expireAt': expireAt,
+                    ...(subscriptionArn
+                        ? {
+                              ':subscriptionArn': subscriptionArn,
+                              ':phone': user.phone_number
+                          }
+                        : {})
                 }
             })
-            .promise();
+            .promise()
+            .catch(errorPromise);
     } else {
+        const {SubscriptionArn} = await sns
+            .subscribe({
+                Protocol: 'sms',
+                TopicArn: 'arn:aws:sns:ap-southeast-1:125084610626:PipsPro',
+                Endpoint: user.phone_number
+            })
+            .promise()
+            .catch(errorPromise);
+
         expireAt = Math.round(
             new Date(
                 new Date().setMonth(new Date().getMonth() + signalPackage)
@@ -179,11 +231,14 @@ exports.handler = async (event, context) => {
                     Username: username,
                     CreatedAt: new Date().toISOString(),
                     ExpireAt: expireAt,
+                    Name: user.name,
                     Email: user.email,
-                    Phone: user.phone_number
+                    Phone: user.phone_number,
+                    SubscriptionArn
                 }
             })
-            .promise();
+            .promise()
+            .catch(errorPromise);
     }
 
     const message = {
@@ -208,10 +263,14 @@ exports.handler = async (event, context) => {
         .then(body => {
             console.log(body);
         })
-        .catch(err => console.log(err));
+        .catch(errorPromise);
 
     return response;
 };
+
+function errorPromise(err) {
+    console.log(err.message || JSON.stringify(err));
+}
 
 async function errorResponse(errorMessage) {
     return {
